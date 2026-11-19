@@ -9,7 +9,7 @@
 | 03А | Аналитически завершена. PRO передал публичный пакет синтетических эталонов, [план проверок](validation/reference-test-plan.md) и [заключение по численной точности](validation/numerical-policy-review.md) |
 | 03Б | Завершена. Пакет вошёл в основную ветку через [PR № 4](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/4). Доступны [манифест 53 наборов](../tests/fixtures/v1/manifest.json), [инструкция по воспроизведению](../tests/fixtures/v1/README.md) и [отчёт Work](iterations/03-reference-fixtures.md) |
 | 04-1–04-4 | Завершены. [PR № 5](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/5) объединён в `main` коммитом [`2068fd4`](https://github.com/volkov43-beep/vsz-positioning-calculator/commit/2068fd449fd5da154c4b5c1fac8d5ac040ee19f1). [Требования](product/requirements.md), [сценарии](product/user-flows.md), [схемы экранов](product/ui-wireframes.md) и [матрица 23 требований MVP](iterations/04-product-ux.md#матрица-соответствия-mvp) вошли в основную ветку. |
-| 05-1 | [Техническая архитектура](architecture/architecture.md) и [ADR-0001](decisions/ADR-0001-application-architecture.md) подготовлены к проверке. Рекомендованы React, независимое ядро TypeScript, Vite, файл испытания и IndexedDB. ADR имеет статус Proposed. [Отчёт общей итерации 05](iterations/05-architecture.md). |
+| 05-1 | [Техническая архитектура](architecture/architecture.md) и [ADR-0001](decisions/ADR-0001-application-architecture.md) подготовлены к проверке в [Draft PR № 6](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/6). Рекомендованы React, независимое ядро TypeScript, Vite, файл испытания и IndexedDB. ADR имеет статус Proposed. [Отчёт общей итерации 05](iterations/05-architecture.md). |
 
 ## Открытые инженерные вопросы
 
