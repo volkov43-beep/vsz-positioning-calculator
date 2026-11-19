@@ -7,7 +7,7 @@
 | 00 и 01Б | Основа проекта и [нормативная спецификация 0.1](methodology/scope.md) вошли в основную ветку через [PR № 1](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/1) и [PR № 2](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/2) |
 | 02А и 02Б | [Математическая спецификация](methodology/math-spec.md) и [обезличенный аудит Excel](validation/excel-audit-summary.md) версии 0.1 опубликованы. [PR № 3](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/3) объединён. Исходный HEAD для 03Б — [`b94c33585d0f49b955a72f3b1fc30edb6b8490d8`](https://github.com/volkov43-beep/vsz-positioning-calculator/commit/b94c33585d0f49b955a72f3b1fc30edb6b8490d8) |
 | 03А | Аналитически завершена. PRO передал публичный пакет синтетических эталонов, [план проверок](validation/reference-test-plan.md) и [заключение по численной точности](validation/numerical-policy-review.md) |
-| 03Б | Ожидает проверки в [Draft PR рабочей ветки](https://github.com/volkov43-beep/vsz-positioning-calculator/pulls?q=is%3Apr+head%3Atest%2Fiteration-03-reference-fixtures). Доступны [манифест 53 наборов](../tests/fixtures/v1/manifest.json), [инструкция по воспроизведению](../tests/fixtures/v1/README.md) и [отчёт Work](iterations/03-reference-fixtures.md) |
+| 03Б | Ожидает проверки в [Draft PR № 4](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/4). Доступны [манифест 53 наборов](../tests/fixtures/v1/manifest.json), [инструкция по воспроизведению](../tests/fixtures/v1/README.md) и [отчёт Work](iterations/03-reference-fixtures.md) |
 
 ## Открытые инженерные вопросы
 

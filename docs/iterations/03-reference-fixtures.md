@@ -1,10 +1,10 @@
 # Итерация 03Б — проверка и публикация синтетических эталонов
 
-19 ноября 2026 года. Этап ожидает проверки в [Draft PR рабочей ветки](https://github.com/volkov43-beep/vsz-positioning-calculator/pulls?q=is%3Apr+head%3Atest%2Fiteration-03-reference-fixtures).
+19 ноября 2026 года. Этап ожидает проверки в [Draft PR № 4](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/4).
 
 ## Исходное состояние и материалы
 
-Исходный HEAD основной ветки — [`b94c33585d0f49b955a72f3b1fc30edb6b8490d8`](https://github.com/volkov43-beep/vsz-positioning-calculator/commit/b94c33585d0f49b955a72f3b1fc30edb6b8490d8), коммит слияния [PR № 3](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/3). При начале работы открытых PR, ветки 03Б и опубликованных наборов на этой базе не было. Рабочая ветка — `test/iteration-03-reference-fixtures`.
+Исходный HEAD основной ветки — [`b94c33585d0f49b955a72f3b1fc30edb6b8490d8`](https://github.com/volkov43-beep/vsz-positioning-calculator/commit/b94c33585d0f49b955a72f3b1fc30edb6b8490d8), коммит слияния [PR № 3](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/3). При начале работы открытых PR, ветки 03Б и опубликованных наборов на этой базе не было. Рабочая ветка — `test/iteration-03-reference-fixtures`. Коммит, добавляющий эталоны, — [`de64d7ffdd70fd1b2718fa5e88ace23d2affcf96`](https://github.com/volkov43-beep/vsz-positioning-calculator/commit/de64d7ffdd70fd1b2718fa5e88ace23d2affcf96).
 
 Пользователь передал разрешённый к публикации пакет ChatGPT PRO из 03А. SHA-256 исходного ZIP — `e0e2dbeefbb465cf1f2097d6f53085e13fe277df7c8bdc3458af3874af0b9c11`. В архиве 69 файлов. Все 68 записей исходного списка SHA-256 подтверждены. Три отдельно переданных Markdown-документа побайтово совпали с копиями в архиве. Сверены Git blob, размер и SHA-256 восьми исходных документов по [журналу происхождения](../../tests/fixtures/v1/checks/source-manifest.json).
 
