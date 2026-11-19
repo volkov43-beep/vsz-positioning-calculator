@@ -1,0 +1,718 @@
+{
+  "schema_version": "vsz-fixtures-1.0",
+  "case_id": "T06-single-outlier",
+  "category": "valid",
+  "profile_id": "gost-27843-2006-linear-axis-le-2000-v1",
+  "sd_method": "sample-n-minus-1",
+  "coverage": [
+    "T06"
+  ],
+  "purpose_ru": "Единственный выброс 20 сохранён: mean=4, variance=80, s=4*sqrt(5).",
+  "units": {
+    "coordinate": "mm",
+    "deviation": "um",
+    "expected": "um",
+    "variance": "um2"
+  },
+  "context": {
+    "full_travel_mm": "1000",
+    "procedure_applicability": "not-established-by-synthetic-fixture",
+    "report_metadata": "synthetic-only"
+  },
+  "provenance": {
+    "origin": "independently-synthesized",
+    "recipe": "Единственный выброс 20 сохранён: mean=4, variance=80, s=4*sqrt(5).",
+    "private_measurements_used": false,
+    "standard_example_observations_used": false
+  },
+  "positions": [
+    {
+      "position_id": "p01",
+      "target_mm": "0",
+      "up": [
+        {
+          "repeat": 1,
+          "value": "0"
+        },
+        {
+          "repeat": 2,
+          "value": "0"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0"
+        },
+        {
+          "repeat": 5,
+          "value": "0"
+        }
+      ],
+      "down": [
+        {
+          "repeat": 1,
+          "value": "0"
+        },
+        {
+          "repeat": 2,
+          "value": "0"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0"
+        },
+        {
+          "repeat": 5,
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "position_id": "p02",
+      "target_mm": "250",
+      "up": [
+        {
+          "repeat": 1,
+          "value": "0"
+        },
+        {
+          "repeat": 2,
+          "value": "0"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0"
+        },
+        {
+          "repeat": 5,
+          "value": "0"
+        }
+      ],
+      "down": [
+        {
+          "repeat": 1,
+          "value": "0"
+        },
+        {
+          "repeat": 2,
+          "value": "0"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0"
+        },
+        {
+          "repeat": 5,
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "position_id": "p03",
+      "target_mm": "500",
+      "up": [
+        {
+          "repeat": 1,
+          "value": "0"
+        },
+        {
+          "repeat": 2,
+          "value": "0"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0"
+        },
+        {
+          "repeat": 5,
+          "value": "20"
+        }
+      ],
+      "down": [
+        {
+          "repeat": 1,
+          "value": "0"
+        },
+        {
+          "repeat": 2,
+          "value": "0"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0"
+        },
+        {
+          "repeat": 5,
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "position_id": "p04",
+      "target_mm": "750",
+      "up": [
+        {
+          "repeat": 1,
+          "value": "0"
+        },
+        {
+          "repeat": 2,
+          "value": "0"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0"
+        },
+        {
+          "repeat": 5,
+          "value": "0"
+        }
+      ],
+      "down": [
+        {
+          "repeat": 1,
+          "value": "0"
+        },
+        {
+          "repeat": 2,
+          "value": "0"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0"
+        },
+        {
+          "repeat": 5,
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "position_id": "p05",
+      "target_mm": "1000",
+      "up": [
+        {
+          "repeat": 1,
+          "value": "0"
+        },
+        {
+          "repeat": 2,
+          "value": "0"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0"
+        },
+        {
+          "repeat": 5,
+          "value": "0"
+        }
+      ],
+      "down": [
+        {
+          "repeat": 1,
+          "value": "0"
+        },
+        {
+          "repeat": 2,
+          "value": "0"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0"
+        },
+        {
+          "repeat": 5,
+          "value": "0"
+        }
+      ]
+    }
+  ],
+  "oracle": {
+    "primary": "fractions.Fraction exact sums and centered variance; decimal.Decimal.sqrt",
+    "working_decimal_digits": 100,
+    "serialized_significant_digits": 70,
+    "rounding_of_serialization": "nearest-ties-to-even",
+    "exact_source": "original input strings and exact rational mean/variance",
+    "method_approval": "recommendation-awaiting-metrologist"
+  },
+  "expected": {
+    "positions": [
+      {
+        "position_id": "p01",
+        "mean_up": "0",
+        "mean_down": "0",
+        "mean_both": "0",
+        "variance_up": "0",
+        "variance_down": "0",
+        "sd_up": "0",
+        "sd_down": "0",
+        "lower_up": "0",
+        "upper_up": "0",
+        "lower_down": "0",
+        "upper_down": "0",
+        "B_i": "0",
+        "R_i_up": "0",
+        "R_i_down": "0",
+        "C_i": "0",
+        "R_i": "0",
+        "active_R_branches": [
+          "C_i",
+          "R_i_up",
+          "R_i_down"
+        ]
+      },
+      {
+        "position_id": "p02",
+        "mean_up": "0",
+        "mean_down": "0",
+        "mean_both": "0",
+        "variance_up": "0",
+        "variance_down": "0",
+        "sd_up": "0",
+        "sd_down": "0",
+        "lower_up": "0",
+        "upper_up": "0",
+        "lower_down": "0",
+        "upper_down": "0",
+        "B_i": "0",
+        "R_i_up": "0",
+        "R_i_down": "0",
+        "C_i": "0",
+        "R_i": "0",
+        "active_R_branches": [
+          "C_i",
+          "R_i_up",
+          "R_i_down"
+        ]
+      },
+      {
+        "position_id": "p03",
+        "mean_up": "4",
+        "mean_down": "0",
+        "mean_both": "2",
+        "variance_up": "80",
+        "variance_down": "0",
+        "sd_up": "8.944271909999158785636694674925104941762473438446102897083588981642084",
+        "sd_down": "0",
+        "lower_up": "-13.88854381999831757127338934985020988352494687689220579416717796328417",
+        "upper_up": "21.88854381999831757127338934985020988352494687689220579416717796328417",
+        "lower_down": "0",
+        "upper_down": "0",
+        "B_i": "4",
+        "R_i_up": "35.77708763999663514254677869970041976704989375378441158833435592656833",
+        "R_i_down": "0",
+        "C_i": "21.88854381999831757127338934985020988352494687689220579416717796328417",
+        "R_i": "35.77708763999663514254677869970041976704989375378441158833435592656833",
+        "active_R_branches": [
+          "R_i_up"
+        ]
+      },
+      {
+        "position_id": "p04",
+        "mean_up": "0",
+        "mean_down": "0",
+        "mean_both": "0",
+        "variance_up": "0",
+        "variance_down": "0",
+        "sd_up": "0",
+        "sd_down": "0",
+        "lower_up": "0",
+        "upper_up": "0",
+        "lower_down": "0",
+        "upper_down": "0",
+        "B_i": "0",
+        "R_i_up": "0",
+        "R_i_down": "0",
+        "C_i": "0",
+        "R_i": "0",
+        "active_R_branches": [
+          "C_i",
+          "R_i_up",
+          "R_i_down"
+        ]
+      },
+      {
+        "position_id": "p05",
+        "mean_up": "0",
+        "mean_down": "0",
+        "mean_both": "0",
+        "variance_up": "0",
+        "variance_down": "0",
+        "sd_up": "0",
+        "sd_down": "0",
+        "lower_up": "0",
+        "upper_up": "0",
+        "lower_down": "0",
+        "upper_down": "0",
+        "B_i": "0",
+        "R_i_up": "0",
+        "R_i_down": "0",
+        "C_i": "0",
+        "R_i": "0",
+        "active_R_branches": [
+          "C_i",
+          "R_i_up",
+          "R_i_down"
+        ]
+      }
+    ],
+    "axis": {
+      "A": "35.77708763999663514254677869970041976704989375378441158833435592656833",
+      "A_up": "35.77708763999663514254677869970041976704989375378441158833435592656833",
+      "A_down": "0",
+      "E": "4",
+      "E_up": "4",
+      "E_down": "0",
+      "M": "2",
+      "R": "35.77708763999663514254677869970041976704989375378441158833435592656833",
+      "R_up": "35.77708763999663514254677869970041976704989375378441158833435592656833",
+      "R_down": "0",
+      "B": "4",
+      "Bbar": "0.8"
+    },
+    "extrema": {
+      "mean_min": [
+        {
+          "position_id": "p01",
+          "direction": "up"
+        },
+        {
+          "position_id": "p01",
+          "direction": "down"
+        },
+        {
+          "position_id": "p02",
+          "direction": "up"
+        },
+        {
+          "position_id": "p02",
+          "direction": "down"
+        },
+        {
+          "position_id": "p03",
+          "direction": "down"
+        },
+        {
+          "position_id": "p04",
+          "direction": "up"
+        },
+        {
+          "position_id": "p04",
+          "direction": "down"
+        },
+        {
+          "position_id": "p05",
+          "direction": "up"
+        },
+        {
+          "position_id": "p05",
+          "direction": "down"
+        }
+      ],
+      "mean_min_up": [
+        {
+          "position_id": "p01",
+          "direction": "up"
+        },
+        {
+          "position_id": "p02",
+          "direction": "up"
+        },
+        {
+          "position_id": "p04",
+          "direction": "up"
+        },
+        {
+          "position_id": "p05",
+          "direction": "up"
+        }
+      ],
+      "mean_min_down": [
+        {
+          "position_id": "p01",
+          "direction": "down"
+        },
+        {
+          "position_id": "p02",
+          "direction": "down"
+        },
+        {
+          "position_id": "p03",
+          "direction": "down"
+        },
+        {
+          "position_id": "p04",
+          "direction": "down"
+        },
+        {
+          "position_id": "p05",
+          "direction": "down"
+        }
+      ],
+      "mean_max": [
+        {
+          "position_id": "p03",
+          "direction": "up"
+        }
+      ],
+      "mean_max_up": [
+        {
+          "position_id": "p03",
+          "direction": "up"
+        }
+      ],
+      "mean_max_down": [
+        {
+          "position_id": "p01",
+          "direction": "down"
+        },
+        {
+          "position_id": "p02",
+          "direction": "down"
+        },
+        {
+          "position_id": "p03",
+          "direction": "down"
+        },
+        {
+          "position_id": "p04",
+          "direction": "down"
+        },
+        {
+          "position_id": "p05",
+          "direction": "down"
+        }
+      ],
+      "lower_min": [
+        {
+          "position_id": "p03",
+          "direction": "up"
+        }
+      ],
+      "lower_min_up": [
+        {
+          "position_id": "p03",
+          "direction": "up"
+        }
+      ],
+      "lower_min_down": [
+        {
+          "position_id": "p01",
+          "direction": "down"
+        },
+        {
+          "position_id": "p02",
+          "direction": "down"
+        },
+        {
+          "position_id": "p03",
+          "direction": "down"
+        },
+        {
+          "position_id": "p04",
+          "direction": "down"
+        },
+        {
+          "position_id": "p05",
+          "direction": "down"
+        }
+      ],
+      "upper_max": [
+        {
+          "position_id": "p03",
+          "direction": "up"
+        }
+      ],
+      "upper_max_up": [
+        {
+          "position_id": "p03",
+          "direction": "up"
+        }
+      ],
+      "upper_max_down": [
+        {
+          "position_id": "p01",
+          "direction": "down"
+        },
+        {
+          "position_id": "p02",
+          "direction": "down"
+        },
+        {
+          "position_id": "p03",
+          "direction": "down"
+        },
+        {
+          "position_id": "p04",
+          "direction": "down"
+        },
+        {
+          "position_id": "p05",
+          "direction": "down"
+        }
+      ],
+      "mean_both_min": [
+        {
+          "position_id": "p01",
+          "direction": "both"
+        },
+        {
+          "position_id": "p02",
+          "direction": "both"
+        },
+        {
+          "position_id": "p04",
+          "direction": "both"
+        },
+        {
+          "position_id": "p05",
+          "direction": "both"
+        }
+      ],
+      "mean_both_max": [
+        {
+          "position_id": "p03",
+          "direction": "both"
+        }
+      ],
+      "R_max": [
+        {
+          "position_id": "p03",
+          "direction": "both"
+        }
+      ],
+      "R_up_max": [
+        {
+          "position_id": "p03",
+          "direction": "up"
+        }
+      ],
+      "R_down_max": [
+        {
+          "position_id": "p01",
+          "direction": "down"
+        },
+        {
+          "position_id": "p02",
+          "direction": "down"
+        },
+        {
+          "position_id": "p03",
+          "direction": "down"
+        },
+        {
+          "position_id": "p04",
+          "direction": "down"
+        },
+        {
+          "position_id": "p05",
+          "direction": "down"
+        }
+      ],
+      "B_abs_max": [
+        {
+          "position_id": "p03",
+          "direction": "both"
+        }
+      ]
+    }
+  },
+  "exact": {
+    "positions": [
+      {
+        "position_id": "p01",
+        "mean_up": "0",
+        "variance_up": "0",
+        "mean_down": "0",
+        "variance_down": "0",
+        "mean_both": "0",
+        "B_i": "0"
+      },
+      {
+        "position_id": "p02",
+        "mean_up": "0",
+        "variance_up": "0",
+        "mean_down": "0",
+        "variance_down": "0",
+        "mean_both": "0",
+        "B_i": "0"
+      },
+      {
+        "position_id": "p03",
+        "mean_up": "4",
+        "variance_up": "80",
+        "mean_down": "0",
+        "variance_down": "0",
+        "mean_both": "2",
+        "B_i": "4"
+      },
+      {
+        "position_id": "p04",
+        "mean_up": "0",
+        "variance_up": "0",
+        "mean_down": "0",
+        "variance_down": "0",
+        "mean_both": "0",
+        "B_i": "0"
+      },
+      {
+        "position_id": "p05",
+        "mean_up": "0",
+        "variance_up": "0",
+        "mean_down": "0",
+        "variance_down": "0",
+        "mean_both": "0",
+        "B_i": "0"
+      }
+    ],
+    "axis_rational": {
+      "E": "4",
+      "E_up": "4",
+      "E_down": "0",
+      "M": "2",
+      "B": "4",
+      "Bbar": "4/5"
+    },
+    "radical_rule": "sd_up=sqrt(variance_up); sd_down=sqrt(variance_down); subsequent formulas use unrounded radicals"
+  }
+}

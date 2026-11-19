@@ -1,0 +1,916 @@
+{
+  "schema_version": "vsz-fixtures-1.0",
+  "package": "vsz-reference-fixtures-v1-03a",
+  "date": "2026-11-19",
+  "repository_basis": {
+    "repository": "https://github.com/volkov43-beep/vsz-positioning-calculator",
+    "commit": "b94c33585d0f49b955a72f3b1fc30edb6b8490d8"
+  },
+  "profile_id": "gost-27843-2006-linear-axis-le-2000-v1",
+  "sd_method": "sample-n-minus-1",
+  "method_status": "recommendation-awaiting-metrologist",
+  "verification_evidence": {
+    "verified_case_digest_sha256": "3e5f234a04478b81cfb7f0bf0fa1d5a2ab2c9d14d716c2d71a3ebb650f756380",
+    "positive_numeric_results": "checks/independent-results.json",
+    "input_and_negative_results": "checks/validation-results.json"
+  },
+  "numeric_values": "decimal strings; expected lengths in um; variances in um2",
+  "oracle": {
+    "primary_working_decimal_digits": 100,
+    "output_significant_digits": 70,
+    "independent_verifier": "mpmath at 120 digits; pairwise variance; covering-interval Ri"
+  },
+  "counts": {
+    "axis_case_files": 53,
+    "valid": 14,
+    "transformed": 18,
+    "invalid": 21,
+    "positive_with_all_outputs": 32,
+    "positive_positions": 280,
+    "positive_observations": 2800,
+    "expected_numeric_fields": 4864,
+    "rounding_examples": 12
+  },
+  "coverage": {
+    "T01": [
+      "T01-zero"
+    ],
+    "T08": [
+      "T01-zero",
+      "T07-repeatability-branches",
+      "T08-variable-m12"
+    ],
+    "T02": [
+      "T02-common-constant"
+    ],
+    "T03": [
+      "T03-direction-constants"
+    ],
+    "T04": [
+      "T04-negative-reversal"
+    ],
+    "T05": [
+      "T05-analytic-scatter"
+    ],
+    "T06": [
+      "T06-single-outlier"
+    ],
+    "T07": [
+      "T07-repeatability-branches"
+    ],
+    "P05": [
+      "T08-variable-m12"
+    ],
+    "M06": [
+      "T09-extrema-base",
+      "M06-up-repeat-1",
+      "M06-up-repeat-2",
+      "M06-up-repeat-3",
+      "M06-up-repeat-4",
+      "M06-up-repeat-5",
+      "M06-down-repeat-1",
+      "M06-down-repeat-2",
+      "M06-down-repeat-3",
+      "M06-down-repeat-4",
+      "M06-down-repeat-5",
+      "M06-global-maximum",
+      "M06-global-minimum"
+    ],
+    "P01": [
+      "P01-tiny-scatter"
+    ],
+    "P02": [
+      "P02-offset-resolvable",
+      "P02-offset-near-ulp",
+      "P02-offset-collapsed",
+      "P02-mixed-scale"
+    ],
+    "M01": [
+      "M01-swap-directions"
+    ],
+    "M02": [
+      "M02-negate"
+    ],
+    "M03": [
+      "M03-common-offset"
+    ],
+    "M04": [
+      "M04-positive-scale"
+    ],
+    "M05": [
+      "M05-permute-positions"
+    ],
+    "P03": [
+      "P03-mm-input"
+    ],
+    "N01": [
+      "N01-missing-observation-value"
+    ],
+    "N02": [
+      "N02-empty-string",
+      "N02-blank-string",
+      "N02-malformed"
+    ],
+    "N03": [
+      "N03-four-repeats",
+      "N03-six-repeats"
+    ],
+    "N04": [
+      "N04-missing-direction",
+      "N04-ambiguous-direction"
+    ],
+    "N05": [
+      "N05-unknown-unit",
+      "N05-ambiguous-unit"
+    ],
+    "N06": [
+      "N06-duplicate-position-id",
+      "N06-duplicate-repeat",
+      "N06-duplicate-coordinate"
+    ],
+    "N07": [
+      "N07-no-positions",
+      "N07-four-positions"
+    ],
+    "N08": [
+      "N08-nan",
+      "N08-infinity",
+      "N08-non-numeric",
+      "N08-boolean"
+    ],
+    "N09": [
+      "N09-incomplete-report-metadata"
+    ],
+    "N10": [
+      "N10-outside-travel-profile"
+    ]
+  },
+  "supplements": [
+    {
+      "path": "rounding-cases.json",
+      "coverage": [
+        "P04"
+      ],
+      "sha256": "d5bbde09ac58bc9107594928192f0c6ec22aaf84a71fac3cd3206b8f7d436ff7"
+    },
+    {
+      "path": "tools/numerical_stress.py",
+      "coverage": [
+        "P01",
+        "P02",
+        "P03",
+        "P04",
+        "P05"
+      ],
+      "note": "Reproducible numerical experiments, including generated m=1000 and m=10000; not additional static axis fixtures."
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "T01-zero",
+      "category": "valid",
+      "path": "cases/valid/T01-zero.json",
+      "positions": 5,
+      "coverage": [
+        "T01",
+        "T08"
+      ],
+      "purpose_ru": "Точные нули всех позиционных характеристик и 12 итогов.",
+      "sha256": "9153205248a716b26e5e39211eab299af6f9e0be78a75a8632723a92bab04a7c",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "T02-common-constant",
+      "category": "valid",
+      "path": "cases/valid/T02-common-constant.json",
+      "positions": 5,
+      "coverage": [
+        "T02"
+      ],
+      "purpose_ru": "Общий ненулевой сдвиг; средние/границы 7.25, все 12 итогов нулевые.",
+      "sha256": "bc5a580be961916ea6b5f08b106d515e5e718938de83498489750a41541c4496",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "T03-direction-constants",
+      "category": "valid",
+      "path": "cases/valid/T03-direction-constants.json",
+      "positions": 5,
+      "coverage": [
+        "T03"
+      ],
+      "purpose_ru": "Постоянные разные направления, Bi=Bbar=5; A=E=R=B=5.",
+      "sha256": "21ddb504b436f64d391a89797463097df94c22a7666c529818001f0cb079efc5",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "T04-negative-reversal",
+      "category": "valid",
+      "path": "cases/valid/T04-negative-reversal.json",
+      "positions": 5,
+      "coverage": [
+        "T04"
+      ],
+      "purpose_ru": "Все Bi отрицательные, Bbar=-4; B=5, модуль не переносится на знаковую среднюю.",
+      "sha256": "442321cc6e2e98156ec962946d3c4627cff195522e4ea8678bf00754088f0bba",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "T05-analytic-scatter",
+      "category": "valid",
+      "path": "cases/valid/T05-analytic-scatter.json",
+      "positions": 5,
+      "coverage": [
+        "T05"
+      ],
+      "purpose_ru": "Серии c+[-a,-a,0,a,a] дают ровно s=|a|.",
+      "sha256": "7ad5d58233da4ec728849ca6a24b7f384394595282cd92f4341f478070d50ef2",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "T06-single-outlier",
+      "category": "valid",
+      "path": "cases/valid/T06-single-outlier.json",
+      "positions": 5,
+      "coverage": [
+        "T06"
+      ],
+      "purpose_ru": "Единственный выброс 20 сохранён: mean=4, variance=80, s=4*sqrt(5).",
+      "sha256": "4d7badb0ab00cd4e3d7d57c497a6801e40ce117d33b56e351fc7c8fabe5f1074",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "T07-repeatability-branches",
+      "category": "valid",
+      "path": "cases/valid/T07-repeatability-branches.json",
+      "positions": 6,
+      "coverage": [
+        "T07",
+        "T08"
+      ],
+      "purpose_ru": "C, R_up, R_down побеждают отдельно; затем C/up, C/down и тройное точное равенство.",
+      "sha256": "991b2f650a2a9bbbd400337057a5f96a356b3225b2042cc56765a7ef5b4148c6",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "T08-variable-m12",
+      "category": "valid",
+      "path": "cases/valid/T08-variable-m12.json",
+      "positions": 12,
+      "coverage": [
+        "T08",
+        "P05"
+      ],
+      "purpose_ru": "12 позиций по целочисленному модульному генератору; иррациональные s.",
+      "sha256": "d80fee6446b9ac66c53eff2f84508049d84c51fa794bf1d0a4580406842ba6ac",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "T09-extrema-base",
+      "category": "valid",
+      "path": "cases/valid/T09-extrema-base.json",
+      "positions": 5,
+      "coverage": [
+        "M06"
+      ],
+      "purpose_ru": "Основа пар со сменой источника глобального максимума и минимума.",
+      "sha256": "ebf088de494e2bfa7aea95e8ade961cbef0928d1897f06970f059f12d63163b3",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "P01-tiny-scatter",
+      "category": "valid",
+      "path": "cases/valid/P01-tiny-scatter.json",
+      "positions": 5,
+      "coverage": [
+        "P01"
+      ],
+      "purpose_ru": "Ненулевой s=10^-12 и R=4*10^-12 без большого фона.",
+      "sha256": "0a759f091cf1c8ca4fd5579e726eb6b312a8c938bee833f4f69257720dea3a1a",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "P02-offset-resolvable",
+      "category": "valid",
+      "path": "cases/valid/P02-offset-resolvable.json",
+      "positions": 5,
+      "coverage": [
+        "P02"
+      ],
+      "purpose_ru": "Точный десятичный разброс на фоне 10^6; входное квантование binary64 проверяется отдельно.",
+      "sha256": "31cdaed73b01129f77421fe4b22bf82b2979f543735601d82c87d7b551c139d7",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "P02-offset-near-ulp",
+      "category": "valid",
+      "path": "cases/valid/P02-offset-near-ulp.json",
+      "positions": 5,
+      "coverage": [
+        "P02"
+      ],
+      "purpose_ru": "Точный десятичный разброс на фоне 10^6; входное квантование binary64 проверяется отдельно.",
+      "sha256": "3c9e5a942c8ceb5213ee93c4111b3b0112f0f8471cbadcb574574b52f48aa0c5",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "P02-offset-collapsed",
+      "category": "valid",
+      "path": "cases/valid/P02-offset-collapsed.json",
+      "positions": 5,
+      "coverage": [
+        "P02"
+      ],
+      "purpose_ru": "Точный десятичный разброс на фоне 10^6; входное квантование binary64 проверяется отдельно.",
+      "sha256": "679995567707cd97c71983aef4746f99caa541930c5d8c747e9d3a5297dfbd31",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "P02-mixed-scale",
+      "category": "valid",
+      "path": "cases/valid/P02-mixed-scale.json",
+      "positions": 5,
+      "coverage": [
+        "P02"
+      ],
+      "purpose_ru": "Большой первый центр и малый разброс другой позиции; отделяет потерю вычислений от квантования входа.",
+      "sha256": "675b13e6735707e744ed7f547f89643f961dcf64c7ab7c248a412e42a502c90e",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "M01-swap-directions",
+      "category": "transformed",
+      "path": "cases/transformed/M01-swap-directions.json",
+      "positions": 12,
+      "coverage": [
+        "M01"
+      ],
+      "purpose_ru": "Перестановка направлений; знаки Bi/Bbar меняются.",
+      "sha256": "27d7aa0f1d416c73fb79b5bf4c04d7bf8ab00e37897680b1aa75246af8792b56",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "M02-negate",
+      "category": "transformed",
+      "path": "cases/transformed/M02-negate.json",
+      "positions": 12,
+      "coverage": [
+        "M02"
+      ],
+      "purpose_ru": "Отрицание измерений; L становится -U, диапазоны сохраняются.",
+      "sha256": "e377b6f94407376ee43be1caf2e2e0cebe04c890fd5c576a754a365de30daea0",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "M03-common-offset",
+      "category": "transformed",
+      "path": "cases/transformed/M03-common-offset.json",
+      "positions": 12,
+      "coverage": [
+        "M03"
+      ],
+      "purpose_ru": "Все 12 итогов сохраняются после общего сдвига.",
+      "sha256": "3e7184d723b077c99932996b53df170dc5206c1ffc80b15668d40142fd0ce485",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "M04-positive-scale",
+      "category": "transformed",
+      "path": "cases/transformed/M04-positive-scale.json",
+      "positions": 12,
+      "coverage": [
+        "M04"
+      ],
+      "purpose_ru": "Длины масштабируются в 2.5 раза, дисперсии в 6.25.",
+      "sha256": "05eb476f5506046c3698c5659b5cc57a5c4e327d1f6ae201ca3605eba08a3ae0",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "M05-permute-positions",
+      "category": "transformed",
+      "path": "cases/transformed/M05-permute-positions.json",
+      "positions": 12,
+      "coverage": [
+        "M05"
+      ],
+      "purpose_ru": "Порядок позиций меняется с сохранением идентичностей, координат и наблюдений.",
+      "sha256": "9a84e50ce5fab96b633f327eb14104e33225e010e7ff067f2a4b660707310aa8",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "P03-mm-input",
+      "category": "transformed",
+      "path": "cases/transformed/P03-mm-input.json",
+      "positions": 12,
+      "coverage": [
+        "P03"
+      ],
+      "purpose_ru": "Точный десятичный перевод исходных мкм в мм; ожидаемые результаты снова в мкм.",
+      "sha256": "d711e7bd2c2bbb2dc5704733fe47e74d530bad15e86e219ddfbca241c70506ab",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "M06-up-repeat-1",
+      "category": "transformed",
+      "path": "cases/transformed/M06-up-repeat-1.json",
+      "positions": 12,
+      "coverage": [
+        "M06"
+      ],
+      "purpose_ru": "Один вход меняется на 0.5; его среднее обязано измениться ровно на 0.1.",
+      "sha256": "13791f04b6409d9491e787a20aa9917d6fd704babb1fecc819b299c990c01804",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "M06-up-repeat-2",
+      "category": "transformed",
+      "path": "cases/transformed/M06-up-repeat-2.json",
+      "positions": 12,
+      "coverage": [
+        "M06"
+      ],
+      "purpose_ru": "Один вход меняется на 0.5; его среднее обязано измениться ровно на 0.1.",
+      "sha256": "f6968b18da1fd5fa8f82f2bed4157de926a4ad726815f8d1812bf1c4b5f61b5a",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "M06-up-repeat-3",
+      "category": "transformed",
+      "path": "cases/transformed/M06-up-repeat-3.json",
+      "positions": 12,
+      "coverage": [
+        "M06"
+      ],
+      "purpose_ru": "Один вход меняется на 0.5; его среднее обязано измениться ровно на 0.1.",
+      "sha256": "dedfda84783604af828992f133d628485a429afdfce92ba8e35ee514f97d2db7",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "M06-up-repeat-4",
+      "category": "transformed",
+      "path": "cases/transformed/M06-up-repeat-4.json",
+      "positions": 12,
+      "coverage": [
+        "M06"
+      ],
+      "purpose_ru": "Один вход меняется на 0.5; его среднее обязано измениться ровно на 0.1.",
+      "sha256": "15cefb42e60d257b1d2a3ce244cc282cc6efab739de786122d9b49e20f19836f",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "M06-up-repeat-5",
+      "category": "transformed",
+      "path": "cases/transformed/M06-up-repeat-5.json",
+      "positions": 12,
+      "coverage": [
+        "M06"
+      ],
+      "purpose_ru": "Один вход меняется на 0.5; его среднее обязано измениться ровно на 0.1.",
+      "sha256": "78571f196dcb0265df209f84a653edd82efe6833e37cfd92c4939f4d31159e98",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "M06-down-repeat-1",
+      "category": "transformed",
+      "path": "cases/transformed/M06-down-repeat-1.json",
+      "positions": 12,
+      "coverage": [
+        "M06"
+      ],
+      "purpose_ru": "Один вход меняется на 0.5; его среднее обязано измениться ровно на 0.1.",
+      "sha256": "a2e7666e61800944d8540ef3984404293a960387474d2df89402f1eac86f52f4",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "M06-down-repeat-2",
+      "category": "transformed",
+      "path": "cases/transformed/M06-down-repeat-2.json",
+      "positions": 12,
+      "coverage": [
+        "M06"
+      ],
+      "purpose_ru": "Один вход меняется на 0.5; его среднее обязано измениться ровно на 0.1.",
+      "sha256": "b4d7c2e46cda1894898cf17507050a674d870fc5063f0d1b2b3984e0e804f3d9",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "M06-down-repeat-3",
+      "category": "transformed",
+      "path": "cases/transformed/M06-down-repeat-3.json",
+      "positions": 12,
+      "coverage": [
+        "M06"
+      ],
+      "purpose_ru": "Один вход меняется на 0.5; его среднее обязано измениться ровно на 0.1.",
+      "sha256": "f042739665595ad982f42e11896d75c4bf8d4e18bbf1ca6779ba02af3d896810",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "M06-down-repeat-4",
+      "category": "transformed",
+      "path": "cases/transformed/M06-down-repeat-4.json",
+      "positions": 12,
+      "coverage": [
+        "M06"
+      ],
+      "purpose_ru": "Один вход меняется на 0.5; его среднее обязано измениться ровно на 0.1.",
+      "sha256": "3ec0e8b87526d689337211160065f3350e080630f3bb3ea1569a724a2891bb34",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "M06-down-repeat-5",
+      "category": "transformed",
+      "path": "cases/transformed/M06-down-repeat-5.json",
+      "positions": 12,
+      "coverage": [
+        "M06"
+      ],
+      "purpose_ru": "Один вход меняется на 0.5; его среднее обязано измениться ровно на 0.1.",
+      "sha256": "3403196aea83499f828599ae89c4d017dcb58afdca0f1715e664998983bea5a8",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "M06-global-maximum",
+      "category": "transformed",
+      "path": "cases/transformed/M06-global-maximum.json",
+      "positions": 5,
+      "coverage": [
+        "M06"
+      ],
+      "purpose_ru": "Глобальный максимум среднего переходит с p04 на p02/up.",
+      "sha256": "ab318751bf231b8135e1e0c0bfb6df526dbb5f97faca0757112508b53ecbbd78",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "M06-global-minimum",
+      "category": "transformed",
+      "path": "cases/transformed/M06-global-minimum.json",
+      "positions": 5,
+      "coverage": [
+        "M06"
+      ],
+      "purpose_ru": "Глобальный минимум среднего переходит с p01 на p03/down.",
+      "sha256": "c521e02b35c6038be8f17faa6c327bc15438699f80828db09760deb86ce10ba1",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "numeric-results",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "N01-missing-observation-value",
+      "category": "invalid",
+      "path": "cases/invalid/N01-missing-observation-value.json",
+      "positions": 5,
+      "coverage": [
+        "N01"
+      ],
+      "purpose_ru": "Отсутствует обязательное значение повторения.",
+      "sha256": "b5b76750591fad8ab948b2320ef1efe5f9a716b885c81ce15e855ce372837872",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "input-error",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "N02-empty-string",
+      "category": "invalid",
+      "path": "cases/invalid/N02-empty-string.json",
+      "positions": 5,
+      "coverage": [
+        "N02"
+      ],
+      "purpose_ru": "Недопустимая строка вместо полного десятичного числа.",
+      "sha256": "8a9756591b708b877c97d7c1e38a1c1bc135e85733ad575ab57da21d519d1796",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "input-error",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "N02-blank-string",
+      "category": "invalid",
+      "path": "cases/invalid/N02-blank-string.json",
+      "positions": 5,
+      "coverage": [
+        "N02"
+      ],
+      "purpose_ru": "Недопустимая строка вместо полного десятичного числа.",
+      "sha256": "d4656fe49526021d834b14a992cd1c625b47b5a9518c638bacf6c63f62e5fc48",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "input-error",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "N02-malformed",
+      "category": "invalid",
+      "path": "cases/invalid/N02-malformed.json",
+      "positions": 5,
+      "coverage": [
+        "N02"
+      ],
+      "purpose_ru": "Недопустимая строка вместо полного десятичного числа.",
+      "sha256": "4b240a23ac010a2857b0d631bfcf5b0a2134da519a2dcbb3b1f270aee6705c75",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "input-error",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "N03-four-repeats",
+      "category": "invalid",
+      "path": "cases/invalid/N03-four-repeats.json",
+      "positions": 5,
+      "coverage": [
+        "N03"
+      ],
+      "purpose_ru": "Четыре повторения.",
+      "sha256": "bebae1e5cc82f173a2e9552ca50660880e57cb1c6b7dea8306436071da4229e7",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "input-error",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "N03-six-repeats",
+      "category": "invalid",
+      "path": "cases/invalid/N03-six-repeats.json",
+      "positions": 5,
+      "coverage": [
+        "N03"
+      ],
+      "purpose_ru": "Шесть повторений.",
+      "sha256": "113f4bb4f44f382ae30de001b9d289cd27da7cf3ae87a4d78ffd59f46c29d6c1",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "input-error",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "N04-missing-direction",
+      "category": "invalid",
+      "path": "cases/invalid/N04-missing-direction.json",
+      "positions": 5,
+      "coverage": [
+        "N04"
+      ],
+      "purpose_ru": "Нет серии down.",
+      "sha256": "c94ca0a07a16d3d67840be212d01ce63ddf5016b5e1541751425da7ae6f69c47",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "input-error",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "N04-ambiguous-direction",
+      "category": "invalid",
+      "path": "cases/invalid/N04-ambiguous-direction.json",
+      "positions": 5,
+      "coverage": [
+        "N04"
+      ],
+      "purpose_ru": "Неподтверждённое имя reverse вместо down.",
+      "sha256": "d46daa0a8cff643c07bbffa58df4826d278306b0cc382273f68fcbb22d0c5f29",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "input-error",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "N05-unknown-unit",
+      "category": "invalid",
+      "path": "cases/invalid/N05-unknown-unit.json",
+      "positions": 5,
+      "coverage": [
+        "N05"
+      ],
+      "purpose_ru": "Единица не позволяет однозначную нормализацию.",
+      "sha256": "5d1093f5af8be0ef38475a2ab4f9e6d08042ece76b804de09e7ace2601d95960",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "input-error",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "N05-ambiguous-unit",
+      "category": "invalid",
+      "path": "cases/invalid/N05-ambiguous-unit.json",
+      "positions": 5,
+      "coverage": [
+        "N05"
+      ],
+      "purpose_ru": "Единица не позволяет однозначную нормализацию.",
+      "sha256": "2a4900487c09327982fa29f3b0bc9a9ada37439cbdb65481f868f4ddedfdd799",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "input-error",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "N06-duplicate-position-id",
+      "category": "invalid",
+      "path": "cases/invalid/N06-duplicate-position-id.json",
+      "positions": 5,
+      "coverage": [
+        "N06"
+      ],
+      "purpose_ru": "Повтор идентификатора позиции.",
+      "sha256": "8c4ebdb89becd223db3188c41f29c5e0f1b11a5ba7d9bd64406fdeb7a5b3d6b6",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "input-error",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "N06-duplicate-repeat",
+      "category": "invalid",
+      "path": "cases/invalid/N06-duplicate-repeat.json",
+      "positions": 5,
+      "coverage": [
+        "N06"
+      ],
+      "purpose_ru": "Повтор номера подхода.",
+      "sha256": "00111530ed09808b1d91332a5f390a25c28553686267c180f86f3e1515181578",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "input-error",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "N06-duplicate-coordinate",
+      "category": "invalid",
+      "path": "cases/invalid/N06-duplicate-coordinate.json",
+      "positions": 5,
+      "coverage": [
+        "N06"
+      ],
+      "purpose_ru": "Разные ID имеют одну заданную координату.",
+      "sha256": "c59c2cd3d5be6d71ff19e938107db849da5e775f15f8512b66f734de4a8e98c3",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "input-error",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "N07-no-positions",
+      "category": "invalid",
+      "path": "cases/invalid/N07-no-positions.json",
+      "positions": 0,
+      "coverage": [
+        "N07"
+      ],
+      "purpose_ru": "Пустой набор позиций.",
+      "sha256": "75e7e2159d3f406b80384a841e9f8d033d826f7bd6c375ce2cc29af0bae6f53e",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "mathematical-error",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "N07-four-positions",
+      "category": "invalid",
+      "path": "cases/invalid/N07-four-positions.json",
+      "positions": 4,
+      "coverage": [
+        "N07"
+      ],
+      "purpose_ru": "Четыре полные позиции; арифметика возможна.",
+      "sha256": "72b51083d9b63ff9b6d227cbf1da91798533b8cfe1ed70fdb58c6ef63b9083ec",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "applicability-warning",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "N08-nan",
+      "category": "invalid",
+      "path": "cases/invalid/N08-nan.json",
+      "positions": 5,
+      "coverage": [
+        "N08"
+      ],
+      "purpose_ru": "Недопустимое числовое значение.",
+      "sha256": "5437b36bc455d325fa3ea0805639bc2a4121bf51c7d0e667bfbc5da911020136",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "input-error",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "N08-infinity",
+      "category": "invalid",
+      "path": "cases/invalid/N08-infinity.json",
+      "positions": 5,
+      "coverage": [
+        "N08"
+      ],
+      "purpose_ru": "Недопустимое числовое значение.",
+      "sha256": "597fe436009ce736a612d9b598f7b860015834d6799b3db2992db2da9423d5ec",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "input-error",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "N08-non-numeric",
+      "category": "invalid",
+      "path": "cases/invalid/N08-non-numeric.json",
+      "positions": 5,
+      "coverage": [
+        "N08"
+      ],
+      "purpose_ru": "Недопустимое числовое значение.",
+      "sha256": "d1860579c4d4ac5e3ea001e507787b7a88a6ad90104c65e2a3dbe3761ed58b22",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "input-error",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "N08-boolean",
+      "category": "invalid",
+      "path": "cases/invalid/N08-boolean.json",
+      "positions": 5,
+      "coverage": [
+        "N08"
+      ],
+      "purpose_ru": "Недопустимое числовое значение.",
+      "sha256": "0d36c54945e5fb3bd244e3a7ae51fc78a1ab2c8cfcc06689de252a9e1cb524c4",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "input-error",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "N09-incomplete-report-metadata",
+      "category": "invalid",
+      "path": "cases/invalid/N09-incomplete-report-metadata.json",
+      "positions": 5,
+      "coverage": [
+        "N09"
+      ],
+      "purpose_ru": "Числовой набор полный; сведений для отчёта нет.",
+      "sha256": "c3ccc33dbf8033776ffcdc706d5bca98b4de8bb8356262b1c4914397ef576150",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "report-warning",
+      "verification_status": "passed"
+    },
+    {
+      "case_id": "N10-outside-travel-profile",
+      "category": "invalid",
+      "path": "cases/invalid/N10-outside-travel-profile.json",
+      "positions": 5,
+      "coverage": [
+        "N10"
+      ],
+      "purpose_ru": "Ход 2000.1 мм вне выбранного профиля.",
+      "sha256": "11ce22a8210bebdae442a6dc4e56f2a582b750e6f8af96bead6d358ea81ed731",
+      "sd_method": "sample-n-minus-1",
+      "expected_behavior": "applicability-warning",
+      "verification_status": "passed"
+    }
+  ],
+  "public_data_origin": "All measurements independently synthesized by integer/decimal recipes. No factory or A.1 measurement array."
+}

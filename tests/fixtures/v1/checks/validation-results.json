@@ -1,0 +1,1031 @@
+{
+  "check": "independent-input-validation-and-rational-rounding",
+  "schema_version": "vsz-fixtures-1.0",
+  "status": "passed",
+  "counts": {
+    "valid": 14,
+    "transformed": 18,
+    "invalid": 21,
+    "negative_input-error": 17,
+    "negative_applicability-warning": 2,
+    "negative_mathematical-error": 1,
+    "negative_report-warning": 1
+  },
+  "positive_positions": 280,
+  "positive_observations": 2800,
+  "rounding_examples": 12,
+  "method": "Actual input traversal, strict decimal grammar and Fraction normalization; exact rational nearest-even rounding. No generator/oracle imports.",
+  "limits": [
+    "This is a fixture checker, not the future production validator or final API contract.",
+    "Synthetic provenance declarations and internal source links were checked; arithmetic cannot certify real-world origin.",
+    "No synthetic case confirms physical test applicability or a completed report.",
+    "Instrument, temperature and warmup omissions affect applicability as well as reporting; the pure report example uses administrative fields.",
+    "A complete numeric input with m=1..4 or out-of-profile full travel allows preliminary arithmetic only.",
+    "This checker does not compute numerical axis outputs for rejected or warning cases."
+  ],
+  "cases": [
+    {
+      "case_id": "P01-tiny-scatter",
+      "category": "valid",
+      "input_sha256": "1127b30d5555b387f933c00df75be6615dadca6b9ca680018de763dea480ea3d",
+      "position_count": 5,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "P02-mixed-scale",
+      "category": "valid",
+      "input_sha256": "8a61a8d061413cea0e9d8a54741f38f628eed41118bc4829b2c7c3304ce436dd",
+      "position_count": 5,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "P02-offset-collapsed",
+      "category": "valid",
+      "input_sha256": "b203038a4a6ea11e4f92c351c47670398fc6ed564d09cfb8989da379e79cfe6a",
+      "position_count": 5,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "P02-offset-near-ulp",
+      "category": "valid",
+      "input_sha256": "5de37eb06e65a45e97e5fd56f7a07539b2b48e6e3e5aaf2f788e624d32853d48",
+      "position_count": 5,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "P02-offset-resolvable",
+      "category": "valid",
+      "input_sha256": "95db818c8cf8223980966aa339daa796083b615de1e49d5ce8a10b4601f80098",
+      "position_count": 5,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "T01-zero",
+      "category": "valid",
+      "input_sha256": "aa1cbb6b724fe093eaeb70f33934aa6bbfa2a04980fae03941b85c2b21ca4a56",
+      "position_count": 5,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "T02-common-constant",
+      "category": "valid",
+      "input_sha256": "7922c89ac7030c3de86293133c14e53a7cca7bf6f44a688247691d159e325914",
+      "position_count": 5,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "T03-direction-constants",
+      "category": "valid",
+      "input_sha256": "7e38381e8183d004dbf0a72886f5ac4b09a38a8d8a310038c8a035c8ddf97dab",
+      "position_count": 5,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "T04-negative-reversal",
+      "category": "valid",
+      "input_sha256": "e05bb49629e42a0ef4e632083548bf0193fae59a6e11291651bb2e04cc39a105",
+      "position_count": 5,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "T05-analytic-scatter",
+      "category": "valid",
+      "input_sha256": "04b3b48f42844dd9cdf47ac525d571901f9b754162e5bbf07e7511942c707eab",
+      "position_count": 5,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "T06-single-outlier",
+      "category": "valid",
+      "input_sha256": "27bda321e38082a8d38fb627c58fc5ba1d97ff8401b370b08753657e9080d7bf",
+      "position_count": 5,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "T07-repeatability-branches",
+      "category": "valid",
+      "input_sha256": "7be7a9dba411c325f9819bdb89337d1443c39ae64edb8614ffee7e5a2af4d6d5",
+      "position_count": 6,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "T08-variable-m12",
+      "category": "valid",
+      "input_sha256": "4eea93c3f92a696ae6103eb105aea281b316b4c133ff71e6a1b83974d292b580",
+      "position_count": 12,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "T09-extrema-base",
+      "category": "valid",
+      "input_sha256": "0f9da57a6d020ab02b2433525d6e85307cdf8e2cccdf42f400ecf200b0ed9c7a",
+      "position_count": 5,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "M01-swap-directions",
+      "category": "transformed",
+      "input_sha256": "0a9f331a306860e576bf3226267dd6ed5ea2e116cae8c1a212258a14c15d3a6c",
+      "position_count": 12,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "M02-negate",
+      "category": "transformed",
+      "input_sha256": "3c02d1906d0eb77356b8304a1e797c58f393d52e991878f113c4ee37598006ac",
+      "position_count": 12,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "M03-common-offset",
+      "category": "transformed",
+      "input_sha256": "7d4bdc2f15be0f95865783e0acc846a6f28afe3cbc50c76b5d2c404d21f27f63",
+      "position_count": 12,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "M04-positive-scale",
+      "category": "transformed",
+      "input_sha256": "bf1f9f1b33b882031805ab10b4fa4b998c20dba52570b872f7c4a9393cc2c45e",
+      "position_count": 12,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "M05-permute-positions",
+      "category": "transformed",
+      "input_sha256": "8d7bed2d20b695af2c81ca07d8bfd3cf733247350978b39b726d7a341018e143",
+      "position_count": 12,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "M06-down-repeat-1",
+      "category": "transformed",
+      "input_sha256": "88f57f137bc16e099f00653a246ea0a1fa7459bed4eadafa42cdcf2a78e9456f",
+      "position_count": 12,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "M06-down-repeat-2",
+      "category": "transformed",
+      "input_sha256": "6a4ba96ce75c88542d209999867bdaa2deb9e3b0967032d263855dc7eab6caa6",
+      "position_count": 12,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "M06-down-repeat-3",
+      "category": "transformed",
+      "input_sha256": "05e06857a59693e9886c53333ebb5907c44793280d4516d005f8c781996c0bb5",
+      "position_count": 12,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "M06-down-repeat-4",
+      "category": "transformed",
+      "input_sha256": "eed85377d007a2f9ee2fcf68bfcfa2dd24ad1319abe3aea6267aad758d7887b8",
+      "position_count": 12,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "M06-down-repeat-5",
+      "category": "transformed",
+      "input_sha256": "ab35a64e394ff0742771e2f2d2a19f3e2aac5579d6b58dbfafa8804242a5ae2a",
+      "position_count": 12,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "M06-global-maximum",
+      "category": "transformed",
+      "input_sha256": "3b1b6acc2072ecb221f389f83c14a68b2910a88af7504525bccd28026bddbc82",
+      "position_count": 5,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "M06-global-minimum",
+      "category": "transformed",
+      "input_sha256": "81edaf16564876173943742c639666778d38db5a412bb2f80594fee657f1e794",
+      "position_count": 5,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "M06-up-repeat-1",
+      "category": "transformed",
+      "input_sha256": "73985be8775fdee8a483a5a646c820acc23dbaab22c160a7ebdeb06026e470f7",
+      "position_count": 12,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "M06-up-repeat-2",
+      "category": "transformed",
+      "input_sha256": "91f2930cf3f824f5134e630553a6f727fc778bc148fc01eddfd3e904f8123a37",
+      "position_count": 12,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "M06-up-repeat-3",
+      "category": "transformed",
+      "input_sha256": "c828b10a3285d9b2439fdde6ba67cfa5c04011e296c8ccf3021dd121d47a6555",
+      "position_count": 12,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "M06-up-repeat-4",
+      "category": "transformed",
+      "input_sha256": "22256ce8ef0113635169a4c4d9b13327458e9a402c0c1feb4994c6cdf8e63b22",
+      "position_count": 12,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "M06-up-repeat-5",
+      "category": "transformed",
+      "input_sha256": "cb58d7552e2424102647228b0eef1e77d8f9d5fa4cc3fc49c1d2a00ddb79c0f0",
+      "position_count": 12,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "P03-mm-input",
+      "category": "transformed",
+      "input_sha256": "15555efc06bb51bd1c5e9133b97ab4434e06569f88c6edbdb6b4213b225f1032",
+      "position_count": 12,
+      "complete_numeric_input": true,
+      "arithmetic": "defined",
+      "findings": [],
+      "zero_substitution_performed": false,
+      "numeric_results_present": true,
+      "passed": true
+    },
+    {
+      "case_id": "N01-missing-observation-value",
+      "category": "invalid",
+      "input_sha256": "548a8dff5c7e97e5d2af559b57f1220b255ed9c6acf87311dc37ca1b1f12361d",
+      "position_count": 5,
+      "complete_numeric_input": false,
+      "arithmetic": "not-permitted-for-selected-profile",
+      "findings": [
+        {
+          "level": "input-error",
+          "class_ru": "Неполное обязательное наблюдение",
+          "path": "positions/0/up/2",
+          "evidence": {
+            "value_field_present": false
+          },
+          "arithmetic": "not-permitted-for-selected-profile"
+        }
+      ],
+      "zero_substitution_performed": false,
+      "numeric_results_present": false,
+      "passed": true
+    },
+    {
+      "case_id": "N02-blank-string",
+      "category": "invalid",
+      "input_sha256": "383209bd99402506d8b048731292b212643286c0469c3d534261fc5cacf1128e",
+      "position_count": 5,
+      "complete_numeric_input": false,
+      "arithmetic": "not-permitted-for-selected-profile",
+      "findings": [
+        {
+          "level": "input-error",
+          "class_ru": "Некорректный числовой ввод",
+          "path": "positions/0/up/2/value",
+          "evidence": {
+            "value": " ",
+            "json_type": "str"
+          },
+          "arithmetic": "not-permitted-for-selected-profile"
+        }
+      ],
+      "zero_substitution_performed": false,
+      "numeric_results_present": false,
+      "passed": true
+    },
+    {
+      "case_id": "N02-empty-string",
+      "category": "invalid",
+      "input_sha256": "212d49efc9b4390b872388df37f964e4d49bd49f9ad5aef02592b9fa2db6e3de",
+      "position_count": 5,
+      "complete_numeric_input": false,
+      "arithmetic": "not-permitted-for-selected-profile",
+      "findings": [
+        {
+          "level": "input-error",
+          "class_ru": "Некорректный числовой ввод",
+          "path": "positions/0/up/2/value",
+          "evidence": {
+            "value": "",
+            "json_type": "str"
+          },
+          "arithmetic": "not-permitted-for-selected-profile"
+        }
+      ],
+      "zero_substitution_performed": false,
+      "numeric_results_present": false,
+      "passed": true
+    },
+    {
+      "case_id": "N02-malformed",
+      "category": "invalid",
+      "input_sha256": "34289d10aab09a02b60d664c1aa59e0e0345dd2af1747ee41eefb94969865cec",
+      "position_count": 5,
+      "complete_numeric_input": false,
+      "arithmetic": "not-permitted-for-selected-profile",
+      "findings": [
+        {
+          "level": "input-error",
+          "class_ru": "Некорректный числовой ввод",
+          "path": "positions/0/up/2/value",
+          "evidence": {
+            "value": "1,2abc",
+            "json_type": "str"
+          },
+          "arithmetic": "not-permitted-for-selected-profile"
+        }
+      ],
+      "zero_substitution_performed": false,
+      "numeric_results_present": false,
+      "passed": true
+    },
+    {
+      "case_id": "N03-four-repeats",
+      "category": "invalid",
+      "input_sha256": "577c428cf09e817ced61d7ecbd5eaf00d3cf7112466c7887a45a104c621ae30a",
+      "position_count": 5,
+      "complete_numeric_input": false,
+      "arithmetic": "not-permitted-for-selected-profile",
+      "findings": [
+        {
+          "level": "input-error",
+          "class_ru": "Несоответствие числа повторений",
+          "path": "positions/0/up",
+          "evidence": {
+            "observed_count": 4,
+            "required_count": 5
+          },
+          "arithmetic": "not-permitted-for-selected-profile"
+        }
+      ],
+      "zero_substitution_performed": false,
+      "numeric_results_present": false,
+      "passed": true
+    },
+    {
+      "case_id": "N03-six-repeats",
+      "category": "invalid",
+      "input_sha256": "aa9365e8af12627fcd6dda7545c601afaf36761376f314d1c322969b9bb1fa9e",
+      "position_count": 5,
+      "complete_numeric_input": false,
+      "arithmetic": "not-permitted-for-selected-profile",
+      "findings": [
+        {
+          "level": "input-error",
+          "class_ru": "Несоответствие числа повторений",
+          "path": "positions/0/up",
+          "evidence": {
+            "observed_count": 6,
+            "required_count": 5
+          },
+          "arithmetic": "not-permitted-for-selected-profile"
+        }
+      ],
+      "zero_substitution_performed": false,
+      "numeric_results_present": false,
+      "passed": true
+    },
+    {
+      "case_id": "N04-ambiguous-direction",
+      "category": "invalid",
+      "input_sha256": "931975c0c9da6e8c255bae753a8bbc57b223007b73c76265f8f56a9528771231",
+      "position_count": 5,
+      "complete_numeric_input": false,
+      "arithmetic": "not-permitted-for-selected-profile",
+      "findings": [
+        {
+          "level": "input-error",
+          "class_ru": "Неоднозначная принадлежность направлению",
+          "path": "positions/0",
+          "evidence": {
+            "series_names": [
+              "reverse",
+              "up"
+            ],
+            "required": [
+              "up",
+              "down"
+            ]
+          },
+          "arithmetic": "not-permitted-for-selected-profile"
+        }
+      ],
+      "zero_substitution_performed": false,
+      "numeric_results_present": false,
+      "passed": true
+    },
+    {
+      "case_id": "N04-missing-direction",
+      "category": "invalid",
+      "input_sha256": "024f50c1d88ccd0e6004d0b65032ba62cf475b14e09a0beaee400531ce2c6525",
+      "position_count": 5,
+      "complete_numeric_input": false,
+      "arithmetic": "not-permitted-for-selected-profile",
+      "findings": [
+        {
+          "level": "input-error",
+          "class_ru": "Неоднозначная принадлежность направлению",
+          "path": "positions/0",
+          "evidence": {
+            "series_names": [
+              "up"
+            ],
+            "required": [
+              "up",
+              "down"
+            ]
+          },
+          "arithmetic": "not-permitted-for-selected-profile"
+        }
+      ],
+      "zero_substitution_performed": false,
+      "numeric_results_present": false,
+      "passed": true
+    },
+    {
+      "case_id": "N05-ambiguous-unit",
+      "category": "invalid",
+      "input_sha256": "957b930f58e960b93d85c5768789a645584adc2877e1c93d5d0c40f85493f442",
+      "position_count": 5,
+      "complete_numeric_input": false,
+      "arithmetic": "not-permitted-for-selected-profile",
+      "findings": [
+        {
+          "level": "input-error",
+          "class_ru": "Неопределённая единица измерения",
+          "path": "units",
+          "evidence": {
+            "coordinate": "mm",
+            "deviation": "mm/um"
+          },
+          "arithmetic": "not-permitted-for-selected-profile"
+        }
+      ],
+      "zero_substitution_performed": false,
+      "numeric_results_present": false,
+      "passed": true
+    },
+    {
+      "case_id": "N05-unknown-unit",
+      "category": "invalid",
+      "input_sha256": "0a80fa03bec5de8444e256418df25bb3be12f8eb8b45d59e8caa734b7113cfb9",
+      "position_count": 5,
+      "complete_numeric_input": false,
+      "arithmetic": "not-permitted-for-selected-profile",
+      "findings": [
+        {
+          "level": "input-error",
+          "class_ru": "Неопределённая единица измерения",
+          "path": "units",
+          "evidence": {
+            "coordinate": "mm",
+            "deviation": "counts"
+          },
+          "arithmetic": "not-permitted-for-selected-profile"
+        }
+      ],
+      "zero_substitution_performed": false,
+      "numeric_results_present": false,
+      "passed": true
+    },
+    {
+      "case_id": "N06-duplicate-coordinate",
+      "category": "invalid",
+      "input_sha256": "8601ab2b0bce910184bed1335e726d50ebd2c9cc778634c780e2844873047605",
+      "position_count": 5,
+      "complete_numeric_input": false,
+      "arithmetic": "not-permitted-for-selected-profile",
+      "findings": [
+        {
+          "level": "input-error",
+          "class_ru": "Дубликат заданной координаты требует разбора плана",
+          "path": "positions/1/target_mm",
+          "evidence": {
+            "target_mm": "0",
+            "exact_value": "0"
+          },
+          "arithmetic": "not-permitted-for-selected-profile"
+        }
+      ],
+      "zero_substitution_performed": false,
+      "numeric_results_present": false,
+      "passed": true
+    },
+    {
+      "case_id": "N06-duplicate-position-id",
+      "category": "invalid",
+      "input_sha256": "26cb6b73e08edfbf2779f2e780debe5712dd8c3fe9aa5c5921b9f7db64b057ee",
+      "position_count": 5,
+      "complete_numeric_input": false,
+      "arithmetic": "not-permitted-for-selected-profile",
+      "findings": [
+        {
+          "level": "input-error",
+          "class_ru": "Нарушена уникальность позиции или повторения",
+          "path": "positions/1/position_id",
+          "evidence": {
+            "position_id": "p01"
+          },
+          "arithmetic": "not-permitted-for-selected-profile"
+        }
+      ],
+      "zero_substitution_performed": false,
+      "numeric_results_present": false,
+      "passed": true
+    },
+    {
+      "case_id": "N06-duplicate-repeat",
+      "category": "invalid",
+      "input_sha256": "2251f140a14375ade9521f6aa3fde1a9213ee9bcf7510287af0371e95a631ee4",
+      "position_count": 5,
+      "complete_numeric_input": false,
+      "arithmetic": "not-permitted-for-selected-profile",
+      "findings": [
+        {
+          "level": "input-error",
+          "class_ru": "Нарушена уникальность позиции или повторения",
+          "path": "positions/0/up",
+          "evidence": {
+            "repeat_indices": [
+              1,
+              2,
+              3,
+              4,
+              4
+            ],
+            "required": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "arithmetic": "not-permitted-for-selected-profile"
+        }
+      ],
+      "zero_substitution_performed": false,
+      "numeric_results_present": false,
+      "passed": true
+    },
+    {
+      "case_id": "N07-four-positions",
+      "category": "invalid",
+      "input_sha256": "944699553d5c5e492ce1e98576e26240207702b695a4ed008b799d6397ccb87f",
+      "position_count": 4,
+      "complete_numeric_input": true,
+      "arithmetic": "defined-for-preliminary-analysis",
+      "findings": [
+        {
+          "level": "applicability-warning",
+          "class_ru": "Недостаточное число позиций для процедуры",
+          "path": "positions",
+          "evidence": {
+            "position_count": 4,
+            "procedure_minimum": 5
+          },
+          "arithmetic": "defined-for-preliminary-analysis"
+        }
+      ],
+      "zero_substitution_performed": false,
+      "numeric_results_present": false,
+      "passed": true
+    },
+    {
+      "case_id": "N07-no-positions",
+      "category": "invalid",
+      "input_sha256": "bd122d0bbec273a32439758c4be67d6c2fc141f29d1780a665984456d10c5568",
+      "position_count": 0,
+      "complete_numeric_input": false,
+      "arithmetic": "undefined",
+      "findings": [
+        {
+          "level": "mathematical-error",
+          "class_ru": "Осевая арифметика не определена",
+          "path": "positions",
+          "evidence": {
+            "position_count": 0,
+            "undefined_operations": [
+              "min",
+              "max",
+              "sum_B_i/m"
+            ]
+          },
+          "arithmetic": "undefined"
+        }
+      ],
+      "zero_substitution_performed": false,
+      "numeric_results_present": false,
+      "passed": true
+    },
+    {
+      "case_id": "N08-boolean",
+      "category": "invalid",
+      "input_sha256": "1f95e244c2b64f8d3125fd32ac31f9df8b7ea86254e249eaa1a458c26f4b4e00",
+      "position_count": 5,
+      "complete_numeric_input": false,
+      "arithmetic": "not-permitted-for-selected-profile",
+      "findings": [
+        {
+          "level": "input-error",
+          "class_ru": "Некорректный числовой ввод",
+          "path": "positions/0/down/1/value",
+          "evidence": {
+            "value": true,
+            "json_type": "bool"
+          },
+          "arithmetic": "not-permitted-for-selected-profile"
+        }
+      ],
+      "zero_substitution_performed": false,
+      "numeric_results_present": false,
+      "passed": true
+    },
+    {
+      "case_id": "N08-infinity",
+      "category": "invalid",
+      "input_sha256": "ae6432192510e8479851b99f621ea5697eb3786537c38bbbf0aff60922cc0d73",
+      "position_count": 5,
+      "complete_numeric_input": false,
+      "arithmetic": "not-permitted-for-selected-profile",
+      "findings": [
+        {
+          "level": "input-error",
+          "class_ru": "Некорректный числовой ввод",
+          "path": "positions/0/down/1/value",
+          "evidence": {
+            "value": "Infinity",
+            "json_type": "str"
+          },
+          "arithmetic": "not-permitted-for-selected-profile"
+        }
+      ],
+      "zero_substitution_performed": false,
+      "numeric_results_present": false,
+      "passed": true
+    },
+    {
+      "case_id": "N08-nan",
+      "category": "invalid",
+      "input_sha256": "3bb6421f27b2f588dd24c03fcc63f35a24ee22907a650272745affabca6c9312",
+      "position_count": 5,
+      "complete_numeric_input": false,
+      "arithmetic": "not-permitted-for-selected-profile",
+      "findings": [
+        {
+          "level": "input-error",
+          "class_ru": "Некорректный числовой ввод",
+          "path": "positions/0/down/1/value",
+          "evidence": {
+            "value": "NaN",
+            "json_type": "str"
+          },
+          "arithmetic": "not-permitted-for-selected-profile"
+        }
+      ],
+      "zero_substitution_performed": false,
+      "numeric_results_present": false,
+      "passed": true
+    },
+    {
+      "case_id": "N08-non-numeric",
+      "category": "invalid",
+      "input_sha256": "6306d3456da7a7b712903c482a65ba116d357fd7c6ef60ff3f3b1e635871abb6",
+      "position_count": 5,
+      "complete_numeric_input": false,
+      "arithmetic": "not-permitted-for-selected-profile",
+      "findings": [
+        {
+          "level": "input-error",
+          "class_ru": "Некорректный числовой ввод",
+          "path": "positions/0/down/1/value",
+          "evidence": {
+            "value": "abc",
+            "json_type": "str"
+          },
+          "arithmetic": "not-permitted-for-selected-profile"
+        }
+      ],
+      "zero_substitution_performed": false,
+      "numeric_results_present": false,
+      "passed": true
+    },
+    {
+      "case_id": "N09-incomplete-report-metadata",
+      "category": "invalid",
+      "input_sha256": "833f0534894674a4024fed60e34d571141651adbda9e46757b2472cf6882d259",
+      "position_count": 5,
+      "complete_numeric_input": true,
+      "arithmetic": "defined-for-preliminary-analysis",
+      "findings": [
+        {
+          "level": "report-warning",
+          "class_ru": "Недостаточность сведений для полноценного отчёта",
+          "path": "context/missing_report_fields",
+          "evidence": {
+            "missing_fields": [
+              "test_date",
+              "operator_name",
+              "protocol_number"
+            ]
+          },
+          "arithmetic": "defined-for-preliminary-analysis"
+        }
+      ],
+      "zero_substitution_performed": false,
+      "numeric_results_present": false,
+      "passed": true
+    },
+    {
+      "case_id": "N10-outside-travel-profile",
+      "category": "invalid",
+      "input_sha256": "84aa78c9ee5225e43167e3b776a38fc0fa76a85d98b297e06d3c21f1831bd6a8",
+      "position_count": 5,
+      "complete_numeric_input": true,
+      "arithmetic": "defined-for-preliminary-analysis",
+      "findings": [
+        {
+          "level": "applicability-warning",
+          "class_ru": "Известный выход за область выбранного профиля",
+          "path": "context/full_travel_mm",
+          "evidence": {
+            "full_travel_mm": "2000.1",
+            "supported_interval": "0 < L <= 2000 mm",
+            "known_violation": true
+          },
+          "arithmetic": "defined-for-preliminary-analysis"
+        }
+      ],
+      "zero_substitution_performed": false,
+      "numeric_results_present": false,
+      "passed": true
+    }
+  ],
+  "exact_unit_conversions": [
+    {
+      "case_id": "P03-mm-input",
+      "source_case_id": "T08-variable-m12",
+      "exact_normalized_observation_equalities": 120,
+      "coordinates_identity_and_repeats_preserved": true,
+      "passed": true
+    }
+  ],
+  "rounding": [
+    {
+      "source_decimal": "1.125",
+      "quantum": "0.01",
+      "exact_decimal_result": "1.12",
+      "exact_binary64_result": "1.12",
+      "binary64_exact_ratio": "9/8",
+      "passed": true
+    },
+    {
+      "source_decimal": "1.375",
+      "quantum": "0.01",
+      "exact_decimal_result": "1.38",
+      "exact_binary64_result": "1.38",
+      "binary64_exact_ratio": "11/8",
+      "passed": true
+    },
+    {
+      "source_decimal": "-1.125",
+      "quantum": "0.01",
+      "exact_decimal_result": "-1.12",
+      "exact_binary64_result": "-1.12",
+      "binary64_exact_ratio": "-9/8",
+      "passed": true
+    },
+    {
+      "source_decimal": "-1.375",
+      "quantum": "0.01",
+      "exact_decimal_result": "-1.38",
+      "exact_binary64_result": "-1.38",
+      "binary64_exact_ratio": "-11/8",
+      "passed": true
+    },
+    {
+      "source_decimal": "1.225",
+      "quantum": "0.01",
+      "exact_decimal_result": "1.22",
+      "exact_binary64_result": "1.23",
+      "binary64_exact_ratio": "2758454771764429/2251799813685248",
+      "passed": true
+    },
+    {
+      "source_decimal": "-1.225",
+      "quantum": "0.01",
+      "exact_decimal_result": "-1.22",
+      "exact_binary64_result": "-1.23",
+      "binary64_exact_ratio": "-2758454771764429/2251799813685248",
+      "passed": true
+    },
+    {
+      "source_decimal": "0.0005",
+      "quantum": "0.001",
+      "exact_decimal_result": "0.000",
+      "exact_binary64_result": "0.001",
+      "binary64_exact_ratio": "1152921504606847/2305843009213693952",
+      "passed": true
+    },
+    {
+      "source_decimal": "-0.0005",
+      "quantum": "0.001",
+      "exact_decimal_result": "-0.000",
+      "exact_binary64_result": "-0.001",
+      "binary64_exact_ratio": "-1152921504606847/2305843009213693952",
+      "passed": true
+    },
+    {
+      "source_decimal": "0.0015",
+      "quantum": "0.001",
+      "exact_decimal_result": "0.002",
+      "exact_binary64_result": "0.002",
+      "binary64_exact_ratio": "3458764513820541/2305843009213693952",
+      "passed": true
+    },
+    {
+      "source_decimal": "-0.0015",
+      "quantum": "0.001",
+      "exact_decimal_result": "-0.002",
+      "exact_binary64_result": "-0.002",
+      "binary64_exact_ratio": "-3458764513820541/2305843009213693952",
+      "passed": true
+    },
+    {
+      "source_decimal": "0.0025",
+      "quantum": "0.001",
+      "exact_decimal_result": "0.002",
+      "exact_binary64_result": "0.003",
+      "binary64_exact_ratio": "5764607523034235/2305843009213693952",
+      "passed": true
+    },
+    {
+      "source_decimal": "-0.0025",
+      "quantum": "0.001",
+      "exact_decimal_result": "-0.002",
+      "exact_binary64_result": "-0.003",
+      "binary64_exact_ratio": "-5764607523034235/2305843009213693952",
+      "passed": true
+    }
+  ]
+}
