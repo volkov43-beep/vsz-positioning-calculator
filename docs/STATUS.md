@@ -10,6 +10,7 @@
 | 03Б | Завершена. Пакет вошёл в основную ветку через [PR № 4](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/4). Доступны [манифест 53 наборов](../tests/fixtures/v1/manifest.json), [инструкция по воспроизведению](../tests/fixtures/v1/README.md) и [отчёт Work](iterations/03-reference-fixtures.md) |
 | 04-1 | [Функциональные требования v1](product/requirements.md) и основа UX-документации подготовлены к проверке. Исходный HEAD — [`4125f14e43086aad10b49eb15a80492e39473e0f`](https://github.com/volkov43-beep/vsz-positioning-calculator/commit/4125f14e43086aad10b49eb15a80492e39473e0f). Общая ветка четырёх частей — `docs/iteration-04-product-ux`. [Отчёт итерации 04](iterations/04-product-ux.md) |
 | 04-2 | [Пользовательские сценарии](product/user-flows.md) подготовлены к проверке в общем [Draft PR № 5](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/5). Описаны ввод, проверка трёх состояний, исправление и пересчёт, сохранение и выдача отчёта. |
+| 04-3 | [Настольные схемы экранов](product/ui-wireframes.md) подготовлены к проверке в том же [Draft PR № 5](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/5). Основной ввод — одна строка на позицию и пять наблюдений для каждого из двух направлений. |
 
 ## Открытые инженерные вопросы
 
@@ -20,4 +21,4 @@
 
 ## Следующая итерация
 
-**04-3 — схемы экранов.** Основание для работы — [требования 04-1](product/requirements.md) и [сценарии 04-2](product/user-flows.md), включая адреса ошибок, предварительную выдачу и состояние после правки. Части 04-3 и 04-4 запланированы в [дорожной карте](ROADMAP.md).
+**04-4 — комплексный UX-аудит.** По [настольным схемам 04-3](product/ui-wireframes.md) предстоит проверить мобильную компоновку, доступность таблиц и графиков, работу с ошибками и соответствие [требованиям](product/requirements.md) и [сценариям](product/user-flows.md).
