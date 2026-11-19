@@ -7,7 +7,8 @@
 | 00 и 01Б | Основа проекта и [нормативная спецификация 0.1](methodology/scope.md) вошли в основную ветку через [PR № 1](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/1) и [PR № 2](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/2) |
 | 02А и 02Б | [Математическая спецификация](methodology/math-spec.md) и [обезличенный аудит Excel](validation/excel-audit-summary.md) версии 0.1 опубликованы. [PR № 3](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/3) объединён. Исходный HEAD для 03Б — [`b94c33585d0f49b955a72f3b1fc30edb6b8490d8`](https://github.com/volkov43-beep/vsz-positioning-calculator/commit/b94c33585d0f49b955a72f3b1fc30edb6b8490d8) |
 | 03А | Аналитически завершена. PRO передал публичный пакет синтетических эталонов, [план проверок](validation/reference-test-plan.md) и [заключение по численной точности](validation/numerical-policy-review.md) |
-| 03Б | Ожидает проверки в [Draft PR № 4](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/4). Доступны [манифест 53 наборов](../tests/fixtures/v1/manifest.json), [инструкция по воспроизведению](../tests/fixtures/v1/README.md) и [отчёт Work](iterations/03-reference-fixtures.md) |
+| 03Б | Завершена. Пакет вошёл в основную ветку через [PR № 4](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/4). Доступны [манифест 53 наборов](../tests/fixtures/v1/manifest.json), [инструкция по воспроизведению](../tests/fixtures/v1/README.md) и [отчёт Work](iterations/03-reference-fixtures.md) |
+| 04-1 | [Функциональные требования v1](product/requirements.md) и основа UX-документации подготовлены к проверке. Исходный HEAD — [`4125f14e43086aad10b49eb15a80492e39473e0f`](https://github.com/volkov43-beep/vsz-positioning-calculator/commit/4125f14e43086aad10b49eb15a80492e39473e0f). Общая ветка четырёх частей — `docs/iteration-04-product-ux`. [Отчёт итерации 04](iterations/04-product-ux.md) |
 
 ## Открытые инженерные вопросы
 
@@ -18,4 +19,4 @@
 
 ## Следующая итерация
 
-**04А — требования к интерфейсу и пользовательские сценарии. Исполнитель — ChatGPT Astra «Очень высокий».** Для сценариев ввода и вывода доступны отдельные примеры ошибки данных, неопределённого расчёта, предупреждения о применимости и неполного протокола. Состояние работ по всем этапам указано в [дорожной карте](ROADMAP.md).
+**04-2 — пользовательские сценарии.** Для каждого сценария предстоит указать пользователя, исходные условия, ожидаемый результат и связанные требования UX. Основания и границы берутся из [матрицы 04-1](product/requirements.md). Части 04-2–04-4 запланированы в [дорожной карте](ROADMAP.md).
