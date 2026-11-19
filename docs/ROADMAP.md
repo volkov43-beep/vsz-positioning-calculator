@@ -16,7 +16,7 @@
 | 04-3 | Work Astra | [Настольные схемы экранов, таблицы и представление результатов](product/ui-wireframes.md) | Завершён |
 | 04-4 | Work Astra | [Мобильная компоновка и доступность](product/ui-wireframes.md#ввод-на-смартфоне), [сквозная проверка требований MVP](iterations/04-product-ux.md#матрица-соответствия-mvp) | Завершён |
 | 05-1 | Work Astra | [Техническая архитектура](architecture/architecture.md) и [проект ADR-0001](decisions/ADR-0001-application-architecture.md) | Ожидает проверки |
-| 05-2 | Work Astra | Формат данных испытания в общей ветке этапа 05 | Запланирован |
+| 05-2 | Work Astra | [Модель данных испытания](architecture/data-model.md) и [контракты компонентов](architecture/contracts.md) | Ожидает проверки |
 | 05-3 | Work Astra | Завершение архитектурного этапа по отдельному заданию в том же Draft PR | Запланирован |
 | 06 | Work Astra | Независимый контрольный расчёт на Python | Запланирован |
 | 07 | Work Astra | Вычисления для одной позиции | Запланирован |

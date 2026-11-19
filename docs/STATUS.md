@@ -10,6 +10,7 @@
 | 03Б | Завершена. Пакет вошёл в основную ветку через [PR № 4](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/4). Доступны [манифест 53 наборов](../tests/fixtures/v1/manifest.json), [инструкция по воспроизведению](../tests/fixtures/v1/README.md) и [отчёт Work](iterations/03-reference-fixtures.md) |
 | 04-1–04-4 | Завершены. [PR № 5](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/5) объединён в `main` коммитом [`2068fd4`](https://github.com/volkov43-beep/vsz-positioning-calculator/commit/2068fd449fd5da154c4b5c1fac8d5ac040ee19f1). [Требования](product/requirements.md), [сценарии](product/user-flows.md), [схемы экранов](product/ui-wireframes.md) и [матрица 23 требований MVP](iterations/04-product-ux.md#матрица-соответствия-mvp) вошли в основную ветку. |
 | 05-1 | [Техническая архитектура](architecture/architecture.md) и [ADR-0001](decisions/ADR-0001-application-architecture.md) подготовлены к проверке в [Draft PR № 6](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/6). Рекомендованы React, независимое ядро TypeScript, Vite, файл испытания и IndexedDB. ADR имеет статус Proposed. [Отчёт общей итерации 05](iterations/05-architecture.md). |
+| 05-2 | [Модель данных](architecture/data-model.md) и [контракты компонентов](architecture/contracts.md) представлены в том же [Draft PR № 6](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/6). Описаны сохранение исходных строк, четыре независимых состояния, проверка целостности файла и связь результата с редакцией входов. |
 
 ## Открытые инженерные вопросы
 
@@ -20,4 +21,4 @@
 
 ## Следующая итерация
 
-**05-2 — формат данных испытания.** В общей ветке `docs/iteration-05-architecture` и том же Draft PR предстоит описать сохранение и восстановление черновика, исходных строк, единиц, редакций и статусов. Часть 05-3 запланирована отдельно.
+**05-3 — заключительная часть архитектурного этапа по отдельному заданию.** Для неё подготовлены проект формата 1.0, границы компонентов и проверяемые сценарии сохранения, импорта и пересчёта. Работа продолжается в ветке `docs/iteration-05-architecture` и Draft PR № 6.
