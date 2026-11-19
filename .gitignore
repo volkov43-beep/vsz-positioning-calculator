@@ -1,0 +1,30 @@
+# Локальные настройки редактора и окружения
+.DS_Store
+.idea/
+.vscode/
+.env
+.env.*
+!.env.example
+/.local/
+
+# Приватные ключи и локальные учётные данные
+*.pem
+*.key
+*.p12
+*.pfx
+.secrets/
+secrets/
+.credentials/
+credentials.json
+
+# Закрытые исходные материалы, внутренние обсуждения и измерения
+private/
+internal/
+raw-measurements/
+transcripts/
+~$*
+*.[pP][dD][fF]
+*.[xX][lL][sS]
+*.[xX][lL][sS][xX]
+*.[xX][lL][sS][mM]
+*.[xX][lL][sS][bB]
