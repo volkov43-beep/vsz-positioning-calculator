@@ -1,0 +1,110 @@
+{
+  "schema_version": "vsz-fixtures-1.0",
+  "case_id": "P04-rounding",
+  "category": "formatting",
+  "coverage": [
+    "P04"
+  ],
+  "unit": "um",
+  "rule": "nearest-ties-to-even",
+  "signed_zero": "may-be-displayed-as-zero-after-rounding",
+  "approval": "proposed-not-metrologically-approved",
+  "cases": [
+    {
+      "source_decimal": "1.125",
+      "quantum": "0.01",
+      "exact_decimal_expected": "1.12",
+      "binary64_exact_decimal": "1.125",
+      "binary64_hex": "0x1.2000000000000p+0",
+      "exact_binary64_expected": "1.12"
+    },
+    {
+      "source_decimal": "1.375",
+      "quantum": "0.01",
+      "exact_decimal_expected": "1.38",
+      "binary64_exact_decimal": "1.375",
+      "binary64_hex": "0x1.6000000000000p+0",
+      "exact_binary64_expected": "1.38"
+    },
+    {
+      "source_decimal": "-1.125",
+      "quantum": "0.01",
+      "exact_decimal_expected": "-1.12",
+      "binary64_exact_decimal": "-1.125",
+      "binary64_hex": "-0x1.2000000000000p+0",
+      "exact_binary64_expected": "-1.12"
+    },
+    {
+      "source_decimal": "-1.375",
+      "quantum": "0.01",
+      "exact_decimal_expected": "-1.38",
+      "binary64_exact_decimal": "-1.375",
+      "binary64_hex": "-0x1.6000000000000p+0",
+      "exact_binary64_expected": "-1.38"
+    },
+    {
+      "source_decimal": "1.225",
+      "quantum": "0.01",
+      "exact_decimal_expected": "1.22",
+      "binary64_exact_decimal": "1.225000000000000088817841970012523233890533447265625",
+      "binary64_hex": "0x1.399999999999ap+0",
+      "exact_binary64_expected": "1.23"
+    },
+    {
+      "source_decimal": "-1.225",
+      "quantum": "0.01",
+      "exact_decimal_expected": "-1.22",
+      "binary64_exact_decimal": "-1.225000000000000088817841970012523233890533447265625",
+      "binary64_hex": "-0x1.399999999999ap+0",
+      "exact_binary64_expected": "-1.23"
+    },
+    {
+      "source_decimal": "0.0005",
+      "quantum": "0.001",
+      "exact_decimal_expected": "0.000",
+      "binary64_exact_decimal": "0.0005000000000000000104083408558608425664715468883514404296875",
+      "binary64_hex": "0x1.0624dd2f1a9fcp-11",
+      "exact_binary64_expected": "0.001"
+    },
+    {
+      "source_decimal": "-0.0005",
+      "quantum": "0.001",
+      "exact_decimal_expected": "-0.000",
+      "binary64_exact_decimal": "-0.0005000000000000000104083408558608425664715468883514404296875",
+      "binary64_hex": "-0x1.0624dd2f1a9fcp-11",
+      "exact_binary64_expected": "-0.001"
+    },
+    {
+      "source_decimal": "0.0015",
+      "quantum": "0.001",
+      "exact_decimal_expected": "0.002",
+      "binary64_exact_decimal": "0.0015000000000000000312250225675825276994146406650543212890625",
+      "binary64_hex": "0x1.89374bc6a7efap-10",
+      "exact_binary64_expected": "0.002"
+    },
+    {
+      "source_decimal": "-0.0015",
+      "quantum": "0.001",
+      "exact_decimal_expected": "-0.002",
+      "binary64_exact_decimal": "-0.0015000000000000000312250225675825276994146406650543212890625",
+      "binary64_hex": "-0x1.89374bc6a7efap-10",
+      "exact_binary64_expected": "-0.002"
+    },
+    {
+      "source_decimal": "0.0025",
+      "quantum": "0.001",
+      "exact_decimal_expected": "0.002",
+      "binary64_exact_decimal": "0.0025000000000000000520417042793042128323577344417572021484375",
+      "binary64_hex": "0x1.47ae147ae147bp-9",
+      "exact_binary64_expected": "0.003"
+    },
+    {
+      "source_decimal": "-0.0025",
+      "quantum": "0.001",
+      "exact_decimal_expected": "-0.002",
+      "binary64_exact_decimal": "-0.0025000000000000000520417042793042128323577344417572021484375",
+      "binary64_hex": "-0x1.47ae147ae147bp-9",
+      "exact_binary64_expected": "-0.003"
+    }
+  ]
+}

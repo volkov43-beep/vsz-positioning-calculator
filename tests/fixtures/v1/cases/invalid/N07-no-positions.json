@@ -1,0 +1,38 @@
+{
+  "schema_version": "vsz-fixtures-1.0",
+  "profile_id": "gost-27843-2006-linear-axis-le-2000-v1",
+  "sd_method": "sample-n-minus-1",
+  "units": {
+    "coordinate": "mm",
+    "deviation": "um",
+    "expected": "um",
+    "variance": "um2"
+  },
+  "context": {
+    "full_travel_mm": "1000",
+    "procedure_applicability": "not-established-by-synthetic-fixture",
+    "report_metadata": "synthetic-only"
+  },
+  "positions": [],
+  "case_id": "N07-no-positions",
+  "category": "invalid",
+  "coverage": [
+    "N07"
+  ],
+  "purpose_ru": "Пустой набор позиций.",
+  "provenance": {
+    "origin": "independently-synthesized-invalid-mutation",
+    "source_case_id": "T01-zero",
+    "private_measurements_used": false,
+    "standard_example_observations_used": false
+  },
+  "expected_validation": {
+    "arithmetic": "undefined",
+    "level": "mathematical-error",
+    "class_ru": "Осевая арифметика не определена",
+    "reason_ru": "При m=0 отсутствуют экстремумы и среднее Bi.",
+    "full_profile_result_permitted": false,
+    "fabricated_numeric_results_permitted": false,
+    "production_exception_name_defined": false
+  }
+}

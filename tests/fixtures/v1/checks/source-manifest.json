@@ -1,0 +1,73 @@
+{
+  "repository": "volkov43-beep/vsz-positioning-calculator",
+  "branch": "main",
+  "head": "b94c33585d0f49b955a72f3b1fc30edb6b8490d8",
+  "head_url": "https://github.com/volkov43-beep/vsz-positioning-calculator/commit/b94c33585d0f49b955a72f3b1fc30edb6b8490d8",
+  "head_created_at": "2026-11-19T12:57:35Z",
+  "observed_date": "2026-11-19",
+  "pr3": {
+    "merged": true,
+    "merge_commit_sha": "b94c33585d0f49b955a72f3b1fc30edb6b8490d8",
+    "url": "https://github.com/volkov43-beep/vsz-positioning-calculator/pull/3"
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "git_blob_sha": "931da4018fc14785b8e842b5320325962413391a",
+      "source_url": "https://github.com/volkov43-beep/vsz-positioning-calculator/blob/b94c33585d0f49b955a72f3b1fc30edb6b8490d8/README.md",
+      "sha256": "c64e25176372836ef759726f11e060454da45512016e3625b51595887149a4aa",
+      "bytes": 4052
+    },
+    {
+      "path": "AGENTS.md",
+      "git_blob_sha": "4a63191f28b89c91a00455f7f1d230b810c51885",
+      "source_url": "https://github.com/volkov43-beep/vsz-positioning-calculator/blob/b94c33585d0f49b955a72f3b1fc30edb6b8490d8/AGENTS.md",
+      "sha256": "10cd3fed3d625e3717cff3a8434757609e2ad7fdd3543fe6bdb2912cd23df7d0",
+      "bytes": 3953
+    },
+    {
+      "path": "docs/STATUS.md",
+      "git_blob_sha": "4043636a90d0f5bbffd09f452c715f2976fa4a8d",
+      "source_url": "https://github.com/volkov43-beep/vsz-positioning-calculator/blob/b94c33585d0f49b955a72f3b1fc30edb6b8490d8/docs/STATUS.md",
+      "sha256": "79dea2a4a2ada8df5247b82c0a6fa8bad05374615abab6aa008dafce3ab142a9",
+      "bytes": 4734
+    },
+    {
+      "path": "docs/ROADMAP.md",
+      "git_blob_sha": "f9932ac428631b322826e960ebb80bbedba1a134",
+      "source_url": "https://github.com/volkov43-beep/vsz-positioning-calculator/blob/b94c33585d0f49b955a72f3b1fc30edb6b8490d8/docs/ROADMAP.md",
+      "sha256": "b973bac8fc37f983b188992bd682ca1c22959cf7c984489f89284fead54465a4",
+      "bytes": 4625
+    },
+    {
+      "path": "docs/methodology/scope.md",
+      "git_blob_sha": "e25d3eea73d188f7587694fc761a424beef236d3",
+      "source_url": "https://github.com/volkov43-beep/vsz-positioning-calculator/blob/b94c33585d0f49b955a72f3b1fc30edb6b8490d8/docs/methodology/scope.md",
+      "sha256": "8f59a45ddfc5c0cc556d097a129eb517cba1394b0371267e76079137cad3b2fa",
+      "bytes": 147978
+    },
+    {
+      "path": "docs/methodology/math-spec.md",
+      "git_blob_sha": "4cd1a4b42938876733a12ff0acd6b1e74eaf4c67",
+      "source_url": "https://github.com/volkov43-beep/vsz-positioning-calculator/blob/b94c33585d0f49b955a72f3b1fc30edb6b8490d8/docs/methodology/math-spec.md",
+      "sha256": "a3bcbc379030f5a54839a83aba82f73a9594f983694ae933b8b625b556cf29eb",
+      "bytes": 68988
+    },
+    {
+      "path": "docs/validation/excel-audit-summary.md",
+      "git_blob_sha": "363d97584437df4e035fbff828bfa4f4a4301db4",
+      "source_url": "https://github.com/volkov43-beep/vsz-positioning-calculator/blob/b94c33585d0f49b955a72f3b1fc30edb6b8490d8/docs/validation/excel-audit-summary.md",
+      "sha256": "b82b7efa97ff433615f0a4afc183a74ede7b9ad19af17e6af0225addda3e8215",
+      "bytes": 30306
+    },
+    {
+      "path": "docs/iterations/02-math-audit.md",
+      "git_blob_sha": "5f0879bf8eeb639abe83d96f88d8ec6723a9d758",
+      "source_url": "https://github.com/volkov43-beep/vsz-positioning-calculator/blob/b94c33585d0f49b955a72f3b1fc30edb6b8490d8/docs/iterations/02-math-audit.md",
+      "sha256": "caad45b4a8184a00a99652882af0cbb5ec1a298a777732e725974220e7e543c4",
+      "bytes": 6878
+    }
+  ],
+  "open_pull_requests": [],
+  "comparison_to_02a_local_public_math_spec": "Only Markdown delimiters changed in two formulas; no mathematical changes."
+}

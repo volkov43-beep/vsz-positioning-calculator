@@ -1,0 +1,1479 @@
+{
+  "schema_version": "vsz-verification-report-1.0",
+  "status": "passed",
+  "method": {
+    "implementation": "independent mpmath verifier",
+    "python": "3.12.14",
+    "mpmath": "1.3.0",
+    "working_decimal_digits": 120,
+    "fixture_significant_digits": 70,
+    "variance": "sum over j<k of (x_j-x_k)^2 / 20",
+    "R_i": "max(U_up,U_down)-min(L_up,L_down)",
+    "serialized_comparison": "exact equality after independent rounding to 70 significant decimal digits",
+    "exact_predicates": "Fraction certificates, branch/band-extremum squaring predicates, radical-sum equality and rational interval bounds for R maxima; no epsilon tie classification",
+    "imports_generator": false
+  },
+  "positive_files_checked": 32,
+  "by_category": {
+    "transformed": 18,
+    "valid": 14
+  },
+  "positions_checked": 280,
+  "position_counts": [
+    5,
+    6,
+    12
+  ],
+  "checks": {
+    "analytical_checks": 194,
+    "branch_checks": 280,
+    "checker_self_tests": 2,
+    "coverage_checks": 6,
+    "cross_arithmetic_checks": 1120,
+    "dependency_metadata_checks": 72,
+    "exact_zero_checks": 615,
+    "extrema_checks": 608,
+    "invariant_checks": 1888,
+    "mathematical_mutants": 26,
+    "rational_certificate_checks": 1872,
+    "serialized_numeric_values": 4864,
+    "structural_checks": 1752,
+    "transformation_checks": 3490
+  },
+  "max_relative_serialization_error": "4.06303719864e-70",
+  "R_branch_occurrences": {
+    "C_i": 215,
+    "C_i+R_i_down": 1,
+    "C_i+R_i_up": 3,
+    "C_i+R_i_up+R_i_down": 37,
+    "R_i_down": 20,
+    "R_i_up": 4
+  },
+  "cases": [
+    {
+      "case_id": "M01-swap-directions",
+      "positions": 12,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 192,
+      "category": "transformed"
+    },
+    {
+      "case_id": "M02-negate",
+      "positions": 12,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 192,
+      "category": "transformed"
+    },
+    {
+      "case_id": "M03-common-offset",
+      "positions": 12,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 192,
+      "category": "transformed"
+    },
+    {
+      "case_id": "M04-positive-scale",
+      "positions": 12,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 192,
+      "category": "transformed"
+    },
+    {
+      "case_id": "M05-permute-positions",
+      "positions": 12,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 192,
+      "category": "transformed"
+    },
+    {
+      "case_id": "M06-down-repeat-1",
+      "positions": 12,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 192,
+      "category": "transformed"
+    },
+    {
+      "case_id": "M06-down-repeat-2",
+      "positions": 12,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 192,
+      "category": "transformed"
+    },
+    {
+      "case_id": "M06-down-repeat-3",
+      "positions": 12,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 192,
+      "category": "transformed"
+    },
+    {
+      "case_id": "M06-down-repeat-4",
+      "positions": 12,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 192,
+      "category": "transformed"
+    },
+    {
+      "case_id": "M06-down-repeat-5",
+      "positions": 12,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 192,
+      "category": "transformed"
+    },
+    {
+      "case_id": "M06-global-maximum",
+      "positions": 5,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 80,
+      "category": "transformed"
+    },
+    {
+      "case_id": "M06-global-minimum",
+      "positions": 5,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 80,
+      "category": "transformed"
+    },
+    {
+      "case_id": "M06-up-repeat-1",
+      "positions": 12,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 192,
+      "category": "transformed"
+    },
+    {
+      "case_id": "M06-up-repeat-2",
+      "positions": 12,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 192,
+      "category": "transformed"
+    },
+    {
+      "case_id": "M06-up-repeat-3",
+      "positions": 12,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 192,
+      "category": "transformed"
+    },
+    {
+      "case_id": "M06-up-repeat-4",
+      "positions": 12,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 192,
+      "category": "transformed"
+    },
+    {
+      "case_id": "M06-up-repeat-5",
+      "positions": 12,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 192,
+      "category": "transformed"
+    },
+    {
+      "case_id": "P03-mm-input",
+      "positions": 12,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 192,
+      "category": "transformed"
+    },
+    {
+      "case_id": "P01-tiny-scatter",
+      "positions": 5,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 80,
+      "category": "valid"
+    },
+    {
+      "case_id": "P02-mixed-scale",
+      "positions": 5,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 80,
+      "category": "valid"
+    },
+    {
+      "case_id": "P02-offset-collapsed",
+      "positions": 5,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 80,
+      "category": "valid"
+    },
+    {
+      "case_id": "P02-offset-near-ulp",
+      "positions": 5,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 80,
+      "category": "valid"
+    },
+    {
+      "case_id": "P02-offset-resolvable",
+      "positions": 5,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 80,
+      "category": "valid"
+    },
+    {
+      "case_id": "T01-zero",
+      "positions": 5,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 80,
+      "category": "valid"
+    },
+    {
+      "case_id": "T02-common-constant",
+      "positions": 5,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 80,
+      "category": "valid"
+    },
+    {
+      "case_id": "T03-direction-constants",
+      "positions": 5,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 80,
+      "category": "valid"
+    },
+    {
+      "case_id": "T04-negative-reversal",
+      "positions": 5,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 80,
+      "category": "valid"
+    },
+    {
+      "case_id": "T05-analytic-scatter",
+      "positions": 5,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 80,
+      "category": "valid"
+    },
+    {
+      "case_id": "T06-single-outlier",
+      "positions": 5,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 80,
+      "category": "valid"
+    },
+    {
+      "case_id": "T07-repeatability-branches",
+      "positions": 6,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 96,
+      "category": "valid"
+    },
+    {
+      "case_id": "T08-variable-m12",
+      "positions": 12,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 192,
+      "category": "valid"
+    },
+    {
+      "case_id": "T09-extrema-base",
+      "positions": 5,
+      "axis_values_checked": 12,
+      "position_numeric_values_checked": 80,
+      "category": "valid"
+    }
+  ],
+  "transformations": [
+    {
+      "case_id": "M01-swap-directions",
+      "source_case_id": "T08-variable-m12",
+      "kind": "swap_directions",
+      "changed_fields": {
+        "positions": {
+          "p00001": [
+            "mean_up",
+            "mean_down",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down"
+          ],
+          "p00002": [
+            "mean_up",
+            "mean_down",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down"
+          ],
+          "p00003": [
+            "mean_up",
+            "mean_down",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down"
+          ],
+          "p00004": [
+            "mean_up",
+            "mean_down",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down"
+          ],
+          "p00005": [
+            "mean_up",
+            "mean_down",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down"
+          ],
+          "p00006": [
+            "mean_up",
+            "mean_down",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down"
+          ],
+          "p00007": [
+            "mean_up",
+            "mean_down",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down"
+          ],
+          "p00008": [
+            "mean_up",
+            "mean_down",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down"
+          ],
+          "p00009": [
+            "mean_up",
+            "mean_down",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down"
+          ],
+          "p00010": [
+            "mean_up",
+            "mean_down",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down"
+          ],
+          "p00011": [
+            "mean_up",
+            "mean_down",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down"
+          ],
+          "p00012": [
+            "mean_up",
+            "mean_down",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down"
+          ]
+        },
+        "axis": [
+          "A_up",
+          "A_down",
+          "E_up",
+          "E_down",
+          "R_up",
+          "R_down",
+          "Bbar"
+        ]
+      }
+    },
+    {
+      "case_id": "M02-negate",
+      "source_case_id": "T08-variable-m12",
+      "kind": "negate",
+      "changed_fields": {
+        "positions": {
+          "p00001": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i"
+          ],
+          "p00002": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i"
+          ],
+          "p00003": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i"
+          ],
+          "p00004": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i"
+          ],
+          "p00005": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i"
+          ],
+          "p00006": [
+            "mean_up",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "B_i"
+          ],
+          "p00007": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i"
+          ],
+          "p00008": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i"
+          ],
+          "p00009": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i"
+          ],
+          "p00010": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i"
+          ],
+          "p00011": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i"
+          ],
+          "p00012": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i"
+          ]
+        },
+        "axis": [
+          "Bbar"
+        ]
+      }
+    },
+    {
+      "case_id": "M03-common-offset",
+      "source_case_id": "T08-variable-m12",
+      "kind": "offset",
+      "changed_fields": {
+        "positions": {
+          "p00001": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down"
+          ],
+          "p00002": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down"
+          ],
+          "p00003": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down"
+          ],
+          "p00004": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down"
+          ],
+          "p00005": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down"
+          ],
+          "p00006": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down"
+          ],
+          "p00007": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down"
+          ],
+          "p00008": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down"
+          ],
+          "p00009": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down"
+          ],
+          "p00010": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down"
+          ],
+          "p00011": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down"
+          ],
+          "p00012": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down"
+          ]
+        },
+        "axis": []
+      }
+    },
+    {
+      "case_id": "M04-positive-scale",
+      "source_case_id": "T08-variable-m12",
+      "kind": "scale",
+      "changed_fields": {
+        "positions": {
+          "p00001": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down",
+            "C_i",
+            "R_i"
+          ],
+          "p00002": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down",
+            "C_i",
+            "R_i"
+          ],
+          "p00003": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down",
+            "C_i",
+            "R_i"
+          ],
+          "p00004": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down",
+            "C_i",
+            "R_i"
+          ],
+          "p00005": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down",
+            "C_i",
+            "R_i"
+          ],
+          "p00006": [
+            "mean_up",
+            "mean_both",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down",
+            "C_i",
+            "R_i"
+          ],
+          "p00007": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down",
+            "C_i",
+            "R_i"
+          ],
+          "p00008": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down",
+            "C_i",
+            "R_i"
+          ],
+          "p00009": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down",
+            "C_i",
+            "R_i"
+          ],
+          "p00010": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down",
+            "C_i",
+            "R_i"
+          ],
+          "p00011": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down",
+            "C_i",
+            "R_i"
+          ],
+          "p00012": [
+            "mean_up",
+            "mean_down",
+            "mean_both",
+            "variance_up",
+            "variance_down",
+            "sd_up",
+            "sd_down",
+            "lower_up",
+            "upper_up",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_up",
+            "R_i_down",
+            "C_i",
+            "R_i"
+          ]
+        },
+        "axis": [
+          "A",
+          "A_up",
+          "A_down",
+          "E",
+          "E_up",
+          "E_down",
+          "M",
+          "R",
+          "R_up",
+          "R_down",
+          "B",
+          "Bbar"
+        ]
+      }
+    },
+    {
+      "case_id": "M05-permute-positions",
+      "source_case_id": "T08-variable-m12",
+      "kind": "permute",
+      "changed_fields": {
+        "positions": {},
+        "axis": []
+      }
+    },
+    {
+      "case_id": "M06-down-repeat-1",
+      "source_case_id": "T08-variable-m12",
+      "kind": "change_observation",
+      "changed_fields": {
+        "positions": {
+          "p00003": [
+            "mean_down",
+            "mean_both",
+            "variance_down",
+            "sd_down",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_down",
+            "C_i",
+            "R_i"
+          ]
+        },
+        "axis": [
+          "R_down",
+          "Bbar"
+        ]
+      }
+    },
+    {
+      "case_id": "M06-down-repeat-2",
+      "source_case_id": "T08-variable-m12",
+      "kind": "change_observation",
+      "changed_fields": {
+        "positions": {
+          "p00003": [
+            "mean_down",
+            "mean_both",
+            "variance_down",
+            "sd_down",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_down",
+            "C_i",
+            "R_i"
+          ]
+        },
+        "axis": [
+          "R_down",
+          "Bbar"
+        ]
+      }
+    },
+    {
+      "case_id": "M06-down-repeat-3",
+      "source_case_id": "T08-variable-m12",
+      "kind": "change_observation",
+      "changed_fields": {
+        "positions": {
+          "p00003": [
+            "mean_down",
+            "mean_both",
+            "variance_down",
+            "sd_down",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_down",
+            "C_i",
+            "R_i"
+          ]
+        },
+        "axis": [
+          "R_down",
+          "Bbar"
+        ]
+      }
+    },
+    {
+      "case_id": "M06-down-repeat-4",
+      "source_case_id": "T08-variable-m12",
+      "kind": "change_observation",
+      "changed_fields": {
+        "positions": {
+          "p00003": [
+            "mean_down",
+            "mean_both",
+            "variance_down",
+            "sd_down",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_down",
+            "C_i",
+            "R_i"
+          ]
+        },
+        "axis": [
+          "R_down",
+          "Bbar"
+        ]
+      }
+    },
+    {
+      "case_id": "M06-down-repeat-5",
+      "source_case_id": "T08-variable-m12",
+      "kind": "change_observation",
+      "changed_fields": {
+        "positions": {
+          "p00003": [
+            "mean_down",
+            "mean_both",
+            "variance_down",
+            "sd_down",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_down",
+            "C_i",
+            "R_i"
+          ]
+        },
+        "axis": [
+          "R_down",
+          "Bbar"
+        ]
+      }
+    },
+    {
+      "case_id": "M06-global-maximum",
+      "source_case_id": "T09-extrema-base",
+      "kind": "change_observation",
+      "changed_fields": {
+        "positions": {
+          "p02": [
+            "mean_up",
+            "mean_both",
+            "variance_up",
+            "sd_up",
+            "lower_up",
+            "upper_up",
+            "B_i",
+            "R_i_up",
+            "C_i",
+            "R_i"
+          ]
+        },
+        "axis": [
+          "A",
+          "A_up",
+          "E",
+          "E_up",
+          "R",
+          "R_up",
+          "B",
+          "Bbar"
+        ]
+      }
+    },
+    {
+      "case_id": "M06-global-minimum",
+      "source_case_id": "T09-extrema-base",
+      "kind": "change_observation",
+      "changed_fields": {
+        "positions": {
+          "p03": [
+            "mean_down",
+            "mean_both",
+            "variance_down",
+            "sd_down",
+            "lower_down",
+            "upper_down",
+            "B_i",
+            "R_i_down",
+            "C_i",
+            "R_i"
+          ]
+        },
+        "axis": [
+          "A",
+          "A_down",
+          "E",
+          "E_down",
+          "R",
+          "R_down",
+          "B",
+          "Bbar"
+        ]
+      }
+    },
+    {
+      "case_id": "M06-up-repeat-1",
+      "source_case_id": "T08-variable-m12",
+      "kind": "change_observation",
+      "changed_fields": {
+        "positions": {
+          "p00003": [
+            "mean_up",
+            "mean_both",
+            "variance_up",
+            "sd_up",
+            "lower_up",
+            "upper_up",
+            "B_i",
+            "R_i_up",
+            "C_i",
+            "R_i"
+          ]
+        },
+        "axis": [
+          "R_up",
+          "Bbar"
+        ]
+      }
+    },
+    {
+      "case_id": "M06-up-repeat-2",
+      "source_case_id": "T08-variable-m12",
+      "kind": "change_observation",
+      "changed_fields": {
+        "positions": {
+          "p00003": [
+            "mean_up",
+            "mean_both",
+            "variance_up",
+            "sd_up",
+            "lower_up",
+            "upper_up",
+            "B_i",
+            "R_i_up",
+            "C_i",
+            "R_i"
+          ]
+        },
+        "axis": [
+          "R_up",
+          "Bbar"
+        ]
+      }
+    },
+    {
+      "case_id": "M06-up-repeat-3",
+      "source_case_id": "T08-variable-m12",
+      "kind": "change_observation",
+      "changed_fields": {
+        "positions": {
+          "p00003": [
+            "mean_up",
+            "mean_both",
+            "variance_up",
+            "sd_up",
+            "lower_up",
+            "upper_up",
+            "B_i",
+            "R_i_up",
+            "C_i",
+            "R_i"
+          ]
+        },
+        "axis": [
+          "R_up",
+          "Bbar"
+        ]
+      }
+    },
+    {
+      "case_id": "M06-up-repeat-4",
+      "source_case_id": "T08-variable-m12",
+      "kind": "change_observation",
+      "changed_fields": {
+        "positions": {
+          "p00003": [
+            "mean_up",
+            "mean_both",
+            "variance_up",
+            "sd_up",
+            "lower_up",
+            "upper_up",
+            "B_i",
+            "R_i_up",
+            "C_i",
+            "R_i"
+          ]
+        },
+        "axis": [
+          "R_up",
+          "Bbar"
+        ]
+      }
+    },
+    {
+      "case_id": "M06-up-repeat-5",
+      "source_case_id": "T08-variable-m12",
+      "kind": "change_observation",
+      "changed_fields": {
+        "positions": {
+          "p00003": [
+            "mean_up",
+            "mean_both",
+            "variance_up",
+            "sd_up",
+            "lower_up",
+            "upper_up",
+            "B_i",
+            "R_i_up",
+            "C_i",
+            "R_i"
+          ]
+        },
+        "axis": [
+          "R_up",
+          "Bbar"
+        ]
+      }
+    },
+    {
+      "case_id": "P03-mm-input",
+      "source_case_id": "T08-variable-m12",
+      "kind": "unit_conversion",
+      "changed_fields": {
+        "positions": {},
+        "axis": []
+      }
+    }
+  ],
+  "mathematical_mutants": [
+    {
+      "mutant": "A_as_max_of_directional_A",
+      "detected": true,
+      "case_id": "T03-direction-constants",
+      "field": "A"
+    },
+    {
+      "mutant": "E_as_max_of_directional_E",
+      "detected": true,
+      "case_id": "T03-direction-constants",
+      "field": "E"
+    },
+    {
+      "mutant": "B_without_absolute_value",
+      "detected": true,
+      "case_id": "M03-common-offset",
+      "field": "B"
+    },
+    {
+      "mutant": "Bbar_as_mean_absolute_B_i",
+      "detected": true,
+      "case_id": "M01-swap-directions",
+      "field": "Bbar"
+    },
+    {
+      "mutant": "axis_R_min_instead_of_max",
+      "detected": true,
+      "case_id": "M01-swap-directions",
+      "field": "R"
+    },
+    {
+      "mutant": "directional_outputs_interchanged",
+      "detected": true,
+      "case_id": "M01-swap-directions",
+      "field": "A_up"
+    },
+    {
+      "mutant": "A_lower_max_instead_of_min",
+      "detected": true,
+      "case_id": "M01-swap-directions",
+      "field": "A"
+    },
+    {
+      "mutant": "hardcoded_first_11_positions",
+      "detected": true,
+      "case_id": "M01-swap-directions",
+      "field": "Bbar"
+    },
+    {
+      "mutant": "reversal_sign_down_minus_up",
+      "detected": true,
+      "case_id": "M01-swap-directions",
+      "field": "p00001/B_i"
+    },
+    {
+      "mutant": "R_i_cross_candidate_only",
+      "detected": true,
+      "case_id": "M06-global-maximum",
+      "field": "p02/R_i"
+    },
+    {
+      "mutant": "R_i_unilateral_candidates_only",
+      "detected": true,
+      "case_id": "M01-swap-directions",
+      "field": "p00001/R_i"
+    },
+    {
+      "mutant": "R_i_min_instead_of_max",
+      "detected": true,
+      "case_id": "M01-swap-directions",
+      "field": "p00001/R_i"
+    },
+    {
+      "mutant": "variance_divisor_5",
+      "detected": true,
+      "case_id": "M01-swap-directions",
+      "field": "p00001/sd_up"
+    },
+    {
+      "mutant": "repeatability_factor_2",
+      "detected": true,
+      "case_id": "M01-swap-directions",
+      "field": "p00001/R_i_up"
+    },
+    {
+      "mutant": "range_based_SD_mixed_in",
+      "detected": true,
+      "case_id": "M01-swap-directions",
+      "field": "p00001/sd_up"
+    },
+    {
+      "mutant": "mean_replaced_by_constant_1",
+      "detected": true,
+      "case_id": "M01-swap-directions",
+      "field": "p00001/mean_up"
+    },
+    {
+      "mutant": "ignore_up_observation_1",
+      "detected": true,
+      "case_id": "M01-swap-directions",
+      "field": "p00001/mean_up"
+    },
+    {
+      "mutant": "ignore_up_observation_2",
+      "detected": true,
+      "case_id": "M02-negate",
+      "field": "p00001/mean_up"
+    },
+    {
+      "mutant": "ignore_up_observation_3",
+      "detected": true,
+      "case_id": "M06-global-maximum",
+      "field": "p02/mean_up"
+    },
+    {
+      "mutant": "ignore_up_observation_4",
+      "detected": true,
+      "case_id": "M02-negate",
+      "field": "p00001/mean_up"
+    },
+    {
+      "mutant": "ignore_up_observation_5",
+      "detected": true,
+      "case_id": "M01-swap-directions",
+      "field": "p00001/mean_up"
+    },
+    {
+      "mutant": "ignore_down_observation_1",
+      "detected": true,
+      "case_id": "M01-swap-directions",
+      "field": "p00001/mean_down"
+    },
+    {
+      "mutant": "ignore_down_observation_2",
+      "detected": true,
+      "case_id": "M01-swap-directions",
+      "field": "p00001/mean_down"
+    },
+    {
+      "mutant": "ignore_down_observation_3",
+      "detected": true,
+      "case_id": "M06-down-repeat-1",
+      "field": "p00003/mean_down"
+    },
+    {
+      "mutant": "ignore_down_observation_4",
+      "detected": true,
+      "case_id": "M01-swap-directions",
+      "field": "p00001/mean_down"
+    },
+    {
+      "mutant": "ignore_down_observation_5",
+      "detected": true,
+      "case_id": "M01-swap-directions",
+      "field": "p00001/mean_down"
+    }
+  ],
+  "checker_self_tests": [
+    {
+      "test": "altered_expected_A_plus_one",
+      "detected": true,
+      "error_count": 1,
+      "expected_error_location": "T05-analytic-scatter/axis/A",
+      "actual_error_locations": [
+        "T05-analytic-scatter/axis/A"
+      ],
+      "public_fixture_modified": false
+    },
+    {
+      "test": "altered_active_R_branch",
+      "detected": true,
+      "error_count": 1,
+      "expected_error_location": "T07-repeatability-branches/p01",
+      "actual_error_locations": [
+        "T07-repeatability-branches/p01"
+      ],
+      "public_fixture_modified": false
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "Synthetic arithmetic validation only; no machine-test metrological approval.",
+    "Mathematical mutants demonstrate fixture sensitivity, not executed mutation testing of future production code.",
+    "Invalid fixtures and binary64 stress experiments are checked by their separate tools."
+  ]
+}

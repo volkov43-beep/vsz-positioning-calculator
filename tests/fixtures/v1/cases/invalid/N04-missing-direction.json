@@ -1,0 +1,257 @@
+{
+  "schema_version": "vsz-fixtures-1.0",
+  "profile_id": "gost-27843-2006-linear-axis-le-2000-v1",
+  "sd_method": "sample-n-minus-1",
+  "units": {
+    "coordinate": "mm",
+    "deviation": "um",
+    "expected": "um",
+    "variance": "um2"
+  },
+  "context": {
+    "full_travel_mm": "1000",
+    "procedure_applicability": "not-established-by-synthetic-fixture",
+    "report_metadata": "synthetic-only"
+  },
+  "positions": [
+    {
+      "position_id": "p01",
+      "target_mm": "0",
+      "up": [
+        {
+          "repeat": 1,
+          "value": "0"
+        },
+        {
+          "repeat": 2,
+          "value": "0"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0"
+        },
+        {
+          "repeat": 5,
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "position_id": "p02",
+      "target_mm": "250",
+      "up": [
+        {
+          "repeat": 1,
+          "value": "0"
+        },
+        {
+          "repeat": 2,
+          "value": "0"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0"
+        },
+        {
+          "repeat": 5,
+          "value": "0"
+        }
+      ],
+      "down": [
+        {
+          "repeat": 1,
+          "value": "0"
+        },
+        {
+          "repeat": 2,
+          "value": "0"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0"
+        },
+        {
+          "repeat": 5,
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "position_id": "p03",
+      "target_mm": "500",
+      "up": [
+        {
+          "repeat": 1,
+          "value": "0"
+        },
+        {
+          "repeat": 2,
+          "value": "0"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0"
+        },
+        {
+          "repeat": 5,
+          "value": "0"
+        }
+      ],
+      "down": [
+        {
+          "repeat": 1,
+          "value": "0"
+        },
+        {
+          "repeat": 2,
+          "value": "0"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0"
+        },
+        {
+          "repeat": 5,
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "position_id": "p04",
+      "target_mm": "750",
+      "up": [
+        {
+          "repeat": 1,
+          "value": "0"
+        },
+        {
+          "repeat": 2,
+          "value": "0"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0"
+        },
+        {
+          "repeat": 5,
+          "value": "0"
+        }
+      ],
+      "down": [
+        {
+          "repeat": 1,
+          "value": "0"
+        },
+        {
+          "repeat": 2,
+          "value": "0"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0"
+        },
+        {
+          "repeat": 5,
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "position_id": "p05",
+      "target_mm": "1000",
+      "up": [
+        {
+          "repeat": 1,
+          "value": "0"
+        },
+        {
+          "repeat": 2,
+          "value": "0"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0"
+        },
+        {
+          "repeat": 5,
+          "value": "0"
+        }
+      ],
+      "down": [
+        {
+          "repeat": 1,
+          "value": "0"
+        },
+        {
+          "repeat": 2,
+          "value": "0"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0"
+        },
+        {
+          "repeat": 5,
+          "value": "0"
+        }
+      ]
+    }
+  ],
+  "case_id": "N04-missing-direction",
+  "category": "invalid",
+  "coverage": [
+    "N04"
+  ],
+  "purpose_ru": "Нет серии down.",
+  "provenance": {
+    "origin": "independently-synthesized-invalid-mutation",
+    "source_case_id": "T01-zero",
+    "private_measurements_used": false,
+    "standard_example_observations_used": false
+  },
+  "expected_validation": {
+    "arithmetic": "not-permitted-for-selected-profile",
+    "level": "input-error",
+    "class_ru": "Неоднозначная принадлежность направлению",
+    "reason_ru": "Нет полного набора двух явно именованных направлений.",
+    "full_profile_result_permitted": false,
+    "fabricated_numeric_results_permitted": false,
+    "production_exception_name_defined": false
+  }
+}

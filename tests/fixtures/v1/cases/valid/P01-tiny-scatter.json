@@ -1,0 +1,952 @@
+{
+  "schema_version": "vsz-fixtures-1.0",
+  "case_id": "P01-tiny-scatter",
+  "category": "valid",
+  "profile_id": "gost-27843-2006-linear-axis-le-2000-v1",
+  "sd_method": "sample-n-minus-1",
+  "coverage": [
+    "P01"
+  ],
+  "purpose_ru": "Ненулевой s=10^-12 и R=4*10^-12 без большого фона.",
+  "units": {
+    "coordinate": "mm",
+    "deviation": "um",
+    "expected": "um",
+    "variance": "um2"
+  },
+  "context": {
+    "full_travel_mm": "1000",
+    "procedure_applicability": "not-established-by-synthetic-fixture",
+    "report_metadata": "synthetic-only"
+  },
+  "provenance": {
+    "origin": "independently-synthesized",
+    "recipe": "Ненулевой s=10^-12 и R=4*10^-12 без большого фона.",
+    "private_measurements_used": false,
+    "standard_example_observations_used": false
+  },
+  "positions": [
+    {
+      "position_id": "p01",
+      "target_mm": "0",
+      "up": [
+        {
+          "repeat": 1,
+          "value": "-0.000000000001"
+        },
+        {
+          "repeat": 2,
+          "value": "-0.000000000001"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0.000000000001"
+        },
+        {
+          "repeat": 5,
+          "value": "0.000000000001"
+        }
+      ],
+      "down": [
+        {
+          "repeat": 1,
+          "value": "-0.000000000001"
+        },
+        {
+          "repeat": 2,
+          "value": "-0.000000000001"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0.000000000001"
+        },
+        {
+          "repeat": 5,
+          "value": "0.000000000001"
+        }
+      ]
+    },
+    {
+      "position_id": "p02",
+      "target_mm": "250",
+      "up": [
+        {
+          "repeat": 1,
+          "value": "-0.000000000001"
+        },
+        {
+          "repeat": 2,
+          "value": "-0.000000000001"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0.000000000001"
+        },
+        {
+          "repeat": 5,
+          "value": "0.000000000001"
+        }
+      ],
+      "down": [
+        {
+          "repeat": 1,
+          "value": "-0.000000000001"
+        },
+        {
+          "repeat": 2,
+          "value": "-0.000000000001"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0.000000000001"
+        },
+        {
+          "repeat": 5,
+          "value": "0.000000000001"
+        }
+      ]
+    },
+    {
+      "position_id": "p03",
+      "target_mm": "500",
+      "up": [
+        {
+          "repeat": 1,
+          "value": "-0.000000000001"
+        },
+        {
+          "repeat": 2,
+          "value": "-0.000000000001"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0.000000000001"
+        },
+        {
+          "repeat": 5,
+          "value": "0.000000000001"
+        }
+      ],
+      "down": [
+        {
+          "repeat": 1,
+          "value": "-0.000000000001"
+        },
+        {
+          "repeat": 2,
+          "value": "-0.000000000001"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0.000000000001"
+        },
+        {
+          "repeat": 5,
+          "value": "0.000000000001"
+        }
+      ]
+    },
+    {
+      "position_id": "p04",
+      "target_mm": "750",
+      "up": [
+        {
+          "repeat": 1,
+          "value": "-0.000000000001"
+        },
+        {
+          "repeat": 2,
+          "value": "-0.000000000001"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0.000000000001"
+        },
+        {
+          "repeat": 5,
+          "value": "0.000000000001"
+        }
+      ],
+      "down": [
+        {
+          "repeat": 1,
+          "value": "-0.000000000001"
+        },
+        {
+          "repeat": 2,
+          "value": "-0.000000000001"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0.000000000001"
+        },
+        {
+          "repeat": 5,
+          "value": "0.000000000001"
+        }
+      ]
+    },
+    {
+      "position_id": "p05",
+      "target_mm": "1000",
+      "up": [
+        {
+          "repeat": 1,
+          "value": "-0.000000000001"
+        },
+        {
+          "repeat": 2,
+          "value": "-0.000000000001"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0.000000000001"
+        },
+        {
+          "repeat": 5,
+          "value": "0.000000000001"
+        }
+      ],
+      "down": [
+        {
+          "repeat": 1,
+          "value": "-0.000000000001"
+        },
+        {
+          "repeat": 2,
+          "value": "-0.000000000001"
+        },
+        {
+          "repeat": 3,
+          "value": "0"
+        },
+        {
+          "repeat": 4,
+          "value": "0.000000000001"
+        },
+        {
+          "repeat": 5,
+          "value": "0.000000000001"
+        }
+      ]
+    }
+  ],
+  "oracle": {
+    "primary": "fractions.Fraction exact sums and centered variance; decimal.Decimal.sqrt",
+    "working_decimal_digits": 100,
+    "serialized_significant_digits": 70,
+    "rounding_of_serialization": "nearest-ties-to-even",
+    "exact_source": "original input strings and exact rational mean/variance",
+    "method_approval": "recommendation-awaiting-metrologist"
+  },
+  "expected": {
+    "positions": [
+      {
+        "position_id": "p01",
+        "mean_up": "0",
+        "mean_down": "0",
+        "mean_both": "0",
+        "variance_up": "0.000000000000000000000001",
+        "variance_down": "0.000000000000000000000001",
+        "sd_up": "0.000000000001",
+        "sd_down": "0.000000000001",
+        "lower_up": "-0.000000000002",
+        "upper_up": "0.000000000002",
+        "lower_down": "-0.000000000002",
+        "upper_down": "0.000000000002",
+        "B_i": "0",
+        "R_i_up": "0.000000000004",
+        "R_i_down": "0.000000000004",
+        "C_i": "0.000000000004",
+        "R_i": "0.000000000004",
+        "active_R_branches": [
+          "C_i",
+          "R_i_up",
+          "R_i_down"
+        ]
+      },
+      {
+        "position_id": "p02",
+        "mean_up": "0",
+        "mean_down": "0",
+        "mean_both": "0",
+        "variance_up": "0.000000000000000000000001",
+        "variance_down": "0.000000000000000000000001",
+        "sd_up": "0.000000000001",
+        "sd_down": "0.000000000001",
+        "lower_up": "-0.000000000002",
+        "upper_up": "0.000000000002",
+        "lower_down": "-0.000000000002",
+        "upper_down": "0.000000000002",
+        "B_i": "0",
+        "R_i_up": "0.000000000004",
+        "R_i_down": "0.000000000004",
+        "C_i": "0.000000000004",
+        "R_i": "0.000000000004",
+        "active_R_branches": [
+          "C_i",
+          "R_i_up",
+          "R_i_down"
+        ]
+      },
+      {
+        "position_id": "p03",
+        "mean_up": "0",
+        "mean_down": "0",
+        "mean_both": "0",
+        "variance_up": "0.000000000000000000000001",
+        "variance_down": "0.000000000000000000000001",
+        "sd_up": "0.000000000001",
+        "sd_down": "0.000000000001",
+        "lower_up": "-0.000000000002",
+        "upper_up": "0.000000000002",
+        "lower_down": "-0.000000000002",
+        "upper_down": "0.000000000002",
+        "B_i": "0",
+        "R_i_up": "0.000000000004",
+        "R_i_down": "0.000000000004",
+        "C_i": "0.000000000004",
+        "R_i": "0.000000000004",
+        "active_R_branches": [
+          "C_i",
+          "R_i_up",
+          "R_i_down"
+        ]
+      },
+      {
+        "position_id": "p04",
+        "mean_up": "0",
+        "mean_down": "0",
+        "mean_both": "0",
+        "variance_up": "0.000000000000000000000001",
+        "variance_down": "0.000000000000000000000001",
+        "sd_up": "0.000000000001",
+        "sd_down": "0.000000000001",
+        "lower_up": "-0.000000000002",
+        "upper_up": "0.000000000002",
+        "lower_down": "-0.000000000002",
+        "upper_down": "0.000000000002",
+        "B_i": "0",
+        "R_i_up": "0.000000000004",
+        "R_i_down": "0.000000000004",
+        "C_i": "0.000000000004",
+        "R_i": "0.000000000004",
+        "active_R_branches": [
+          "C_i",
+          "R_i_up",
+          "R_i_down"
+        ]
+      },
+      {
+        "position_id": "p05",
+        "mean_up": "0",
+        "mean_down": "0",
+        "mean_both": "0",
+        "variance_up": "0.000000000000000000000001",
+        "variance_down": "0.000000000000000000000001",
+        "sd_up": "0.000000000001",
+        "sd_down": "0.000000000001",
+        "lower_up": "-0.000000000002",
+        "upper_up": "0.000000000002",
+        "lower_down": "-0.000000000002",
+        "upper_down": "0.000000000002",
+        "B_i": "0",
+        "R_i_up": "0.000000000004",
+        "R_i_down": "0.000000000004",
+        "C_i": "0.000000000004",
+        "R_i": "0.000000000004",
+        "active_R_branches": [
+          "C_i",
+          "R_i_up",
+          "R_i_down"
+        ]
+      }
+    ],
+    "axis": {
+      "A": "0.000000000004",
+      "A_up": "0.000000000004",
+      "A_down": "0.000000000004",
+      "E": "0",
+      "E_up": "0",
+      "E_down": "0",
+      "M": "0",
+      "R": "0.000000000004",
+      "R_up": "0.000000000004",
+      "R_down": "0.000000000004",
+      "B": "0",
+      "Bbar": "0"
+    },
+    "extrema": {
+      "mean_min": [
+        {
+          "position_id": "p01",
+          "direction": "up"
+        },
+        {
+          "position_id": "p01",
+          "direction": "down"
+        },
+        {
+          "position_id": "p02",
+          "direction": "up"
+        },
+        {
+          "position_id": "p02",
+          "direction": "down"
+        },
+        {
+          "position_id": "p03",
+          "direction": "up"
+        },
+        {
+          "position_id": "p03",
+          "direction": "down"
+        },
+        {
+          "position_id": "p04",
+          "direction": "up"
+        },
+        {
+          "position_id": "p04",
+          "direction": "down"
+        },
+        {
+          "position_id": "p05",
+          "direction": "up"
+        },
+        {
+          "position_id": "p05",
+          "direction": "down"
+        }
+      ],
+      "mean_min_up": [
+        {
+          "position_id": "p01",
+          "direction": "up"
+        },
+        {
+          "position_id": "p02",
+          "direction": "up"
+        },
+        {
+          "position_id": "p03",
+          "direction": "up"
+        },
+        {
+          "position_id": "p04",
+          "direction": "up"
+        },
+        {
+          "position_id": "p05",
+          "direction": "up"
+        }
+      ],
+      "mean_min_down": [
+        {
+          "position_id": "p01",
+          "direction": "down"
+        },
+        {
+          "position_id": "p02",
+          "direction": "down"
+        },
+        {
+          "position_id": "p03",
+          "direction": "down"
+        },
+        {
+          "position_id": "p04",
+          "direction": "down"
+        },
+        {
+          "position_id": "p05",
+          "direction": "down"
+        }
+      ],
+      "mean_max": [
+        {
+          "position_id": "p01",
+          "direction": "up"
+        },
+        {
+          "position_id": "p01",
+          "direction": "down"
+        },
+        {
+          "position_id": "p02",
+          "direction": "up"
+        },
+        {
+          "position_id": "p02",
+          "direction": "down"
+        },
+        {
+          "position_id": "p03",
+          "direction": "up"
+        },
+        {
+          "position_id": "p03",
+          "direction": "down"
+        },
+        {
+          "position_id": "p04",
+          "direction": "up"
+        },
+        {
+          "position_id": "p04",
+          "direction": "down"
+        },
+        {
+          "position_id": "p05",
+          "direction": "up"
+        },
+        {
+          "position_id": "p05",
+          "direction": "down"
+        }
+      ],
+      "mean_max_up": [
+        {
+          "position_id": "p01",
+          "direction": "up"
+        },
+        {
+          "position_id": "p02",
+          "direction": "up"
+        },
+        {
+          "position_id": "p03",
+          "direction": "up"
+        },
+        {
+          "position_id": "p04",
+          "direction": "up"
+        },
+        {
+          "position_id": "p05",
+          "direction": "up"
+        }
+      ],
+      "mean_max_down": [
+        {
+          "position_id": "p01",
+          "direction": "down"
+        },
+        {
+          "position_id": "p02",
+          "direction": "down"
+        },
+        {
+          "position_id": "p03",
+          "direction": "down"
+        },
+        {
+          "position_id": "p04",
+          "direction": "down"
+        },
+        {
+          "position_id": "p05",
+          "direction": "down"
+        }
+      ],
+      "lower_min": [
+        {
+          "position_id": "p01",
+          "direction": "up"
+        },
+        {
+          "position_id": "p01",
+          "direction": "down"
+        },
+        {
+          "position_id": "p02",
+          "direction": "up"
+        },
+        {
+          "position_id": "p02",
+          "direction": "down"
+        },
+        {
+          "position_id": "p03",
+          "direction": "up"
+        },
+        {
+          "position_id": "p03",
+          "direction": "down"
+        },
+        {
+          "position_id": "p04",
+          "direction": "up"
+        },
+        {
+          "position_id": "p04",
+          "direction": "down"
+        },
+        {
+          "position_id": "p05",
+          "direction": "up"
+        },
+        {
+          "position_id": "p05",
+          "direction": "down"
+        }
+      ],
+      "lower_min_up": [
+        {
+          "position_id": "p01",
+          "direction": "up"
+        },
+        {
+          "position_id": "p02",
+          "direction": "up"
+        },
+        {
+          "position_id": "p03",
+          "direction": "up"
+        },
+        {
+          "position_id": "p04",
+          "direction": "up"
+        },
+        {
+          "position_id": "p05",
+          "direction": "up"
+        }
+      ],
+      "lower_min_down": [
+        {
+          "position_id": "p01",
+          "direction": "down"
+        },
+        {
+          "position_id": "p02",
+          "direction": "down"
+        },
+        {
+          "position_id": "p03",
+          "direction": "down"
+        },
+        {
+          "position_id": "p04",
+          "direction": "down"
+        },
+        {
+          "position_id": "p05",
+          "direction": "down"
+        }
+      ],
+      "upper_max": [
+        {
+          "position_id": "p01",
+          "direction": "up"
+        },
+        {
+          "position_id": "p01",
+          "direction": "down"
+        },
+        {
+          "position_id": "p02",
+          "direction": "up"
+        },
+        {
+          "position_id": "p02",
+          "direction": "down"
+        },
+        {
+          "position_id": "p03",
+          "direction": "up"
+        },
+        {
+          "position_id": "p03",
+          "direction": "down"
+        },
+        {
+          "position_id": "p04",
+          "direction": "up"
+        },
+        {
+          "position_id": "p04",
+          "direction": "down"
+        },
+        {
+          "position_id": "p05",
+          "direction": "up"
+        },
+        {
+          "position_id": "p05",
+          "direction": "down"
+        }
+      ],
+      "upper_max_up": [
+        {
+          "position_id": "p01",
+          "direction": "up"
+        },
+        {
+          "position_id": "p02",
+          "direction": "up"
+        },
+        {
+          "position_id": "p03",
+          "direction": "up"
+        },
+        {
+          "position_id": "p04",
+          "direction": "up"
+        },
+        {
+          "position_id": "p05",
+          "direction": "up"
+        }
+      ],
+      "upper_max_down": [
+        {
+          "position_id": "p01",
+          "direction": "down"
+        },
+        {
+          "position_id": "p02",
+          "direction": "down"
+        },
+        {
+          "position_id": "p03",
+          "direction": "down"
+        },
+        {
+          "position_id": "p04",
+          "direction": "down"
+        },
+        {
+          "position_id": "p05",
+          "direction": "down"
+        }
+      ],
+      "mean_both_min": [
+        {
+          "position_id": "p01",
+          "direction": "both"
+        },
+        {
+          "position_id": "p02",
+          "direction": "both"
+        },
+        {
+          "position_id": "p03",
+          "direction": "both"
+        },
+        {
+          "position_id": "p04",
+          "direction": "both"
+        },
+        {
+          "position_id": "p05",
+          "direction": "both"
+        }
+      ],
+      "mean_both_max": [
+        {
+          "position_id": "p01",
+          "direction": "both"
+        },
+        {
+          "position_id": "p02",
+          "direction": "both"
+        },
+        {
+          "position_id": "p03",
+          "direction": "both"
+        },
+        {
+          "position_id": "p04",
+          "direction": "both"
+        },
+        {
+          "position_id": "p05",
+          "direction": "both"
+        }
+      ],
+      "R_max": [
+        {
+          "position_id": "p01",
+          "direction": "both"
+        },
+        {
+          "position_id": "p02",
+          "direction": "both"
+        },
+        {
+          "position_id": "p03",
+          "direction": "both"
+        },
+        {
+          "position_id": "p04",
+          "direction": "both"
+        },
+        {
+          "position_id": "p05",
+          "direction": "both"
+        }
+      ],
+      "R_up_max": [
+        {
+          "position_id": "p01",
+          "direction": "up"
+        },
+        {
+          "position_id": "p02",
+          "direction": "up"
+        },
+        {
+          "position_id": "p03",
+          "direction": "up"
+        },
+        {
+          "position_id": "p04",
+          "direction": "up"
+        },
+        {
+          "position_id": "p05",
+          "direction": "up"
+        }
+      ],
+      "R_down_max": [
+        {
+          "position_id": "p01",
+          "direction": "down"
+        },
+        {
+          "position_id": "p02",
+          "direction": "down"
+        },
+        {
+          "position_id": "p03",
+          "direction": "down"
+        },
+        {
+          "position_id": "p04",
+          "direction": "down"
+        },
+        {
+          "position_id": "p05",
+          "direction": "down"
+        }
+      ],
+      "B_abs_max": [
+        {
+          "position_id": "p01",
+          "direction": "both"
+        },
+        {
+          "position_id": "p02",
+          "direction": "both"
+        },
+        {
+          "position_id": "p03",
+          "direction": "both"
+        },
+        {
+          "position_id": "p04",
+          "direction": "both"
+        },
+        {
+          "position_id": "p05",
+          "direction": "both"
+        }
+      ]
+    }
+  },
+  "exact": {
+    "positions": [
+      {
+        "position_id": "p01",
+        "mean_up": "0",
+        "variance_up": "1/1000000000000000000000000",
+        "mean_down": "0",
+        "variance_down": "1/1000000000000000000000000",
+        "mean_both": "0",
+        "B_i": "0"
+      },
+      {
+        "position_id": "p02",
+        "mean_up": "0",
+        "variance_up": "1/1000000000000000000000000",
+        "mean_down": "0",
+        "variance_down": "1/1000000000000000000000000",
+        "mean_both": "0",
+        "B_i": "0"
+      },
+      {
+        "position_id": "p03",
+        "mean_up": "0",
+        "variance_up": "1/1000000000000000000000000",
+        "mean_down": "0",
+        "variance_down": "1/1000000000000000000000000",
+        "mean_both": "0",
+        "B_i": "0"
+      },
+      {
+        "position_id": "p04",
+        "mean_up": "0",
+        "variance_up": "1/1000000000000000000000000",
+        "mean_down": "0",
+        "variance_down": "1/1000000000000000000000000",
+        "mean_both": "0",
+        "B_i": "0"
+      },
+      {
+        "position_id": "p05",
+        "mean_up": "0",
+        "variance_up": "1/1000000000000000000000000",
+        "mean_down": "0",
+        "variance_down": "1/1000000000000000000000000",
+        "mean_both": "0",
+        "B_i": "0"
+      }
+    ],
+    "axis_rational": {
+      "E": "0",
+      "E_up": "0",
+      "E_down": "0",
+      "M": "0",
+      "B": "0",
+      "Bbar": "0"
+    },
+    "radical_rule": "sd_up=sqrt(variance_up); sd_down=sqrt(variance_down); subsequent formulas use unrounded radicals"
+  }
+}
