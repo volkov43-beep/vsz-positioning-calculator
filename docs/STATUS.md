@@ -9,7 +9,7 @@
 | Текущая рабочая итерация | 00 — подготовка основы проекта. Ожидает проверки |
 | Последний проверенный HEAD основной ветки | [`c10b330c3fc851f931fc164603788f7598e01ecf`](https://github.com/volkov43-beep/vsz-positioning-calculator/commit/c10b330c3fc851f931fc164603788f7598e01ecf) |
 | Рабочая ветка | `chore/iteration-00-foundation` |
-| Актуальные PR | [PR рабочей ветки](https://github.com/volkov43-beep/vsz-positioning-calculator/pulls?q=is%3Apr+head%3Achore%2Fiteration-00-foundation) |
+| Актуальные PR | [Draft PR № 1 — основа проекта](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/1) |
 
 ## Завершённые результаты в рабочей ветке
 
