@@ -10,7 +10,7 @@
 | Текущая рабочая итерация | 02Б — публикация двух документов. Ожидает проверки в Draft PR |
 | Последний проверенный HEAD основной ветки | [`4ba92f262e047af31490db5cd3aeb531de9ce3ae`](https://github.com/volkov43-beep/vsz-positioning-calculator/commit/4ba92f262e047af31490db5cd3aeb531de9ce3ae) |
 | Рабочая ветка | `docs/iteration-02-math-spec` |
-| Актуальные PR | [PR рабочей ветки 02Б](https://github.com/volkov43-beep/vsz-positioning-calculator/pulls?q=is%3Apr+head%3Adocs%2Fiteration-02-math-spec) |
+| Актуальные PR | [Draft PR № 3 — математическая спецификация и аудит Excel](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/3) |
 
 ## Результат 02А
 
