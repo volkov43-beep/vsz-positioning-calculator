@@ -10,7 +10,7 @@
 | Текущая рабочая итерация | 01Б — перенос версии 0.1 в GitHub. Ожидает проверки в Draft PR |
 | Последний проверенный HEAD основной ветки | [`2cd6290971f8a0e0d145661993d5501dbe175802`](https://github.com/volkov43-beep/vsz-positioning-calculator/commit/2cd6290971f8a0e0d145661993d5501dbe175802) |
 | Рабочая ветка | `docs/iteration-01-normative-scope` |
-| Актуальные PR | [PR рабочей ветки 01Б](https://github.com/volkov43-beep/vsz-positioning-calculator/pulls?q=is%3Apr+head%3Adocs%2Fiteration-01-normative-scope) |
+| Актуальные PR | [Draft PR № 2 — нормативная спецификация 0.1](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/2) |
 
 ## Результаты итерации 00 в основной ветке
 
