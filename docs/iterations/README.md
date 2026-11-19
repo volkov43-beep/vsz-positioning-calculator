@@ -10,4 +10,4 @@
 | 03А | [Передача эталонного пакета из PRO](03a-handoff.md) |
 | 03Б | [Проверка и публикация эталонных данных](03-reference-fixtures.md) |
 | 04 | [Функциональные требования и UX, части 04-1–04-4](04-product-ux.md). Все четыре части объединены через [PR № 5](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/5). [Матрица соответствия MVP](04-product-ux.md#матрица-соответствия-mvp) |
-| 05 | [Архитектура и выбор технологий](05-architecture.md). Части 05-1 и 05-2 подготовлены к проверке, 05-3 запланирована. |
+| 05 | [Архитектура, модель данных и аудит](05-architecture.md). Все три части представлены в [Draft PR № 6](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/6). [Матрица MVP](../architecture/architecture-review.md#2-покрытие-требований-mvp) и [план реализации](../architecture/implementation-plan.md). |

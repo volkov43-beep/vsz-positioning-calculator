@@ -11,6 +11,7 @@
 | 04-1–04-4 | Завершены. [PR № 5](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/5) объединён в `main` коммитом [`2068fd4`](https://github.com/volkov43-beep/vsz-positioning-calculator/commit/2068fd449fd5da154c4b5c1fac8d5ac040ee19f1). [Требования](product/requirements.md), [сценарии](product/user-flows.md), [схемы экранов](product/ui-wireframes.md) и [матрица 23 требований MVP](iterations/04-product-ux.md#матрица-соответствия-mvp) вошли в основную ветку. |
 | 05-1 | [Техническая архитектура](architecture/architecture.md) и [ADR-0001](decisions/ADR-0001-application-architecture.md) подготовлены к проверке в [Draft PR № 6](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/6). Рекомендованы React, независимое ядро TypeScript, Vite, файл испытания и IndexedDB. ADR имеет статус Proposed. [Отчёт общей итерации 05](iterations/05-architecture.md). |
 | 05-2 | [Модель данных](architecture/data-model.md) и [контракты компонентов](architecture/contracts.md) представлены в том же [Draft PR № 6](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/6). Описаны сохранение исходных строк, четыре независимых состояния, проверка целостности файла и связь результата с редакцией входов. |
+| 05-3 | [Архитектурное заключение](architecture/architecture-review.md) и [план реализации](architecture/implementation-plan.md) представлены в общем [Draft PR № 6](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/6). У каждого из 23 требований MVP есть ответственный и проверка. Все три части 05 ожидают рассмотрения владельцем. |
 
 ## Открытые инженерные вопросы
 
@@ -21,4 +22,6 @@
 
 ## Следующая итерация
 
-**05-3 — заключительная часть архитектурного этапа по отдельному заданию.** Для неё подготовлены проект формата 1.0, границы компонентов и проверяемые сценарии сохранения, импорта и пересчёта. Работа продолжается в ветке `docs/iteration-05-architecture` и Draft PR № 6.
+Владельцу проекта переданы на проверку три части 05 и предложение [выполнить независимый контроль 06 существующими средствами](architecture/implementation-plan.md#этап-06-и-существующие-средства-проверки). Назначение этапа 06 в утверждённой дорожной карте сохранено.
+
+**До реализации основного ядра** PRO готовит исправление §9.2 и §9.4 и независимые доказательства на P02. Метролог и владелец фиксируют решения по методу s и политике в пределах своей ответственности. Work сверяет и публикует согласованные материалы. [Задача и условия закрытия](architecture/implementation-plan.md#обязательная-задача-pro-и-work).
