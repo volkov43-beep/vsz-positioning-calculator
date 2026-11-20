@@ -22,7 +22,8 @@
 | 06 | Work Astra | [Независимый контроль на Python](iterations/06-independent-control.md). [06-1](validation/06-reference-certification.md), [06-2](validation/06-input-loss-and-failures.md) и [06-3](validation/06-final-verification.md) объединены через [PR №8](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/8). Отдельное решение о допуске производственного №07 открыто | Ожидает проверки |
 | 07 | Work Astra | Производственные вычисления для одной позиции по согласованной политике | Заблокирован |
 | 07-Д1 | Work Astra | [Экспериментальная позиция TypeScript](iterations/07-demo-calculator.md), отдельная ветка по решению владельца, [Draft PR №9](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/9) | Ожидает проверки |
-| 07-Д2 / 07-Д3 | Work Astra | Демонстрационный расчёт оси и независимая сверка / веб-интерфейс в том же PR | Запланирован |
+| 07-Д2 | Work Astra | [Расчёт всей оси и независимая побитовая сверка](iterations/07-demo-calculator.md#07-д2--расчёт-всей-оси) в Draft PR №9 | Ожидает проверки |
+| 07-Д3 | Work Astra | Веб-интерфейс демонстрации на синтетических данных в том же PR | Запланирован |
 | 08 | Work Astra | Итоговые показатели оси | Запланирован |
 | 09А | PRO | Независимый аудит расчётного ядра | Запланирован |
 | 09Б | Work Astra | Утверждённые результаты аудита и выявленные расхождения зафиксированы | Запланирован |

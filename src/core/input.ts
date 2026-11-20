@@ -24,6 +24,7 @@ function canonical(digits: string, power: number, sign: string): string {
 }
 
 export function normalize(raw: string | null, sourceUnit: string, address: Address, to: "um" | "mm" = "um") {
+  if (sourceUnit === "mm/um" || sourceUnit === "um/mm") invalid({ ...address, field: "sourceUnit" }, "UNIT_AMBIGUOUS", "Укажите одну единицу отклонения.");
   if (sourceUnit !== "um" && sourceUnit !== "mm") invalid({ ...address, field: "sourceUnit" }, "UNIT_UNKNOWN", "Укажите мм или мкм.");
   if (raw === null || raw === undefined) invalid(address, "OBS_MISSING", "Отсутствует измеренное отклонение.");
   if (raw === "") invalid(address, "OBS_EMPTY", "Заполните исходное значение.");
@@ -62,7 +63,7 @@ export function normalize(raw: string | null, sourceUnit: string, address: Addre
 
 export type Trace = ReturnType<typeof normalize>;
 
-export function readPosition(position: PositionInput) {
+export function readPosition(position: PositionInput, seenBits = new Map<bigint, Trace>()) {
   const { positionId, observations } = position;
   const pos = { positionId, field: "positionId" };
   if (typeof positionId !== "string" || !positionId.trim()) invalid(pos, "POSITION_ID", "Укажите идентификатор позиции.");
@@ -70,7 +71,6 @@ export function readPosition(position: PositionInput) {
   if (!observations || typeof observations !== "object") invalid(pos, "DIRECTION_MISSING", "Нужны обе направленные серии.");
   if (Object.keys(observations).some(k => k !== "up" && k !== "down"))
     invalid(pos, "DIRECTION_UNKNOWN", "Допустимы направления up и down.");
-  const seenBits = new Map<bigint, Trace>();
   const traces: Record<Direction, Trace[]> = { up: [], down: [] };
   for (const direction of directions) {
     const address = { positionId, field: "observations", direction };

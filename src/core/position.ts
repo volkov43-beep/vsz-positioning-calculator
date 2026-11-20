@@ -49,6 +49,30 @@ function present(exact: Position<Expr>, positionId: string, source?: Position<Ex
     activeCandidates: [...exact.activeCandidates] };
 }
 
+/** Both entry points use the same arithmetic on normalized observations. */
+export function evaluatePosition(positionId: string, prepared: ReturnType<typeof readPosition>) {
+  const { target, traces } = prepared;
+  const targetMm = rounded(new Expr(target.d), { positionId, field: "targetMm" });
+  const protectedPosition = seriesFrom(traces, "b", positionId);
+  const changed = [...traces.up, ...traces.down].filter(t => t.error.n !== 0n).length;
+  const source = changed ? seriesFrom(traces, "d", positionId) : protectedPosition;
+  const fields = present(protectedPosition, positionId, changed ? source : undefined);
+  return { position: { positionId, targetMm, ...fields }, protectedPosition, source, changed,
+    representedInputs: { target, ...traces } };
+}
+
+export function validateAttempt(profile: typeof demoProfile, runId: string, trialId: string,
+                                inputRevision: number, inputDigest: string, positionId?: string) {
+  for (const name of Object.keys(demoProfile) as (keyof typeof demoProfile)[]) {
+    if (profile?.[name] !== demoProfile[name]) invalid({ positionId, field: name }, "PROFILE_UNSUPPORTED",
+      "Параметр не поддерживается исследовательским профилем.");
+  }
+  if (typeof runId !== "string" || !runId.trim() || typeof trialId !== "string" || !trialId.trim() ||
+      !Number.isSafeInteger(inputRevision) || inputRevision < 1 || typeof inputDigest !== "string" ||
+      !/^[0-9a-f]{64}$/.test(inputDigest))
+    invalid({ positionId, field: "attempt" }, "ATTEMPT_KEY", "Проверьте идентификаторы, редакцию и SHA-256 снимка.");
+}
+
 /** Pure, synchronous position primitive. The caller owns the enclosing trial and its revision. */
 export function calculatePosition(request: Request) {
   const { position, profile, runId, trialId, inputRevision, inputDigest } = structuredClone(request);
@@ -62,25 +86,11 @@ export function calculatePosition(request: Request) {
   try {
     if (!position || typeof position !== "object") invalid({ positionId, field: "position" }, "POSITION_MISSING",
       "Отсутствует входной снимок позиции.");
-    for (const name of Object.keys(demoProfile) as (keyof typeof demoProfile)[]) {
-      if (profile?.[name] !== demoProfile[name]) invalid({ positionId, field: name }, "PROFILE_UNSUPPORTED",
-        "Параметр не поддерживается исследовательским профилем.");
-    }
-    if (typeof runId !== "string" || !runId.trim() || typeof trialId !== "string" || !trialId.trim() ||
-        !Number.isSafeInteger(inputRevision) || inputRevision < 1 || typeof inputDigest !== "string" ||
-        !/^[0-9a-f]{64}$/.test(inputDigest))
-      invalid({ positionId, field: "attempt" }, "ATTEMPT_KEY", "Проверьте идентификаторы, редакцию и SHA-256 снимка.");
-    const { target, traces } = readPosition(position);
-    const targetMm = rounded(new Expr(target.d), { positionId, field: "targetMm" });
-    const protectedPosition = seriesFrom(traces, "b", positionId);
-    // A demonstrated loss of a nonzero derived value can occur with ten distinct machine inputs.
-    const sourceChanged = [...traces.up, ...traces.down].some(t => t.error.n !== 0n);
-    const source = sourceChanged ? seriesFrom(traces, "d", positionId) : undefined;
-    const fields = present(protectedPosition, positionId, source);
-    return { ...common, state: "research-computed" as const,
-      position: { positionId, targetMm, ...fields },
+    validateAttempt(profile, runId, trialId, inputRevision, inputDigest, positionId);
+    const found = evaluatePosition(positionId, readPosition(position));
+    return { ...common, state: "research-computed" as const, position: found.position,
       units: { coordinate: "mm", deviation: "um", variance: "um2" } as const,
-      representedInputs: { target, ...traces }, protectedPosition,
+      representedInputs: found.representedInputs, protectedPosition: found.protectedPosition,
       warnings: [{ reason: "budget-not-approved", stage: "budget", severity: "warning",
         message: "Исследовательский расчёт над b. Бюджеты влияния d→b ожидают согласования." }] };
   } catch (error) {

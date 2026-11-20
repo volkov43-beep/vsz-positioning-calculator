@@ -1,12 +1,13 @@
 export type Direction = "up" | "down";
 export interface Address {
-  positionId: string;
+  positionId?: string;
   field: string;
   direction?: Direction;
   repeat?: number;
 }
-export type Stage = "parse" | "conversion" | "collision" | "representation" | "comparison" | "rounding" | "resource";
+export type Stage = "parse" | "aggregation" | "conversion" | "collision" | "representation" | "comparison" | "rounding" | "resource";
 const actions: Record<Stage, string> = {
+  aggregation: "Проверьте состав позиций для осевого расчёта.",
   parse: "Сверьте параметр, подписи серий и исходные записи.",
   conversion: "Проверьте единицу и диапазон исходного значения.",
   collision: "Сопоставьте исходные записи по обоим адресам.",
