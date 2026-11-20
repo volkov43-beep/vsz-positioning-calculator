@@ -1,5 +1,7 @@
 # Заключение по архитектуре калькулятора ВСЗ
 
+**Обновление PRE-06.** Ниже сохранены выводы аудита архитектуры на момент итерации 05. Старые §9.2 и §9.4 относятся к [редакции 0.1](https://github.com/volkov43-beep/vsz-positioning-calculator/blob/0eba9b485537c10fdeda4e1f3f6a8b058312c1a7/docs/methodology/math-spec.md). В [проекте PRE-06](../validation/pre06-numerical-policy-verification.md) тексты заменены. Утверждение численной политики и выполнение 06 продолжают блокировать реализацию 07.
+
 **Итог 05-3 — готово с ограничениями.** Все 23 обязательных требования имеют ответственного и проверяемый контракт. Владелец может рассматривать архитектуру и способ проведения этапа 06. Реализацию основного ядра блокируют дефект численной политики и отсутствие согласованного решения по методу s.
 
 ## 1. Что проверено
@@ -7,7 +9,7 @@
 | Источник | Основание проверки |
 | --- | --- |
 | [Требования](../product/requirements.md), [сценарии](../product/user-flows.md), [схемы экранов](../product/ui-wireframes.md) и [отчёт 04](../iterations/04-product-ux.md) | Состав MVP, пользовательские действия, признаки успеха и отказа. |
-| [Нормативная область 0.1](../methodology/scope.md), [математическая спецификация 0.1](../methodology/math-spec.md), [проверка численной политики](../validation/numerical-policy-review.md) | Граница профиля, знаки, направления, размерности, смысл результатов и решения, требующие метролога. |
+| [Нормативная область 0.1](../methodology/scope.md), [математическая спецификация 0.1](https://github.com/volkov43-beep/vsz-positioning-calculator/blob/0eba9b485537c10fdeda4e1f3f6a8b058312c1a7/docs/methodology/math-spec.md), [проверка численной политики](../validation/numerical-policy-review.md) | Граница профиля, знаки, направления, размерности, смысл результатов и решения, требующие метролога. |
 | [Архитектура](architecture.md), [модель испытания](data-model.md), [контракты](contracts.md), [ADR-0001](../decisions/ADR-0001-application-architecture.md) | Ответственность компонентов, редакции, актуальность, ошибки, хранение и границы доверия. |
 | [README эталонов](../../tests/fixtures/v1/README.md), [манифест](../../tests/fixtures/v1/manifest.json), [план проверок](../validation/reference-test-plan.md), [журнал опытов](../../tests/fixtures/v1/checks/numerical-results.json) | Независимые ожидания, отрицательные наборы, источники экстремумов и численные контрпримеры. |
 | [План реализации](implementation-plan.md), [STATUS](../STATUS.md), [ROADMAP](../ROADMAP.md), [отчёт 05](../iterations/05-architecture.md) | Порядок этапов и фактический статус проекта. |
