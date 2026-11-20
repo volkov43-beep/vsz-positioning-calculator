@@ -1,6 +1,6 @@
 # Итерация 06. Независимый контрольный расчёт на Python
 
-Исходный HEAD main — `8de81e3aaaed98f22aae267b25546ee82e1ba9e9` после [слияния PR №7](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/7). Общая ветка трёх частей — `test/iteration-06-independent-verification`. Этап 06 выполняется. К рассмотрению подготовлена часть 06-1.
+Исходный HEAD main — `8de81e3aaaed98f22aae267b25546ee82e1ba9e9` после [слияния PR №7](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/7). Общая ветка трёх частей — `test/iteration-06-independent-verification`. Этап 06 выполняется. Часть 06-1 опубликована в [общем Draft PR №8](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/8). [Коммит с инструментом и результатами](https://github.com/volkov43-beep/vsz-positioning-calculator/commit/1edfa50fdf8658de3e4c2b374c2a0c946c0d2436).
 
 ## 06-1. Вычислительный слой и правильное округление
 
