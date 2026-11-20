@@ -116,6 +116,17 @@ function prepareAxis(inputs: AxisInputs) {
   return prepared;
 }
 
+/** Input-only action for the editor. It checks the same snapshot gate as a real attempt. */
+export function checkAxisInputs(inputs: AxisInputs) {
+  try {
+    prepareAxis(inputs);
+    return { valid: true as const };
+  } catch (error) {
+    if (!(error instanceof CoreIssue)) throw error;
+    return { valid: false as const, issue: error };
+  }
+}
+
 function compute(prepared: ReturnType<typeof prepareAxis>) {
   const representedRows: Located[] = [];
   const sourceRows: Located[] = [];

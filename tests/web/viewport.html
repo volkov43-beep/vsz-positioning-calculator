@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="ru"><meta charset="utf-8"><title>Проверка интерфейса · 320 CSS px</title>
+<style>
+  *{box-sizing:border-box}body{margin:0;background:#e6eded;font:16px system-ui;color:#132e38}
+  iframe{width:320px;height:800px;display:block;border:0;float:left;background:white}aside{display:grid;gap:12px;padding:24px;max-width:400px}button{font:inherit}
+</style>
+<iframe src="../../index.html" title="Калькулятор на ширине 320 px"></iframe>
+<aside><h1>Проверка 320 CSS px</h1><button>Текст 100%</button><button>Текст 200%</button><output aria-live="polite"></output></aside>
+<script>
+  const frame=document.querySelector("iframe"),status=document.querySelector("output");
+  function measure(){const root=frame.contentDocument.documentElement;status.textContent="Ширина области: "+root.clientWidth+" px; ширина страницы: "+root.scrollWidth+" px; текст: "+getComputedStyle(root).fontSize;}
+  frame.addEventListener("load",()=>{new ResizeObserver(measure).observe(frame.contentDocument.body);measure();});
+  for(const [index,button] of [...document.querySelectorAll("button")].entries())button.onclick=()=>{frame.contentDocument.documentElement.style.fontSize=index?"200%":"100%";measure();};
+</script></html>
