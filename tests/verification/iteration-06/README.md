@@ -54,3 +54,30 @@ sha256sum "$OUT/input-loss.json"
 В JSON по пути `sources → случай` доступны исходный синтетический снимок, `observations` с точными d, b, e и адресами, `series` с a, β, β² и `fields` с y(d), y(b), Q, модулем воздействия и знаком его сравнения с Q. Корневое выражение записано как рациональная часть плюс сумма пар «коэффициент, подкоренная дробь». В `groups` для каждого сценария хранятся ожидаемое и наблюдаемое состояния. Там же находятся конверты отказа. Тестовые параметры A и ρ используются только в бюджетных свидетелях. Публичный запуск не требует архива PRE-06.
 
 Без `--output` печатается только сводка. Ненулевой код завершения означает расхождение, нарушение точного тождества или неполную проверку. Запись идёт в новый файл вне репозитория. [Количественные результаты и ограничения](../../../docs/validation/06-input-loss-and-failures.md).
+
+## 06-3. Два чистых прогона
+
+Из репозитория с доступным коммитом инструмента выполнить следующие команды в Bash. Для измерений использовались Linux x86_64, CPython 3.12.14 и mpmath 1.3.0. Оба запуска последовательны. Результаты пишутся в новые каталоги вне рабочих деревьев.
+
+```bash
+set -e
+VREV=50411d0975f85e48c350d796060c27e962b135d8
+VOUT=$(mktemp -d)
+for replay in a b; do
+  git worktree add --detach "$VOUT/tree-$replay" "$VREV"
+  (
+    cd "$VOUT/tree-$replay"
+    test "$(git rev-parse HEAD)" = "$VREV"
+    test -z "$(git status --porcelain)"
+    python -B tests/verification/iteration-06/verify_final.py --out "$VOUT/replay-$replay"
+    test -z "$(git status --porcelain)"
+  )
+done
+cmp "$VOUT/replay-a/input-sha256.json" "$VOUT/replay-b/input-sha256.json"
+cmp "$VOUT/replay-a/semantic.json" "$VOUT/replay-b/semantic.json"
+sha256sum "$VOUT"/replay-{a,b}/{semantic,final,output-sha256}.json
+```
+
+[verify_final.py](verify_final.py) проверяет генератор и три исторических журнала, запускает 06-1, 06-2, модульные тесты, сверку по адресам и четыре отдельных процесса P05. [final_checks.py](final_checks.py) проверяет мутации и состояния с ограниченным ресурсом. [verify_scale.py](verify_scale.py) регистрирует свидетельства и источники по каждой оси. [bounded_comparison.py](bounded_comparison.py) ограничивает уточнение 1024 значащими битами. Для отдельного размера можно выполнить `python -B tests/verification/iteration-06/verify_scale.py --positions 1000 --output "$VOUT/one-size.json"`. Пиковый RSS в КиБ доступен на Linux.
+
+`input-sha256.json` содержит SHA-256 каждого входного файла и проверяющего модуля. `output-sha256.json` содержит SHA-256 каждого файла результатов до записи самого реестра. `final.json` сохраняет сырые метрики, а `semantic.json` исключает только два ключа четырёх P05 — `wall_seconds` и `peak_rss_kib`. Описание среды сохраняется. Для воспроизведения опубликованного семантического SHA нужна совпадающая записанная среда. Ошибка проверки или несовпадение доказательств прерывает запуск. Исходный набор, контролёр и результаты сравнения различимы по отдельным SHA. [Результаты, контрольные суммы и границы вывода](../../../docs/validation/06-final-verification.md).

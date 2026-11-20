@@ -12,4 +12,4 @@
 | 04 | [Функциональные требования и UX, части 04-1–04-4](04-product-ux.md). Все четыре части объединены через [PR № 5](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/5). [Матрица соответствия MVP](04-product-ux.md#матрица-соответствия-mvp) |
 | 05 | [Архитектура, модель данных и аудит](05-architecture.md). Все три части объединены в [PR № 6](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/6). |
 | PRE-06 | [Перенос проекта политики и воспроизведение независимых проверок](pre06-numerical-policy.md). Решения владельца и метролога открыты. |
-| 06 | [Независимый контроль на Python](06-independent-control.md). Части 06-1 и 06-2 представлены на проверку в [Draft PR №8](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/8). |
+| 06 | [Независимый контроль на Python](06-independent-control.md). Все три части и [итоговое заключение](../validation/06-final-verification.md) представлены на проверку в [Draft PR №8](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/8). |

@@ -19,7 +19,7 @@
 | 05-2 | Work Astra | [Модель данных испытания](architecture/data-model.md) и [контракты компонентов](architecture/contracts.md) | Завершён |
 | 05-3 | Work Astra | [Заключение по архитектуре и 23 требованиям MVP](architecture/architecture-review.md) и [план реализации](architecture/implementation-plan.md) в общем PR № 6 | Завершён |
 | PRE-06 | PRO / Work Astra | [Проект численной политики и независимая проверка](validation/pre06-numerical-policy-verification.md), [отчёт](iterations/pre06-numerical-policy.md), [PR №7](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/7) | Завершён |
-| 06 | Work Astra | [Независимый контрольный расчёт на Python](iterations/06-independent-control.md), три части в одном Draft PR. [06-1](validation/06-reference-certification.md) и [06-2](validation/06-input-loss-and-failures.md) ожидают проверки, 06-3 запланирована | Выполняется |
+| 06 | Work Astra | [Независимый контроль на Python](iterations/06-independent-control.md). [06-1](validation/06-reference-certification.md), [06-2](validation/06-input-loss-and-failures.md) и [06-3](validation/06-final-verification.md) представлены в одном [Draft PR №8](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/8) | Ожидает проверки |
 | 07 | Work Astra | Вычисления для одной позиции | Заблокирован |
 | 08 | Work Astra | Итоговые показатели оси | Запланирован |
 | 09А | PRO | Независимый аудит расчётного ядра | Запланирован |
@@ -36,6 +36,6 @@
 | 17 | Work Astra | Демонстрационная сборка | Запланирован |
 | 18 | Work Astra | Публичный выпуск | Запланирован |
 
-В 06-1 переиспользованы [инструменты 03А](architecture/implementation-plan.md#этап-06-и-существующие-средства-проверки) и добавлен независимый контроль ячеек округления. Перед 07–08 требуются принятый результат самостоятельного этапа 06 и решения по численной политике. Исходное требование этапа 05 зафиксировано в [задаче PRO и Work по §9.2, §9.4 и методу s](architecture/implementation-plan.md#обязательная-задача-pro-и-work).
+В 06-1 переиспользованы [инструменты 03А](architecture/implementation-plan.md#этап-06-и-существующие-средства-проверки) и добавлен независимый контроль ячеек округления. Перед 07–08 владелец принимает результат 06 после рассмотрения [условий перехода](validation/06-final-verification.md#14-условия-перехода-к-07) и согласования численной политики с метрологом. Исходное требование этапа 05 зафиксировано в [задаче PRO и Work по §9.2, §9.4 и методу s](architecture/implementation-plan.md#обязательная-задача-pro-и-work).
 
 Допустимые статусы этапа — «Запланирован», «Выполняется», «Ожидает проверки», «Завершён» и «Заблокирован». Основание для изменения статуса фиксируется в [отчёте итерации](iterations/README.md). Ближайшая задача и открытые вопросы перечислены в [STATUS](STATUS.md).
