@@ -5,6 +5,7 @@ import {
   directionText,
   displayNumber as fmt,
   metrics,
+  travelEntry,
   type LocalPosition,
   type Success,
   warning,
@@ -47,6 +48,8 @@ export function Plot({
     min = -1;
     max = 1;
   }
+  const coincident = rows.every((p) => lines.every(([d, k]) => p[d][k] === p.up.mean));
+  const zeroLine = coincident && rows.every((p) => p.up.mean === 0);
   const x = (p: LocalPosition) =>
     82 + unitFraction(p.targetMm, rows[0].targetMm, rows[rows.length - 1].targetMm) * 550;
   const y = (v: number) => 162 - unitFraction(v, min, max) * 136;
@@ -126,6 +129,9 @@ export function Plot({
           </text>
         </svg>
       </div>
+      {coincident && <p className="plot-note">{zeroLine
+        ? "Все шесть рядов совпадают на 0 мкм."
+        : "Все шесть рядов совпадают в каждой позиции."}</p>}
       <ul className="legend">
         {lines.map(([d, k, name, color, dash]) => (
           <li key={name}>
@@ -167,20 +173,20 @@ export function Totals({ result }: { result: Success }) {
         <h2>Показатели оси</h2>
         <span>12 характеристик · мкм</span>
       </div>
-      <div className="metric-grid">
-        {metrics.map(([key, symbol, name, help]) => (
-          <div className="metric" key={key}>
-            <div className="metric-head">
-              <b>{symbol}</b>
-              <span>{name}</span>
+      {(["B", "A", "E", "R", "M"] as const).map((family) => (
+        <div className="metric-grid" data-family={family} key={family}
+          role="group" aria-label={"Характеристики " + family}>
+          {metrics.filter(([key]) => key.startsWith(family)).map(([key, symbol, name, help]) => (
+            <div className="metric" key={key}>
+              <div className="metric-head"><b>{symbol}</b><span>{name}</span></div>
+              <div className="value">
+                <output data-metric={key}>{fmt(result.axis[key])}</output> <small>мкм</small>
+              </div>
+              <p>{help}</p>
             </div>
-            <div className="value">
-              <output data-metric={key}>{fmt(result.axis[key])}</output> <small>мкм</small>
-            </div>
-            <p>{help}</p>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      ))}
     </section>
   );
 }
@@ -283,6 +289,7 @@ export function Method({ result }: { result: Success }) {
           <dt>Применимость процедуры</dt>
           <dd>
             {result.applicability.state === "outOfScope" ? "Вне границ профиля" : "Не подтверждена"}
+            {result.applicability.issues.includes("TRAVEL_UNCONFIRMED") ? " · полный ход не подтверждён" : ""}
             {result.applicability.issues.includes("PLAN_TOO_SHORT") ? " · менее пяти позиций" : ""}
             {result.applicability.issues.includes("OUTSIDE_TRAVEL_PROFILE")
               ? " · полный ход вне профиля"
@@ -312,7 +319,7 @@ export function Report({ result, req, generated }: { result: Success; req: AxisR
           <div>
             <dt>Ось / полный ход</dt>
             <dd>
-              {req.inputs.axis.name} / {req.inputs.axis.fullTravelMm || "не указан"} мм
+              {req.inputs.axis.name} / {travelEntry(req.inputs.axis.fullTravelMm).label}
             </dd>
           </div>
           <div>

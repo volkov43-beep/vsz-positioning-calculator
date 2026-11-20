@@ -7,10 +7,10 @@ import {
   type AxisInputs,
   type AxisRequest,
 } from "../core/axis";
-import type { CoreIssue } from "../core/diagnostics";
+import type { Address, CoreIssue } from "../core/diagnostics";
 import { Editor } from "./Editor";
 import { Plot, PositionDetails, Report, Totals, Method } from "./Results";
-import { draft, editorPosition, fieldId, sampleData, warning, type Success } from "./model";
+import { diagnosticAddress, diagnosticTarget, draft, editorPosition, sampleData, warning, type Success } from "./model";
 import "./style.css";
 
 type Page = "Начало" | "Испытание" | "Результаты" | "Отчёт";
@@ -102,8 +102,8 @@ function Home({ start }: { start: (synthetic: boolean) => void }) {
       <section className="home-note">
         <h2>Синтетический пример T06</h2>
         <p>
-          В примере пять позиций и 50 измерений. Рассчитайте ось, затем измените наблюдение в позиции p03 и
-          сравните результаты.
+          В примере пять позиций и 50 измерений. Рассчитайте ось, затем измените в p03 пятый повтор ↑ с 20 на 0 и
+          сравните B и B̄ после пересчёта.
         </p>
       </section>
     </>
@@ -252,19 +252,14 @@ function App() {
       if (active.current === submitted) setBusy(false);
     }
   }
-  function focusIssue() {
-    const f = issue?.field;
-    if (!f) return;
+  function focusInput(f: Address) {
     if (f.positionId) select(f.positionId);
     setPage("Испытание");
     requestAnimationFrame(() => {
-      const id = f.positionId
-        ? fieldId(f.positionId, f.direction && f.repeat ? "raw" : f.field, f.direction, f.repeat)
-        : f.field;
-      const element = document.getElementById(id) ?? document.getElementById("axis");
-      element?.focus();
+      document.getElementById(diagnosticTarget(f))?.focus();
     });
   }
+  const selectedInput = req?.inputs.positions.find((row) => row.positionId === selected);
   const chosen = current?.positions.find((p) => p.positionId === selected) ?? current?.positions[0];
   const src = current?.inputSnapshot.positions.find((p) => p.positionId === chosen?.positionId);
   return (
@@ -347,23 +342,17 @@ function App() {
                     <h2>Проверка испытания</h2>
                     {issue && (
                       <div className="error" id="issue" role="alert">
-                        <strong>
-                          {issue.code}
-                          {issue.reason === issue.code ? "" : " · " + issue.reason}
-                        </strong>
-                        <p>{issue.message}</p>
-                        <p>
-                          {[
-                            issue.field.positionId,
-                            issue.field.direction,
-                            issue.field.repeat && "повтор " + issue.field.repeat,
-                            issue.field.field,
-                          ]
-                            .filter(Boolean)
-                            .join(" / ")}
-                          . {issue.action}
-                        </p>
-                        <button onClick={focusIssue}>К полю ввода</button>
+                        <strong>{issue.message}</strong>
+                        <p className="issue-address">{diagnosticAddress(issue.field)}</p>
+                        <button onClick={() => focusInput(issue.field)}>
+                          {issue.field.direction && !issue.field.repeat ? "К серии измерений" : "К полю ввода"}
+                        </button>
+                        <p>{issue.action}</p>
+                        <details>
+                          <summary>Технические сведения</summary>
+                          <code>{issue.code}{issue.reason === issue.code ? "" : " · " + issue.reason}</code>
+                          <p>{issue.field.field}</p>
+                        </details>
                       </div>
                     )}
                     <dl className="facts">
@@ -419,7 +408,13 @@ function App() {
                       Ось {req.inputs.axis.name} · {current.positionCount} позиций ·{" "}
                       {current.observationCount} наблюдений
                     </span>
-                    <button onClick={() => go("Испытание")}>Изменить измерения</button>
+                    {req.origin.kind === "synthetic" && req.inputs.positions.some((p) => p.positionId === "p03") ? (
+                      <button onClick={() => focusInput({ positionId: "p03", direction: "up", repeat: 5, field: "raw" })}>
+                        Изменить p03 ↑ №5
+                      </button>
+                    ) : (
+                      <button onClick={() => go("Испытание")}>Изменить измерения</button>
+                    )}
                   </div>
                   <Totals result={current} />
                   <Plot positions={current.positions} selected={selected} select={select} />
@@ -444,11 +439,12 @@ function App() {
         <b>ВСЗ</b>
         <span>Измерения обрабатываются в этой вкладке</span>
       </footer>
-      <dialog ref={dialog} onCancel={() => setConfirm(null)}>
-        <h2>{confirm === "remove" ? "Удалить выбранную позицию?" : "Заменить текущее испытание?"}</h2>
-        <p>
+      <dialog ref={dialog} aria-labelledby="dialog-title" aria-describedby="dialog-message" onCancel={() => setConfirm(null)}>
+        <h2 id="dialog-title">{confirm === "remove" ? "Удалить позицию " + selected + "?" : "Заменить текущее испытание?"}</h2>
+        <p id="dialog-message">
           {confirm === "remove"
-            ? "Её наблюдения будут удалены из рабочей копии."
+            ? (selectedInput?.targetMm.trim() ? "Координата " + selectedInput.targetMm + " мм. " : "Координата не указана. ") +
+              "Все десять полей измерений этой позиции будут удалены из рабочей копии."
             : "Введённые изменения будут потеряны."}
         </p>
         <div className="actions">
