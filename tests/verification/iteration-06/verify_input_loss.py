@@ -51,7 +51,7 @@ class Checks:
         run = None
         if reason:
             run = blocked_attempt(group+"/"+name, snapshot, stage, reason, field, evidence)
-            require(valid_block(run, snapshot, reason), name + ": incomplete failure envelope")
+            require(valid_block(run, snapshot, reason, source_id=group+"/"+name), name + ": incomplete failure envelope")
         self.add(group, name, expected or "checked", reason or "checked", run or evidence)
         if expected:
             self.counts["expected_blocks"] += 1

@@ -19,13 +19,13 @@ from observations import DIRECTIONS, load_candidate, observe
 from rounding import INFINITY, OVERFLOW_MIDPOINT, Value, ZERO, certify
 
 
-def select(entries, largest):
+def select(entries, largest, compare=Value.compare):
     """Return the extremum and every exact winner, preserving source order."""
     iterator = iter(entries)
     label, best = next(iterator)
     winners = [label]
     for label, value in iterator:
-        comparison = value.compare(best)
+        comparison = compare(value, best)
         if comparison == 0:
             winners.append(label)
         elif comparison == (1 if largest else -1):
@@ -33,21 +33,21 @@ def select(entries, largest):
     return best, winners
 
 
-def position_reference(source, factor):
+def position_reference(source, factor, compare=Value.compare):
     series = {}
     for direction in DIRECTIONS:
         decimals = [v1.parse_decimal(item["value"]) * factor for item in source[direction]]
         values = []
         for decimal in decimals:
             actual = float(decimal)
-            if not math.isfinite(actual) or certify(Value(decimal), actual)["status"] != "certified":
+            if not math.isfinite(actual) or certify(Value(decimal), actual, compare=compare)["status"] != "certified":
                 raise ArithmeticError("Input conversion outside the certified positive corpus")
             values.append(Q.from_float(actual))
         series[direction] = values
-    return exact_position(series)
+    return exact_position(series, compare)
 
 
-def exact_position(series):
+def exact_position(series, compare=Value.compare):
     """Evaluate the same mathematical fields on five exact d, b or error values."""
     fields = {}
     for direction in DIRECTIONS:
@@ -69,16 +69,16 @@ def exact_position(series):
     fields["B_i"] = fields["mean_up"] - fields["mean_down"]
     fields["C_i"] = Value(abs(fields["B_i"].rational)) + fields["twoSd_up"] + fields["twoSd_down"]
     candidates = [(key, fields[key]) for key in ("C_i", "R_i_up", "R_i_down")]
-    strongest, branches = select(candidates, True)
-    upper, _ = select(((d, fields["upper_" + d]) for d in DIRECTIONS), True)
-    lower, _ = select(((d, fields["lower_" + d]) for d in DIRECTIONS), False)
+    strongest, branches = select(candidates, True, compare)
+    upper, _ = select(((d, fields["upper_" + d]) for d in DIRECTIONS), True, compare)
+    lower, _ = select(((d, fields["lower_" + d]) for d in DIRECTIONS), False, compare)
     fields["R_i"] = upper - lower
-    if fields["R_i"].compare(strongest) != 0:
+    if compare(fields["R_i"], strongest) != 0:
         raise ArithmeticError("Covering interval and maximum branch disagree")
     return fields, branches
 
 
-def axis_reference(positions):
+def axis_reference(positions, compare=Value.compare):
     sources, axis = {}, {}
 
     def pick(name, column, directions, largest, absolute=False):
@@ -90,7 +90,7 @@ def axis_reference(positions):
                 if absolute:
                     value = Value(abs(value.rational))
                 entries.append(({"position_id": pid, "direction": direction}, value))
-        best, sources[name] = select(entries, largest)
+        best, sources[name] = select(entries, largest, compare)
         return best
 
     for suffix, directions in (("", DIRECTIONS), ("_up", ("up",)), ("_down", ("down",))):

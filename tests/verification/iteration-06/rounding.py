@@ -59,7 +59,7 @@ def neighbor(x, toward):
     return Fraction.from_float(adjacent)
 
 
-def certify(value, actual):
+def certify(value, actual, *, compare=Value.compare):
     """Certify the proposed bit pattern directly, without rounding the reference.
 
     Return a witness of membership (left/right are exact comparison signs).
@@ -71,19 +71,19 @@ def certify(value, actual):
             return {**evidence, "status": "mismatch"}
         if isinf(actual):
             magnitude = value.scaled(1 if actual > 0 else -1)
-            relation = magnitude.compare(Value(OVERFLOW_MIDPOINT))
+            relation = compare(magnitude, Value(OVERFLOW_MIDPOINT))
             accepts = relation >= 0
             evidence["overflow_threshold"] = relation
         else:
             center = Fraction.from_float(actual)
             lo = (neighbor(actual, -INFINITY) + center) / 2
             hi = (center + neighbor(actual, INFINITY)) / 2
-            left, right = value.compare(Value(lo)), value.compare(Value(hi))
+            left, right = compare(value, Value(lo)), compare(value, Value(hi))
             even = int(evidence["bits"], 16) % 2 == 0
             accepts = (left > 0 or (even and left == 0)) and (right < 0 or (even and right == 0))
             evidence.update(left=left, right=right, even=even)
             if actual == 0:
-                sign = value.compare(ZERO)
+                sign = compare(value, ZERO)
                 evidence["exact_sign"] = sign
                 accepts = accepts and ((sign < 0) == (copysign(1, actual) < 0))
     except ArithmeticError as error:
