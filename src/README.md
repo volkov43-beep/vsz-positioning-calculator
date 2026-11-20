@@ -106,3 +106,5 @@ JS
 [Результаты и скриншоты проверки](../docs/iterations/07-demo-calculator.md#07-д3--живой-веб-прототип).
 
 Для показа директору используйте [проверенный автономный запуск и инструкции для PowerShell](../docs/demo-readiness/runbook.md). В распакованном комплекте достаточно Node.js 24. [Сценарий на 6 минут](../docs/demo-readiness/director-demo-script.md).
+
+Отдельный режим для GitHub Pages собирается командой `npm run build -- --mode pages`. Для локального просмотра этой версии используйте `npm run preview -- --mode pages` и откройте путь /vsz-positioning-calculator/. [Настройка публикации и проверка по HTTPS](../docs/demo-readiness/github-pages-deployment.md).

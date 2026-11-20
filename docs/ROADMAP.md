@@ -24,9 +24,10 @@
 | 07-Д1 | Work Astra | [Экспериментальная позиция TypeScript](iterations/07-demo-calculator.md), отдельная ветка по решению владельца, [PR №9](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/9) | Завершён |
 | 07-Д2 | Work Astra | [Расчёт всей оси и независимая побитовая сверка](iterations/07-demo-calculator.md#07-д2--расчёт-всей-оси) в PR №9 | Завершён |
 | 07-Д3 | Work Astra | [Веб-прототип, браузерная проверка T06 и скриншоты](iterations/07-demo-calculator.md#07-д3--живой-веб-прототип) в PR №9 | Завершён |
-| DEMO-08А | Work Astra | [Браузерный аудит и скриншоты](demo-readiness/audit.md) экспериментального прототипа, объединённого через PR №9 | Ожидает проверки |
-| DEMO-08Б | Work Astra | [Исправления по реестру и браузерная проверка](demo-readiness/fixes.md) в общем Draft PR №10 | Ожидает проверки |
-| DEMO-08В | Work Astra | Проверенные сборки, локальный запуск, [сценарий и чек-лист](demo-readiness/release-checklist.md) в общем Draft PR №10 | Ожидает проверки |
+| DEMO-08А | Work Astra | [Браузерный аудит и скриншоты](demo-readiness/audit.md) экспериментального прототипа, объединённого через PR №9 | Завершён |
+| DEMO-08Б | Work Astra | [Исправления по реестру и браузерная проверка](demo-readiness/fixes.md) в объединённом PR №10 | Завершён |
+| DEMO-08В | Work Astra | Проверенные сборки, локальный запуск, [сценарий и чек-лист](demo-readiness/release-checklist.md) в объединённом PR №10 | Завершён |
+| DEMO-09 | Work Astra | [Публикация демонстрационной версии на GitHub Pages](demo-readiness/github-pages-deployment.md) | Подготовлена в PR №11, ожидает слияния и проверки сайта |
 | 08 | Work Astra | Итоговые показатели оси | Запланирован |
 | 09А | PRO | Независимый аудит расчётного ядра | Запланирован |
 | 09Б | Work Astra | Утверждённые результаты аудита и выявленные расхождения зафиксированы | Запланирован |
