@@ -34,7 +34,7 @@ def select(entries, largest):
 
 
 def position_reference(source, factor):
-    fields = {}
+    series = {}
     for direction in DIRECTIONS:
         decimals = [v1.parse_decimal(item["value"]) * factor for item in source[direction]]
         values = []
@@ -43,6 +43,17 @@ def position_reference(source, factor):
             if not math.isfinite(actual) or certify(Value(decimal), actual)["status"] != "certified":
                 raise ArithmeticError("Input conversion outside the certified positive corpus")
             values.append(Q.from_float(actual))
+        series[direction] = values
+    return exact_position(series)
+
+
+def exact_position(series):
+    """Evaluate the same mathematical fields on five exact d, b or error values."""
+    fields = {}
+    for direction in DIRECTIONS:
+        values = series[direction]
+        if len(values) != 5:
+            raise ValueError("Expected five observations per direction")
         mean = sum(values) / 5
         variance = sum((x - mean)**2 for x in values) / 4
         if variance != sum((x - y)**2 for x, y in combinations(values, 2)) / 20:

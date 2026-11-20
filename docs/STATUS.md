@@ -11,7 +11,7 @@
 | 04-1–04-4 | Завершены. [PR № 5](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/5) объединён в `main` коммитом [`2068fd4`](https://github.com/volkov43-beep/vsz-positioning-calculator/commit/2068fd449fd5da154c4b5c1fac8d5ac040ee19f1). [Требования](product/requirements.md), [сценарии](product/user-flows.md), [схемы экранов](product/ui-wireframes.md) и [матрица 23 требований MVP](iterations/04-product-ux.md#матрица-соответствия-mvp) вошли в основную ветку. |
 | 05-1–05-3 | Архитектура, модель, контракты и план вошли в main через [PR № 6](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/6), коммит `0eba9b485537c10fdeda4e1f3f6a8b058312c1a7`. [Отчёт 05](iterations/05-architecture.md). Запись ADR-0001 имеет статус Proposed. |
 | PRE-06 | Work воспроизвёл результаты PRO и подготовил [§9.2 и §9.4](methodology/math-spec.md), [отчёт проверки](validation/pre06-numerical-policy-verification.md) и [ADR-0002](decisions/ADR-0002-numerical-policy.md). Материалы объединены через [PR №7](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/7), статус политики — Proposed. [Отчёт итерации](iterations/pre06-numerical-policy.md). |
-| 06 | Выполняется. Для 06-1 представлены [сертификаты 5 984 полей](validation/06-reference-certification.md) и [независимый Python-контроль](../tests/verification/iteration-06/README.md). [Общий отчёт](iterations/06-independent-control.md). |
+| 06 | Выполняется. Для 06-1 представлены [сертификаты 5 984 полей](validation/06-reference-certification.md) и [независимый Python-контроль](../tests/verification/iteration-06/README.md). Для 06-2 проверены [представление входов, бюджеты и отказы](validation/06-input-loss-and-failures.md). Обе части в [Draft PR №8](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/8). [Общий отчёт](iterations/06-independent-control.md). |
 
 ## Открытые инженерные вопросы
 
@@ -22,4 +22,4 @@
 
 ## Следующая итерация
 
-**06-2 — проверка входного преобразования, бюджетов и сценариев численного отказа** в общем Draft PR этапа 06. Ресурсы и итог этапа относятся к 06-3. Переход к 07 заблокирован до согласований метролога и владельца, завершения 06 и принятия результата. [Условия перехода](validation/pre06-numerical-policy-verification.md).
+**06-3 — проверка ресурсных ограничений и итоговый вывод по этапу 06** в том же Draft PR. Перед переходом к 07 требуются решения владельца и метролога и принятие всего результата 06. [Открытые согласования](validation/06-input-loss-and-failures.md#12-открытые-согласования-и-передача-в-06-3).

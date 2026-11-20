@@ -19,7 +19,7 @@
 | 05-2 | Work Astra | [Модель данных испытания](architecture/data-model.md) и [контракты компонентов](architecture/contracts.md) | Завершён |
 | 05-3 | Work Astra | [Заключение по архитектуре и 23 требованиям MVP](architecture/architecture-review.md) и [план реализации](architecture/implementation-plan.md) в общем PR № 6 | Завершён |
 | PRE-06 | PRO / Work Astra | [Проект численной политики и независимая проверка](validation/pre06-numerical-policy-verification.md), [отчёт](iterations/pre06-numerical-policy.md), [PR №7](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/7) | Завершён |
-| 06 | Work Astra | [Независимый контрольный расчёт на Python](iterations/06-independent-control.md), три части в одном Draft PR. [06-1](validation/06-reference-certification.md) ожидает проверки, 06-2 и 06-3 запланированы | Выполняется |
+| 06 | Work Astra | [Независимый контрольный расчёт на Python](iterations/06-independent-control.md), три части в одном Draft PR. [06-1](validation/06-reference-certification.md) и [06-2](validation/06-input-loss-and-failures.md) ожидают проверки, 06-3 запланирована | Выполняется |
 | 07 | Work Astra | Вычисления для одной позиции | Заблокирован |
 | 08 | Work Astra | Итоговые показатели оси | Запланирован |
 | 09А | PRO | Независимый аудит расчётного ядра | Запланирован |

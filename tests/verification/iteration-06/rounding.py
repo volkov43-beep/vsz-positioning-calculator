@@ -8,6 +8,10 @@ from struct import pack
 from independent_check import compare_radical_expressions
 
 
+class ComparisonLimit(ArithmeticError):
+    """The v1 exact comparator exhausted its enclosure ladder."""
+
+
 @dataclass(frozen=True)
 class Value:
     """A rational plus a short sum of rational multiples of square roots."""
@@ -26,8 +30,15 @@ class Value:
     def compare(self, other):
         # v1 proves equality after combining rational-square classes, then encloses
         # remaining radicals using integer square roots and directed rational bounds.
-        return compare_radical_expressions((self.rational, list(self.terms)),
-                                           (other.rational, list(other.terms)))
+        try:
+            return compare_radical_expressions((self.rational, list(self.terms)),
+                                               (other.rational, list(other.terms)))
+        except ArithmeticError as error:
+            # v1 raises plain ArithmeticError explicitly at the end of its ladder.
+            # Built-in arithmetic failures have more specific types.
+            if type(error) is ArithmeticError:
+                raise ComparisonLimit(str(error)) from error
+            raise
 
 
 ZERO = Value()
@@ -76,5 +87,7 @@ def certify(value, actual):
                 evidence["exact_sign"] = sign
                 accepts = accepts and ((sign < 0) == (copysign(1, actual) < 0))
     except ArithmeticError as error:
+        if isinstance(error, ComparisonLimit):
+            evidence["failure_kind"] = "comparison-limit"
         return {**evidence, "status": "uncertified", "reason": str(error)}
     return {**evidence, "status": "certified" if accepts else "mismatch"}
