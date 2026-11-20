@@ -1,6 +1,6 @@
 # Итерация PRE-06 — корректировка и проверка численной политики
 
-**Статус — подготовлена к согласованию.** Исходный HEAD main — [`0eba9b485537c10fdeda4e1f3f6a8b058312c1a7`](https://github.com/volkov43-beep/vsz-positioning-calculator/commit/0eba9b485537c10fdeda4e1f3f6a8b058312c1a7), merge [PR № 6](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/6). На старте открытых PR и ветки PRE-06 не было. Ветка `docs/pre06-numerical-policy` создана от этого коммита.
+**Статус — подготовлена к согласованию.** Исходный HEAD main — [`0eba9b485537c10fdeda4e1f3f6a8b058312c1a7`](https://github.com/volkov43-beep/vsz-positioning-calculator/commit/0eba9b485537c10fdeda4e1f3f6a8b058312c1a7), merge [PR № 6](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/6). На старте открытых PR и ветки PRE-06 не было. Ветка `docs/pre06-numerical-policy` создана от этого коммита. Проверенные материалы опубликованы [коммитом 0ab7130](https://github.com/volkov43-beep/vsz-positioning-calculator/commit/0ab713010718ddaba808f7f5f3c15416df968246) в [Draft PR № 7](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/7). Итоговая ревизия доступна в [истории PR](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/7/commits).
 
 ## Результат передачи
 
