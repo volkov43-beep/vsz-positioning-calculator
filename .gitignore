@@ -28,3 +28,7 @@ transcripts/
 *.[xX][lL][sS][xX]
 *.[xX][lL][sS][mM]
 *.[xX][lL][sS][bB]
+
+# Локальные зависимости и результаты сборки
+node_modules/
+dist/
