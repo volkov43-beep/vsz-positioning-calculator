@@ -19,8 +19,11 @@
 | 05-2 | Work Astra | [Модель данных испытания](architecture/data-model.md) и [контракты компонентов](architecture/contracts.md) | Завершён |
 | 05-3 | Work Astra | [Заключение по архитектуре и 23 требованиям MVP](architecture/architecture-review.md) и [план реализации](architecture/implementation-plan.md) в общем PR № 6 | Завершён |
 | PRE-06 | PRO / Work Astra | [Проект численной политики и независимая проверка](validation/pre06-numerical-policy-verification.md), [отчёт](iterations/pre06-numerical-policy.md), [PR №7](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/7) | Завершён |
-| 06 | Work Astra | [Независимый контроль на Python](iterations/06-independent-control.md). [06-1](validation/06-reference-certification.md), [06-2](validation/06-input-loss-and-failures.md) и [06-3](validation/06-final-verification.md) представлены в одном [Draft PR №8](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/8) | Ожидает проверки |
-| 07 | Work Astra | Вычисления для одной позиции | Заблокирован |
+| 06 | Work Astra | [Независимый контроль на Python](iterations/06-independent-control.md). [06-1](validation/06-reference-certification.md), [06-2](validation/06-input-loss-and-failures.md) и [06-3](validation/06-final-verification.md) объединены через [PR №8](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/8). Отдельное решение о допуске производственного №07 открыто | Ожидает проверки |
+| 07 | Work Astra | Производственные вычисления для одной позиции по согласованной политике | Заблокирован |
+| 07-Д1 | Work Astra | [Экспериментальная позиция TypeScript](iterations/07-demo-calculator.md), отдельная ветка по решению владельца, [Draft PR №9](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/9) | Ожидает проверки |
+| 07-Д2 | Work Astra | [Расчёт всей оси и независимая побитовая сверка](iterations/07-demo-calculator.md#07-д2--расчёт-всей-оси) в Draft PR №9 | Ожидает проверки |
+| 07-Д3 | Work Astra | [Веб-прототип, браузерная проверка T06 и скриншоты](iterations/07-demo-calculator.md#07-д3--живой-веб-прототип) в Draft PR №9 | Ожидает проверки |
 | 08 | Work Astra | Итоговые показатели оси | Запланирован |
 | 09А | PRO | Независимый аудит расчётного ядра | Запланирован |
 | 09Б | Work Astra | Утверждённые результаты аудита и выявленные расхождения зафиксированы | Запланирован |
