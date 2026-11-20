@@ -1,6 +1,7 @@
 import { demoProfile, type AxisRequest, type AxisResult } from "../core/axis";
 import type { PositionInput } from "../core/contracts";
-import type { Direction } from "../core/diagnostics";
+import { CoreIssue, type Address, type Direction } from "../core/diagnostics";
+import { normalize } from "../core/input";
 import sample from "./t06.json";
 
 export type Success = Extract<AxisResult, { state: "research-computed" }>;
@@ -54,6 +55,36 @@ export function draft(synthetic: boolean): AxisRequest {
 }
 export function fieldId(id: string, field: string, direction?: Direction, repeat?: number) {
   return [id, field, direction, repeat].filter((x) => x !== undefined).join("-");
+}
+export function travelEntry(raw: string | null) {
+  if (!raw?.trim()) return { label: "не указан", hint: "Укажите полный ход для проверки области применения." };
+  try {
+    const { d } = normalize(raw, "mm", { field: "fullTravelMm" }, "mm");
+    if (d.n > 0n) return { label: raw + " мм", hint: "" };
+  } catch (error) {
+    if (!(error instanceof CoreIssue)) throw error;
+  }
+  return { label: "не подтверждён", hint: "Полный ход не подтверждён. Введите положительное число в мм." };
+}
+
+export function diagnosticTarget({ positionId, field, direction, repeat }: Address) {
+  if (!positionId) return field === "axis" || field === "fullTravelMm" ? field : "positions";
+  if (direction) return fieldId(positionId, "raw", direction, repeat ?? 1);
+  return fieldId(positionId, "targetMm");
+}
+
+export function diagnosticAddress({ positionId, field, direction, repeat }: Address) {
+  if (!positionId) {
+    if (field === "axis") return "Параметры оси";
+    if (field === "fullTravelMm") return "Полный ход оси";
+    return "Измерения оси";
+  }
+  const parts = [positionId];
+  if (direction) parts.push(directionText[direction]);
+  if (repeat !== undefined) parts.push("повтор " + repeat);
+  else if (field === "targetMm") parts.push("координата, мм");
+  else if (field === "variance") parts.push("дисперсия");
+  return parts.join(" · ");
 }
 export const displayNumber = (n: number) => String(n).replace(".", ",").replace(/^-/, "−");
 export const metrics = [

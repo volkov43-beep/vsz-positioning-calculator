@@ -402,6 +402,9 @@ h4 {
   text-align: left;
   font-family: ui-monospace, monospace;
 }
+.matrix tr[data-selected="true"] { background: #edf5f4; }
+.matrix tr[data-selected="true"] th[scope="row"] { box-shadow: inset 3px 0 var(--teal); }
+input[data-review-series] { border-color: #ac4114; }
 .matrix input {
   min-width: 3.05rem;
   text-align: right;
@@ -460,12 +463,24 @@ h4 {
 }
 .metric-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 13rem), 1fr));
   gap: 1px;
   border: 1px solid var(--line);
   background: var(--line);
   margin-top: 1rem;
 }
+.metric-grid[data-family="B"] .metric { background: #edf5f4; }
+.metric-grid[data-family="B"] .value { font-size: 1.5rem; }
+.plot-note, .field-note {
+  padding: 0.5rem 0.8rem;
+  border-inline-start: 3px solid var(--teal);
+  background: #edf5f4;
+}
+.issue-address { font-weight: 700; }
+.error details { margin-top: 0.6rem; }
+.error summary { cursor: pointer; text-decoration: underline; }
+.error summary:focus-visible { outline: 3px solid #2268c3; outline-offset: 2px; }
+.error code { overflow-wrap: anywhere; }
 .metric {
   background: white;
   padding: 0.9rem;
@@ -583,9 +598,7 @@ dialog::backdrop {
   .hero {
     grid-template-columns: 1fr 1fr;
   }
-  .metric-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
+
 }
 @media (max-width: 45em) {
   .hero {
@@ -694,4 +707,10 @@ button {
   .mobile-pos fieldset label {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
+}
+
+@media (max-width: 25em) {
+  .panel:has(#issue), #issue, dialog { padding: min(0.7rem, 3vw); }
+  .panel:has(#issue) h2 { font-size: 1.15rem; }
+  #issue .issue-address { margin-block: 0.25rem 0.5rem; }
 }

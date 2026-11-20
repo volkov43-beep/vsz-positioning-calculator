@@ -1,8 +1,34 @@
-import type { KeyboardEvent } from "react";
+import { useMemo, useRef, type ComponentProps, type KeyboardEvent } from "react";
 import type { AxisInputs } from "../core/axis";
 import type { Address, Direction } from "../core/diagnostics";
 import type { PositionInput } from "../core/contracts";
-import { directionText, directions, fieldId } from "./model";
+import { diagnosticAddress, directionText, directions, fieldId, travelEntry } from "./model";
+
+type CellProps = Omit<ComponentProps<"input">, "value" | "onChange" | "onFocus"> & {
+  value: string;
+  onValueChange: (raw: string) => void;
+};
+
+function MeasurementCell({ value, onValueChange, onKeyDown, ...props }: CellProps) {
+  const before = useRef(value);
+  return (
+    <input
+      {...props}
+      value={value}
+      onFocus={() => { before.current = value; }}
+      onChange={(e) => onValueChange(e.currentTarget.value)}
+      onKeyDown={(e) => {
+        if (e.key === "Escape") {
+          e.preventDefault();
+          if (before.current !== value) onValueChange(before.current);
+        } else {
+          if (e.key === "Enter") before.current = value;
+          onKeyDown?.(e);
+        }
+      }}
+    />
+  );
+}
 
 interface Props {
   inputs: AxisInputs;
@@ -35,19 +61,20 @@ export function Editor({
   busy,
 }: Props) {
   const rows = inputs.positions;
+  const travel = useMemo(() => travelEntry(inputs.axis.fullTravelMm), [inputs.axis.fullTravelMm]);
   const p = rows.find((row) => row.positionId === selected) ?? rows[0];
   function edit(id: string, transform: (old: PositionInput) => PositionInput) {
     change({ ...inputs, positions: rows.map((row) => (row.positionId === id ? transform(row) : row)) });
   }
   function coordinate(row: PositionInput) {
     return (
-      <input
+      <MeasurementCell
         id={fieldId(row.positionId, "targetMm")}
         aria-label={row.positionId + " координата, мм"}
         value={row.targetMm}
         aria-invalid={error?.positionId === row.positionId && error.field === "targetMm"}
         placeholder="мм"
-        onChange={(e) => edit(row.positionId, (old) => ({ ...old, targetMm: e.target.value }))}
+        onValueChange={(targetMm) => edit(row.positionId, (old) => ({ ...old, targetMm }))}
       />
     );
   }
@@ -75,25 +102,27 @@ export function Editor({
   }
   function cell(row: PositionInput, d: Direction, repeat: number) {
     const obs = row.observations[d].find((o) => o.repeat === repeat)!;
+    const reviewSeries = error?.positionId === row.positionId && error.direction === d && error.repeat === undefined;
     const invalid = error?.positionId === row.positionId && error.direction === d && error.repeat === repeat;
     return (
-      <input
+      <MeasurementCell
         aria-label={row.positionId + " " + d + " повтор " + repeat + ", мкм"}
         id={fieldId(row.positionId, "raw", d, repeat)}
         aria-invalid={invalid}
-        aria-describedby={invalid ? "issue" : undefined}
+        data-review-series={reviewSeries || undefined}
+        aria-describedby={reviewSeries ? "series-note" : invalid ? "issue" : undefined}
         type="text"
         autoComplete="off"
         spellCheck={false}
         value={obs.raw ?? ""}
         placeholder="—"
         onKeyDown={(e) => move(e, row, d, repeat)}
-        onChange={(e) =>
+        onValueChange={(raw) =>
           edit(row.positionId, (old) => ({
             ...old,
             observations: {
               ...old.observations,
-              [d]: old.observations[d].map((o) => (o.repeat === repeat ? { ...o, raw: e.target.value } : o)),
+              [d]: old.observations[d].map((o) => (o.repeat === repeat ? { ...o, raw } : o)),
             },
           }))
         }
@@ -120,15 +149,18 @@ export function Editor({
             Полный ход, мм
             <input
               id="fullTravelMm"
+              aria-invalid={travel.label === "не подтверждён"}
+              aria-describedby={travel.hint ? "travel-hint" : undefined}
               value={inputs.axis.fullTravelMm ?? ""}
               onChange={(e) => change({ ...inputs, axis: { ...inputs.axis, fullTravelMm: e.target.value } })}
             />
           </label>
         </div>
+        {travel.hint && <p className="field-note" id="travel-hint">{travel.hint} Предварительный расчёт доступен при полном наборе наблюдений.</p>}
       </section>
       <section className="panel">
         <div className="section-title">
-          <h2>Измеренные отклонения</h2>
+          <h2 id="positions" tabIndex={-1}>Измеренные отклонения</h2>
           <span>
             {rows.reduce(
               (n, r) =>
@@ -150,17 +182,18 @@ export function Editor({
           </label>
           <button onClick={add}>Добавить позицию</button>
           <button disabled={!p} onClick={remove}>
-            Удалить выбранную
+            Удалить {p?.positionId ?? "позицию"}
           </button>
         </div>
+        {error?.direction && error.repeat === undefined && (
+          <p id="series-note" className="field-note">Проверьте пять исходных наблюдений серии {diagnosticAddress(error)}.</p>
+        )}
         {mobile ? (
           p && (
-            <div className="mobile-pos">
+            <div className="mobile-pos" key={p.positionId}>
               {error?.positionId === p.positionId && (
                 <p className="error">
-                  {[p.positionId, error.direction, error.repeat && "повтор " + error.repeat]
-                    .filter(Boolean)
-                    .join(" / ")}{" "}
+                  {diagnosticAddress(error)}{" "}
                   · {errorMessage}
                 </p>
               )}
@@ -206,7 +239,8 @@ export function Editor({
               </thead>
               <tbody>
                 {rows.map((row) => (
-                  <tr key={row.positionId}>
+                  <tr key={row.positionId} data-selected={row.positionId === selected}
+                    onFocusCapture={() => select(row.positionId)}>
                     <th scope="row">{row.positionId}</th>
                     <td>{coordinate(row)}</td>
                     {directions.flatMap((d) =>
@@ -219,7 +253,7 @@ export function Editor({
           </div>
         )}
         <p className="hint">
-          Tab и Enter переходят между полями. Alt + ↑ / ↓ меняет позицию в том же столбце.
+          Tab и Enter переходят между полями. Escape отменяет правку ячейки. Alt + ↑ / ↓ меняет позицию в том же столбце.
         </p>
         <div className="actions">
           <button onClick={check}>Проверить</button>

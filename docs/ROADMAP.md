@@ -21,9 +21,12 @@
 | PRE-06 | PRO / Work Astra | [Проект численной политики и независимая проверка](validation/pre06-numerical-policy-verification.md), [отчёт](iterations/pre06-numerical-policy.md), [PR №7](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/7) | Завершён |
 | 06 | Work Astra | [Независимый контроль на Python](iterations/06-independent-control.md). [06-1](validation/06-reference-certification.md), [06-2](validation/06-input-loss-and-failures.md) и [06-3](validation/06-final-verification.md) объединены через [PR №8](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/8). Отдельное решение о допуске производственного №07 открыто | Ожидает проверки |
 | 07 | Work Astra | Производственные вычисления для одной позиции по согласованной политике | Заблокирован |
-| 07-Д1 | Work Astra | [Экспериментальная позиция TypeScript](iterations/07-demo-calculator.md), отдельная ветка по решению владельца, [Draft PR №9](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/9) | Ожидает проверки |
-| 07-Д2 | Work Astra | [Расчёт всей оси и независимая побитовая сверка](iterations/07-demo-calculator.md#07-д2--расчёт-всей-оси) в Draft PR №9 | Ожидает проверки |
-| 07-Д3 | Work Astra | [Веб-прототип, браузерная проверка T06 и скриншоты](iterations/07-demo-calculator.md#07-д3--живой-веб-прототип) в Draft PR №9 | Ожидает проверки |
+| 07-Д1 | Work Astra | [Экспериментальная позиция TypeScript](iterations/07-demo-calculator.md), отдельная ветка по решению владельца, [PR №9](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/9) | Завершён |
+| 07-Д2 | Work Astra | [Расчёт всей оси и независимая побитовая сверка](iterations/07-demo-calculator.md#07-д2--расчёт-всей-оси) в PR №9 | Завершён |
+| 07-Д3 | Work Astra | [Веб-прототип, браузерная проверка T06 и скриншоты](iterations/07-demo-calculator.md#07-д3--живой-веб-прототип) в PR №9 | Завершён |
+| DEMO-08А | Work Astra | [Браузерный аудит и скриншоты](demo-readiness/audit.md) экспериментального прототипа, объединённого через PR №9 | Ожидает проверки |
+| DEMO-08Б | Work Astra | [Исправления по реестру и браузерная проверка](demo-readiness/fixes.md) в общем Draft PR №10 | Ожидает проверки |
+| DEMO-08В | Work Astra | Проверенные сборки, локальный запуск, [сценарий и чек-лист](demo-readiness/release-checklist.md) в общем Draft PR №10 | Ожидает проверки |
 | 08 | Work Astra | Итоговые показатели оси | Запланирован |
 | 09А | PRO | Независимый аудит расчётного ядра | Запланирован |
 | 09Б | Work Astra | Утверждённые результаты аудита и выявленные расхождения зафиксированы | Запланирован |
@@ -38,6 +41,8 @@
 | 16Б | Work Astra | Согласованный сценарий демонстрации сохранён | Запланирован |
 | 17 | Work Astra | Демонстрационная сборка | Запланирован |
 | 18 | Work Astra | Публичный выпуск | Запланирован |
+
+Три части DEMO-08 используют ветку `feature/demo-readiness-08` и один Draft PR. Статус производственных этапов 07–08 определяется отдельно. [Отчёт DEMO-08](iterations/demo-08-readiness.md).
 
 В 06-1 переиспользованы [инструменты 03А](architecture/implementation-plan.md#этап-06-и-существующие-средства-проверки) и добавлен независимый контроль ячеек округления. Перед 07–08 владелец принимает результат 06 после рассмотрения [условий перехода](validation/06-final-verification.md#14-условия-перехода-к-07) и согласования численной политики с метрологом. Исходное требование этапа 05 зафиксировано в [задаче PRO и Work по §9.2, §9.4 и методу s](architecture/implementation-plan.md#обязательная-задача-pro-и-work).
 
