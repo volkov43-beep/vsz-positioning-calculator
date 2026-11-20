@@ -6,6 +6,8 @@
 
 Исходный HEAD — [54b8ea6ad59dd483a77207453fa73c1da442cbda](https://github.com/volkov43-beep/vsz-positioning-calculator/commit/54b8ea6ad59dd483a77207453fa73c1da442cbda). Это состояние после объединения [PR №9](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/9) с экспериментальным прототипом 07-Д1–07-Д3.
 
+[Draft PR №10](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/10) открыт в `main`. [Коммит аудита и 17 снимков](https://github.com/volkov43-beep/vsz-positioning-calculator/commit/8b8097531bb77b49dec87c0804b7616646737a14).
+
 | Предмет | Результат |
 | --- | --- |
 | Публикуемые материалы | [Браузерный аудит](../demo-readiness/audit.md), [17 кадров](../demo-readiness/screenshots/), обновлённые [состояние](../STATUS.md), [дорожная карта](../ROADMAP.md) и [указатель итераций](README.md) |
