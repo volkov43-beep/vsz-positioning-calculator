@@ -11,7 +11,8 @@
 | 04-1–04-4 | Завершены. [PR № 5](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/5) объединён в `main` коммитом [`2068fd4`](https://github.com/volkov43-beep/vsz-positioning-calculator/commit/2068fd449fd5da154c4b5c1fac8d5ac040ee19f1). [Требования](product/requirements.md), [сценарии](product/user-flows.md), [схемы экранов](product/ui-wireframes.md) и [матрица 23 требований MVP](iterations/04-product-ux.md#матрица-соответствия-mvp) вошли в основную ветку. |
 | 05-1–05-3 | Архитектура, модель, контракты и план вошли в main через [PR № 6](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/6), коммит `0eba9b485537c10fdeda4e1f3f6a8b058312c1a7`. [Отчёт 05](iterations/05-architecture.md). Запись ADR-0001 имеет статус Proposed. |
 | PRE-06 | Work воспроизвёл результаты PRO и подготовил [§9.2 и §9.4](methodology/math-spec.md), [отчёт проверки](validation/pre06-numerical-policy-verification.md) и [ADR-0002](decisions/ADR-0002-numerical-policy.md). Материалы объединены через [PR №7](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/7), статус политики — Proposed. [Отчёт итерации](iterations/pre06-numerical-policy.md). |
-| 06 | Ожидает проверки владельцем в [Draft PR №8](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/8). Выполнены [06-1 — сертификаты RN64](validation/06-reference-certification.md), [06-2 — входы, бюджеты и отказы](validation/06-input-loss-and-failures.md) и [06-3 — итоговый контроль и ресурсы](validation/06-final-verification.md). [Общий отчёт](iterations/06-independent-control.md). |
+| 06 | Результаты технической проверки вошли в main через [PR №8](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/8), SHA `973463c72445231c03d3f736bde376b173838914`. Метрологические и технические решения по допуску производственного ядра открыты. Выполнены [06-1 — сертификаты RN64](validation/06-reference-certification.md), [06-2 — входы, бюджеты и отказы](validation/06-input-loss-and-failures.md) и [06-3 — итоговый контроль и ресурсы](validation/06-final-verification.md). [Общий отчёт](iterations/06-independent-control.md). |
+| 07-Д1 | По разрешению владельца в ветке `feature/07-demo-calculator` создан [экспериментальный расчёт одной позиции](iterations/07-demo-calculator.md). [Общий Draft PR №9](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/9) ожидает проверки. 07-Д2 и 07-Д3 предстоят. |
 
 ## Открытые инженерные вопросы
 
@@ -22,4 +23,4 @@
 
 ## Следующая итерация
 
-**Готово к согласованию. Реализация №07 заблокирована.** Ближайшее действие — решение метролога по методу s и бюджетам, затем принятие владельцем численного контракта и результата этапа. [Матрица условий перехода](validation/06-final-verification.md#14-условия-перехода-к-07).
+**Для демонстрационного прототипа следующий шаг — 07-Д2**, расчёт оси над защищёнными позиционными выражениями и независимая сверка. Производственная итерация №07 заблокирована до решения метролога по методу s и бюджетам и принятия владельцем численного контракта. [Матрица условий перехода](validation/06-final-verification.md#14-условия-перехода-к-07).
