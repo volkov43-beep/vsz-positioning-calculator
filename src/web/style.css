@@ -759,3 +759,27 @@ button {
   .panel:has(#issue) h2 { font-size: 1.15rem; }
   #issue .issue-address { margin-block: 0.25rem 0.5rem; }
 }
+
+.entry-counts, .validation-tools {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin: 0.6rem 0 1rem;
+}
+.entry-counts span { color: var(--muted); }
+.tools label { max-width: 100%; }
+.measurement-cell { display: block; min-width: 0; }
+.cell-note { display: block; margin-top: 0.25rem; color: #802a1c; font-size: 0.83rem; line-height: 1.3; }
+.measurement-cell[data-state="editing"] small { color: var(--muted); }
+.measurement-cell[data-state="numeric-rejected"] small { color: #72470d; }
+.measurement-cell input[data-diagnostic] { background: #fff6e4; border-color: #9a611e; }
+.measurement-cell[data-state="empty"]:not(:focus-within) small { display: none; }
+.validation-tools summary { cursor: pointer; text-decoration: underline; }
+.validation-tools details { max-width: 100%; }
+.validation-tools ul { max-height: 15rem; overflow: auto; padding: 0.4rem; list-style: none; }
+.validation-tools li button { text-align: start; border: 0; text-decoration: underline; }
+.row-count { display: block; color: var(--muted); font-weight: 400; }
+.short-format { display: none; }
+.matrix .measurement-cell[data-state="invalid-format"]:not(:focus-within) .short-format { display: inline; }
+.matrix .measurement-cell[data-state="invalid-format"]:not(:focus-within) .full-reason { display: none; }

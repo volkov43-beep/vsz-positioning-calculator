@@ -324,6 +324,7 @@ function App() {
               {page === "Испытание" && (
                 <>
                   <Editor
+                    key={req.trialId}
                     inputs={req.inputs}
                     mobile={mobile}
                     selected={selected}
@@ -331,9 +332,12 @@ function App() {
                     change={edit}
                     add={add}
                     remove={() => setConfirm("remove")}
-                    error={issue?.field}
-                    errorMessage={issue?.message}
-                    calculationIssue={issue?.category === "arithmetic"}
+                    issue={issue}
+                    focusInput={focusInput}
+                    blocked={() => {
+                      setInputState("Требуются исправления");
+                      setProblem("");
+                    }}
                     check={check}
                     run={run}
                     stale={stale}
@@ -372,7 +376,7 @@ function App() {
                                 ? "Ожидает запуска"
                                 : issue && issue.category === "arithmetic"
                                   ? "Отказ"
-                                  : issue
+                                  : issue || inputState === "Требуются исправления"
                                     ? "Заблокировано"
                                     : "Ожидает запуска"}
                         </dd>
