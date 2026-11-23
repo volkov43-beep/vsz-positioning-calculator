@@ -1,6 +1,6 @@
 # Состояние проекта
 
-Дата последнего обновления — 20 ноября 2026 года.
+Дата последнего обновления — 23 ноября 2026 года.
 
 | Итерация | Фактическое состояние |
 | --- | --- |
@@ -16,7 +16,8 @@
 | DEMO-08А | [Браузерный аудит](demo-readiness/audit.md) и [17 снимков](demo-readiness/screenshots/) вошли в main через [PR №10](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/10). В Chrome T06 пересчитан до 12 нулей, 8 сквозных сценариев проверены. Замечания: 0 P0, 5 P1 и 1 P2. |
 | DEMO-08Б | Все шесть замечаний (5 P1, 1 P2) исправлены и проверены в Chrome. 466/466 тестов. [Результаты и снимки](demo-readiness/fixes.md) вошли в main через [PR №10](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/10). |
 | DEMO-08В | Обе сборки проверены в Chrome по локальному HTTP. 466/466 тестов, 12 нулей после пересчёта T06. [Сценарий показа](demo-readiness/director-demo-script.md), [руководство запуска](demo-readiness/runbook.md) и [контрольные кадры](demo-readiness/release-checklist.md) вошли в main через PR №10. |
-| DEMO-09 | Публикация демоверсии на GitHub Pages разрешена. [Draft PR №11](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/11) содержит workflow, сборку для подкаталога и [порядок проверки](demo-readiness/github-pages-deployment.md). Публичная ссылка ожидает развёртывания и проверки по HTTPS. |
+| DEMO-09 | [PR №11](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/11) объединён. [Демонстрация на GitHub Pages](https://volkov43-beep.github.io/vsz-positioning-calculator/) опубликована из main. |
+| DEMO-10 | Отдельная демонстрационная UX-итерация. [Часть А — оформление формы и браузерная проверка](iterations/demo-10-input-ux.md) в [Draft PR №12](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/12). |
 
 ## Открытые инженерные вопросы
 
@@ -27,4 +28,4 @@
 
 ## Следующая итерация
 
-**Следующий шаг — объединить PR №11 решением владельца, выбрать GitHub Actions в Settings → Pages и пройти приёмку по публичному HTTPS-адресу.** Производственная итерация №07 заблокирована до решения метролога по методу s и бюджетам и принятия владельцем численного контракта. [Матрица условий перехода](validation/06-final-verification.md#14-условия-перехода-к-07).
+**Следующий шаг — DEMO-10Б, интерактивная проверка числовых записей и счётчик корректных наблюдений в том же Draft PR.** Производственная итерация №07 заблокирована до решения метролога по методу s и бюджетам и принятия владельцем численного контракта. [Матрица условий перехода](validation/06-final-verification.md#14-условия-перехода-к-07).
