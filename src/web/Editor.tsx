@@ -13,6 +13,7 @@ function MeasurementCell({ value, onValueChange, onKeyDown, ...props }: CellProp
   const before = useRef(value);
   return (
     <input
+      aria-required="true"
       {...props}
       value={value}
       onFocus={() => { before.current = value; }}
@@ -40,6 +41,7 @@ interface Props {
   remove: () => void;
   error?: Address;
   errorMessage?: string;
+  calculationIssue: boolean;
   check: () => void;
   run: () => void;
   stale: boolean;
@@ -55,6 +57,7 @@ export function Editor({
   remove,
   error,
   errorMessage,
+  calculationIssue,
   check,
   run,
   stale,
@@ -67,12 +70,15 @@ export function Editor({
     change({ ...inputs, positions: rows.map((row) => (row.positionId === id ? transform(row) : row)) });
   }
   function coordinate(row: PositionInput) {
+    const flagged = error?.positionId === row.positionId && error.field === "targetMm";
     return (
       <MeasurementCell
         id={fieldId(row.positionId, "targetMm")}
         aria-label={row.positionId + " координата, мм"}
         value={row.targetMm}
-        aria-invalid={error?.positionId === row.positionId && error.field === "targetMm"}
+        aria-invalid={flagged && !calculationIssue}
+        data-diagnostic={(flagged && calculationIssue) || undefined}
+        aria-describedby={flagged ? "issue-message" : undefined}
         placeholder="мм"
         onValueChange={(targetMm) => edit(row.positionId, (old) => ({ ...old, targetMm }))}
       />
@@ -108,9 +114,10 @@ export function Editor({
       <MeasurementCell
         aria-label={row.positionId + " " + d + " повтор " + repeat + ", мкм"}
         id={fieldId(row.positionId, "raw", d, repeat)}
-        aria-invalid={invalid}
+        aria-invalid={invalid && !calculationIssue}
+        data-diagnostic={(invalid && calculationIssue) || undefined}
         data-review-series={reviewSeries || undefined}
-        aria-describedby={reviewSeries ? "series-note" : invalid ? "issue" : undefined}
+        aria-describedby={reviewSeries ? "series-note" : invalid ? "issue-message" : undefined}
         type="text"
         autoComplete="off"
         spellCheck={false}
@@ -138,25 +145,36 @@ export function Editor({
         </div>
         <div className="form-row">
           <label>
-            Ось
+            <span>Ось <b className="required-mark" aria-hidden="true">*</b></span>
             <input
               id="axis"
+              aria-required="true"
+              aria-invalid={error?.field === "axis"}
+              aria-describedby={error?.field === "axis" ? "issue-message" : undefined}
               value={inputs.axis.name}
               onChange={(e) => change({ ...inputs, axis: { ...inputs.axis, name: e.target.value } })}
             />
           </label>
-          <label>
-            Полный ход, мм
-            <input
-              id="fullTravelMm"
-              aria-invalid={travel.label === "не подтверждён"}
-              aria-describedby={travel.hint ? "travel-hint" : undefined}
-              value={inputs.axis.fullTravelMm ?? ""}
-              onChange={(e) => change({ ...inputs, axis: { ...inputs.axis, fullTravelMm: e.target.value } })}
-            />
-          </label>
+          <div className="travel-field">
+            <label>
+              Полный ход, мм
+              <input
+                id="fullTravelMm"
+                aria-invalid={travel.label === "не подтверждён"}
+                aria-describedby={travel.hint ? "travel-purpose travel-hint" : "travel-purpose"}
+                value={inputs.axis.fullTravelMm ?? ""}
+                onChange={(e) => change({ ...inputs, axis: { ...inputs.axis, fullTravelMm: e.target.value } })}
+              />
+            </label>
+            <small id="travel-purpose">Для проверки применимости методики</small>
+          </div>
         </div>
-        {travel.hint && <p className="field-note" id="travel-hint">{travel.hint} Предварительный расчёт доступен при полном наборе наблюдений.</p>}
+        {travel.hint && (
+          <p className="hint" id="travel-hint">
+            {travel.label === "не подтверждён" && <><span aria-hidden="true">⚠ </span>{travel.hint} </>}
+            Предварительный расчёт доступен при полном наборе наблюдений.
+          </p>
+        )}
       </section>
       <section className="panel">
         <div className="section-title">
@@ -170,7 +188,14 @@ export function Editor({
             из {10 * rows.length} введено
           </span>
         </div>
-        <p className="muted">Координата в мм, отклонения со знаком в мкм. Пустая ячейка означает пропуск.</p>
+        <p className="entry-guide">Укажите координату каждой позиции в мм и по пять измеренных отклонений для каждого направления в мкм.
+          Допускаются положительные и отрицательные значения, запятая или точка. Ноль является измерением, пустая ячейка — пропуском.</p>
+        <p className="hint">Допустима научная запись, например <code>1e-12</code> (10<sup>−12</sup>).</p>
+        <ul className="field-key" aria-label="Обозначения полей">
+          <li><b className="key-required" aria-hidden="true">*</b> Обязательно для расчёта</li>
+          <li><b className="key-service" aria-hidden="true">ID</b> Служебные данные</li>
+          <li><b className="key-error" aria-hidden="true">!</b> Ошибка ввода</li>
+        </ul>
         <div className="tools">
           <label>
             Позиция
@@ -186,23 +211,24 @@ export function Editor({
           </button>
         </div>
         {error?.direction && error.repeat === undefined && (
-          <p id="series-note" className="field-note">Проверьте пять исходных наблюдений серии {diagnosticAddress(error)}.</p>
+          <p id="series-note" className="field-note"><span aria-hidden="true">⚠ </span>Проверьте пять исходных наблюдений серии {diagnosticAddress(error)}.</p>
         )}
         {mobile ? (
           p && (
             <div className="mobile-pos" key={p.positionId}>
               {error?.positionId === p.positionId && (
                 <p className="error">
-                  {diagnosticAddress(error)}{" "}
+                  <span aria-hidden="true">⚠ </span>{diagnosticAddress(error)}{" "}
                   · {errorMessage}
                 </p>
               )}
               <label>
-                Координата {p.positionId}, мм{coordinate(p)}
+                <span><span className="position-id">{p.positionId}</span> Координата, мм <b className="required-mark" aria-hidden="true">*</b></span>
+                {coordinate(p)}
               </label>
               {directions.map((d) => (
                 <fieldset key={d}>
-                  <legend>{directionText[d]} · отклонения, мкм</legend>
+                  <legend>{directionText[d]} · отклонения, мкм <b className="required-mark" aria-hidden="true">*</b></legend>
                   {p.observations[d].map((o) => (
                     <label key={o.repeat}>
                       Повтор {o.repeat}
@@ -220,10 +246,10 @@ export function Editor({
               <thead>
                 <tr>
                   <th rowSpan={2}>ID</th>
-                  <th rowSpan={2}>Позиция, мм</th>
+                  <th rowSpan={2}>Координата, мм <b className="required-mark" aria-hidden="true">*</b></th>
                   {directions.map((d) => (
                     <th key={d} scope="colgroup" colSpan={5}>
-                      {directionText[d]} · мкм
+                      {directionText[d]} · мкм <b className="required-mark" aria-hidden="true">*</b>
                     </th>
                   ))}
                 </tr>
@@ -241,7 +267,7 @@ export function Editor({
                 {rows.map((row) => (
                   <tr key={row.positionId} data-selected={row.positionId === selected}
                     onFocusCapture={() => select(row.positionId)}>
-                    <th scope="row">{row.positionId}</th>
+                    <th scope="row"><span className="position-id">{row.positionId}</span></th>
                     <td>{coordinate(row)}</td>
                     {directions.flatMap((d) =>
                       row.observations[d].map((o) => <td key={d + o.repeat}>{cell(row, d, o.repeat)}</td>),

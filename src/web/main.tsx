@@ -333,6 +333,7 @@ function App() {
                     remove={() => setConfirm("remove")}
                     error={issue?.field}
                     errorMessage={issue?.message}
+                    calculationIssue={issue?.category === "arithmetic"}
                     check={check}
                     run={run}
                     stale={stale}
@@ -342,7 +343,7 @@ function App() {
                     <h2>Проверка испытания</h2>
                     {issue && (
                       <div className="error" id="issue" role="alert">
-                        <strong>{issue.message}</strong>
+                        <strong id="issue-message"><span aria-hidden="true">⚠ </span>{issue.message}</strong>
                         <p className="issue-address">{diagnosticAddress(issue.field)}</p>
                         <button onClick={() => focusInput(issue.field)}>
                           {issue.field.direction && !issue.field.repeat ? "К серии измерений" : "К полю ввода"}
