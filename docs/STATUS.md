@@ -17,7 +17,7 @@
 | DEMO-08Б | Все шесть замечаний (5 P1, 1 P2) исправлены и проверены в Chrome. 466/466 тестов. [Результаты и снимки](demo-readiness/fixes.md) вошли в main через [PR №10](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/10). |
 | DEMO-08В | Обе сборки проверены в Chrome по локальному HTTP. 466/466 тестов, 12 нулей после пересчёта T06. [Сценарий показа](demo-readiness/director-demo-script.md), [руководство запуска](demo-readiness/runbook.md) и [контрольные кадры](demo-readiness/release-checklist.md) вошли в main через PR №10. |
 | DEMO-09 | [PR №11](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/11) объединён. [Демонстрация на GitHub Pages](https://volkov43-beep.github.io/vsz-positioning-calculator/) опубликована из main. |
-| DEMO-10 | Отдельная демонстрационная UX-итерация. [Части А и Б — оформление, интерактивная проверка числовых записей и адресные замечания](iterations/demo-10-input-ux.md) в [Draft PR №12](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/12). |
+| DEMO-10 | Отдельная демонстрационная UX-итерация. [Части А, Б и В — оформление, интерактивная проверка и браузерная регрессия. 509/509 тестов, контроль T06 и 11 финальных снимков](iterations/demo-10-input-ux.md) в [Draft PR №12](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/12). |
 
 ## Открытые инженерные вопросы
 
@@ -28,4 +28,4 @@
 
 ## Следующая итерация
 
-**Следующий шаг — DEMO-10В, финальная сквозная браузерная проверка в том же Draft PR.** Производственная итерация №07 заблокирована до решения метролога по методу s и бюджетам и принятия владельцем численного контракта. [Матрица условий перехода](validation/06-final-verification.md#14-условия-перехода-к-07).
+**Следующий шаг — согласование Draft PR №12 владельцем и [проверка HTTPS после публикации](demo-readiness/demo-10/post-merge.md).** Производственная итерация №07 заблокирована до решения метролога по методу s и бюджетам и принятия владельцем численного контракта. [Матрица условий перехода](validation/06-final-verification.md#14-условия-перехода-к-07).

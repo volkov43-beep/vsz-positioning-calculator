@@ -343,11 +343,11 @@ function App() {
                     stale={stale}
                     busy={busy}
                   />
-                  <section className="panel" aria-live="polite">
+                  <section className="panel">
                     <h2>Проверка испытания</h2>
                     {issue && (
-                      <div className="error" id="issue" role="alert">
-                        <strong id="issue-message"><span aria-hidden="true">⚠ </span>{issue.message}</strong>
+                      <div className="error" id="issue">
+                        <strong id="issue-message" role="alert"><span aria-hidden="true">⚠ </span>{issue.message}</strong>
                         <p className="issue-address">{diagnosticAddress(issue.field)}</p>
                         <button onClick={() => focusInput(issue.field)}>
                           {issue.field.direction && !issue.field.repeat ? "К серии измерений" : "К полю ввода"}
@@ -360,7 +360,7 @@ function App() {
                         </details>
                       </div>
                     )}
-                    <dl className="facts">
+                    <dl className="facts" aria-live={issue ? "off" : "polite"}>
                       <div>
                         <dt>Исходные числа</dt>
                         <dd>{inputState}</dd>
