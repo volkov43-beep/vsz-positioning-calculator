@@ -81,7 +81,7 @@ export function diagnosticAddress({ positionId, field, direction, repeat }: Addr
   }
   const parts = [positionId];
   if (direction) parts.push(directionText[direction]);
-  if (repeat !== undefined) parts.push("повтор " + repeat);
+  if (repeat !== undefined) parts.push("повтор " + repeat, "мкм");
   else if (field === "targetMm") parts.push("координата, мм");
   else if (field === "variance") parts.push("дисперсия");
   return parts.join(" · ");
