@@ -19,6 +19,7 @@
 | DEMO-09 | [PR №11](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/11) объединён. [Демонстрация на GitHub Pages](https://volkov43-beep.github.io/vsz-positioning-calculator/) опубликована из main. |
 | DEMO-10 | Отдельная демонстрационная UX-итерация. [Части А, Б и В — оформление, интерактивная проверка и браузерная регрессия. 509/509 тестов, контроль T06 и 11 финальных снимков](iterations/demo-10-input-ux.md) вошли в main через [PR №12](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/12). |
 | MEETING-01А | [Нормативная ревизия](meeting-01/normative-audit.md) и [реестр решений](meeting-01/decision-register.md) в [общем Draft PR №13](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/13). Сверены M и состав 12 итогов. База плотности, охват и критерии пригодности плана ожидают согласования. |
+| MEETING-01Б | [Численный контроль приложения А](meeting-01/numerical-verification.md) завершён в рабочей ветке. 12/12 итогов ядра совпали с независимым RN64; четыре расхождения с точностью печати А.1 остались открыты. [Контракт планировщика](meeting-01/position-planning-contract.md) и [передача в MEETING-02](meeting-01/meeting-02-handoff.md) готовы к рассмотрению в Draft PR №13. |
 
 ## Открытые инженерные вопросы
 
@@ -29,4 +30,4 @@
 
 ## Следующая итерация
 
-**Следующий аналитический шаг — [MEETING-01Б](iterations/meeting-01.md) в Draft PR №13.** Публичную версию DEMO-10 проверяют отдельно по [чек-листу](demo-readiness/demo-10/post-merge.md). Производственная итерация №07 заблокирована до решения метролога по методу s и бюджетам и принятия владельцем численного контракта. [Матрица условий перехода](validation/06-final-verification.md#14-условия-перехода-к-07).
+**Следующий демонстрационный этап — [MEETING-02, планировщик позиций](meeting-01/meeting-02-handoff.md).** Материалы обеих частей MEETING-01 находятся в [Draft PR №13](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/13). Публичную версию DEMO-10 проверяют отдельно по [чек-листу](demo-readiness/demo-10/post-merge.md). Производственная итерация №07 заблокирована до решения метролога по методу s и бюджетам и принятия владельцем численного контракта. [Матрица условий перехода](validation/06-final-verification.md#14-условия-перехода-к-07).
