@@ -54,21 +54,21 @@ it("keeps pasted decimals verbatim through blur and restores every digit on Esca
 });
 it("collects all issues on check and guards calculation until corrections are complete", () => {
   const input = host.querySelector<HTMLInputElement>("#p03-raw-up-5")!;
-  const coord = host.querySelector<HTMLInputElement>("#p03-targetMm")!;
+  const other = host.querySelector<HTMLInputElement>("#p03-raw-down-2")!;
   expect(host.textContent).toContain("Все обязательные поля заполнены");
-  write(coord, "");
+  write(other, "");
   expect(host.textContent).not.toContain("Все обязательные поля заполнены");
   write(input, "12abc", "insertFromPaste");
   pressButton("Проверить");
   expect(check).not.toHaveBeenCalled();
   expect(host.textContent).toContain("Замечания (2)");
-  expect(coord.getAttribute("aria-invalid")).toBe("true");
+  expect(other.getAttribute("aria-invalid")).toBe("true");
   expect(input.getAttribute("aria-invalid")).toBe("true");
   pressButton("Рассчитать");
   expect(run).not.toHaveBeenCalled();
   expect(blocked).toHaveBeenCalledTimes(2);
   expect(focusInput).toHaveBeenCalledWith({ field: "raw", positionId: "p03", direction: "up", repeat: 5 });
-  write(coord, "500");
+  write(other, "0");
   write(input, "0,");
   pressButton("Рассчитать");
   expect(run).toHaveBeenCalledOnce();

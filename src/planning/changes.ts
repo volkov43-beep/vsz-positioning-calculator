@@ -28,13 +28,21 @@ interface Change {
   requiresPreservation: boolean;
 }
 
+function entered(o: Observation) {
+  return o.raw !== "" && o.raw !== null;
+}
+
+export function hasEnteredObservations(row: PositionInput) {
+  return row.observations.up.some(entered) || row.observations.down.some(entered);
+}
+
 function observations(row?: PositionInput): Change["observations"] {
   if (!row) return [];
   return (["up", "down"] as const).flatMap(direction => row.observations[direction]
-    .filter(o => o.raw !== "" && o.raw !== null)
+    .filter(entered)
     .map(o => ({ ...o, direction })));
 }
-function sameTarget(a: string, b: string) {
+export function sameTarget(a: string, b: string) {
   const left = readMm(a, "oldMm", []), right = readMm(b, "newMm", []);
   return !!left && !!right && left.d.cmp(right.d) === 0;
 }

@@ -1,4 +1,6 @@
-import type { AxisRequest } from "../core/axis";
+import type { AxisInputs, AxisRequest } from "../core/axis";
+import type { PositionInput } from "../core/contracts";
+import { hasEnteredObservations, sameTarget } from "../planning/changes";
 import { normalize } from "../core/input";
 import { snapshotDigest } from "../core/snapshot";
 import { algorithmVersion, type ActiveTrial, type Approach, type Passport, type PlanRequest, type Proposal, type Receipt } from "../planning";
@@ -59,7 +61,27 @@ function integer(raw: string) {
 export const protectionMessage = "Предложенный план затрагивает уже введённые измерения. Замена заблокирована для защиты исходных данных. Отмените изменение или сохраните исходное испытание способом, который поддерживает восстановление.";
 export type CommitPlan = (active: ActiveTrial, plan: Proposal, wanted: () => boolean) => Promise<"applied" | "conditions" | "conflict" | "protected" | "blocked" | "already">;
 
+export interface PositionEditBlock {
+  positionId: string;
+  reason: "remove" | "target";
+}
 
+// Compare against the live source, even if the candidate also clears observations.
+export function blockedPositionEdit(previous: AxisInputs, next: AxisInputs): PositionEditBlock | null {
+  if (previous.positions === next.positions) return null;
+  // A null entry means this ID would refer to multiple targets in the candidate.
+  const byId = new Map<string, PositionInput | null>();
+  for (const row of next.positions)
+    byId.set(row.positionId, byId.has(row.positionId) ? null : row);
+  for (const old of previous.positions) {
+    const row = byId.get(old.positionId);
+    if (row === old || !hasEnteredObservations(old)) continue;
+    if (row === undefined) return { positionId: old.positionId, reason: "remove" };
+    if (row === null || (row.targetMm !== old.targetMm && !sameTarget(old.targetMm, row.targetMm)))
+      return { positionId: old.positionId, reason: "target" };
+  }
+  return null;
+}
 
 export function teachingAxisMismatch(axis: AxisRequest["inputs"]["axis"], plan: Proposal, teaching: boolean) {
   if (axis.name !== plan.request.passport.name) return true;

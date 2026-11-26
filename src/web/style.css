@@ -783,3 +783,6 @@ button {
 .short-format { display: none; }
 .matrix .measurement-cell[data-state="invalid-format"]:not(:focus-within) .short-format { display: inline; }
 .matrix .measurement-cell[data-state="invalid-format"]:not(:focus-within) .full-reason { display: none; }
+
+.protection-notice { margin-block: .5rem; overflow-wrap: anywhere; }
+.protection-notice p { margin: 0 0 .5rem; }

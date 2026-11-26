@@ -22,6 +22,7 @@
 | MEETING-01Б | [Численный контроль А.1](meeting-01/numerical-verification.md) и [контракт планировщика](meeting-01/position-planning-contract.md) вошли в main через [PR №13](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/13). 12/12 итогов ядра совпали с независимым RN64, четыре расхождения с печатью остаются открыты. |
 | MEETING-02А | [Независимый модуль планирования](iterations/meeting-02.md) в [Draft PR №14](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/14). Проверены плотность, координаты, сетка, реверс и сохранность измерений. 583/583 теста. |
 | MEETING-02Б | Планировщик встроен в форму испытания. В Chrome пройдены [14 сценариев и проверка T06](meeting-02/browser-qa.md), 587/587 автоматических тестов. Обе части готовы к рассмотрению владельцем в [Draft PR №14](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/14). |
+| MEETING-02В | [Защита ручного редактирования позиций](iterations/meeting-02.md#meeting-02в--защита-ручного-редактирования-позиций) закрывает прямой перенос и удаление измеренной цели. 8/8 сценариев, 612/612 тестов. [Draft PR №14](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/14) готов к решению владельца. |
 
 ## Открытые инженерные вопросы
 

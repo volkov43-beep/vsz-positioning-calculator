@@ -10,7 +10,8 @@ import {
 import type { Address, CoreIssue } from "../core/diagnostics";
 import { prepareApply, type ActiveTrial, type Proposal } from "../planning";
 import { Planner } from "./Planner";
-import { freshSession, guardCurrent, teachingAxisMismatch, type CommitPlan, type PlanForm, type PlanSession } from "./planModel";
+import { hasEnteredObservations } from "../planning/changes";
+import { blockedPositionEdit, type PositionEditBlock, freshSession, guardCurrent, teachingAxisMismatch, type CommitPlan, type PlanForm, type PlanSession } from "./planModel";
 import { Editor } from "./Editor";
 import { Plot, PositionDetails, Report, Totals, Method } from "./Results";
 import { diagnosticAddress, diagnosticTarget, draft, editorPosition, sampleData, warning, type Success } from "./model";
@@ -140,7 +141,8 @@ function App() {
     [issue, setIssue] = useState<Issue | null>(null),
     [problem, setProblem] = useState("");
   const [mobile, setMobile] = useState(() => matchMedia("(max-width: 62em)").matches);
-  const [confirm, setConfirm] = useState<"sample" | "new" | "remove" | null>(null);
+  const [confirm, setConfirm] = useState<"sample" | "new" | { positionId: string } | null>(null);
+  const [positionBlock, setPositionBlock] = useState<PositionEditBlock | null>(null);
   const dialog = useRef<HTMLDialogElement>(null),
     heading = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
@@ -176,6 +178,7 @@ function App() {
       const r = draft(synthetic);
       install(r);
       installPlanning(freshSession());
+      setPositionBlock(null);
       select(r.inputs.positions[0].positionId);
       nextId.current = 6;
       setDirty(false);
@@ -194,9 +197,15 @@ function App() {
     if (dirty) setConfirm(synthetic ? "sample" : "new");
     else load(synthetic);
   }
-  function edit(inputs: AxisInputs, acceptedPlan?: PlanSession) {
+  function edit(inputs: AxisInputs, expected: AxisInputs, acceptedPlan?: PlanSession) {
     const prev = active.current;
-    if (!prev) return;
+    if (!prev || prev.inputs !== expected) return false;
+    const denied = blockedPositionEdit(prev.inputs, inputs);
+    if (denied) {
+      setPositionBlock(denied);
+      return false;
+    }
+    setPositionBlock(null);
     const s = planningRef.current;
     const axisChanged = prev.inputs.axis.name !== inputs.axis.name;
     const travelChanged = prev.inputs.axis.fullTravelMm !== inputs.axis.fullTravelMm;
@@ -215,6 +224,7 @@ function App() {
     setIssue(null);
     setProblem("");
     setInputState("Ожидает проверки");
+    return true;
   }
   const commitPlan: CommitPlan = async (base: ActiveTrial, plan: Proposal, wanted) => {
     const op = await prepareApply(base, plan, plan.version);
@@ -228,7 +238,7 @@ function App() {
     if (op.state !== "ready" && op.state !== "unchanged-inputs") return op.state === "conflict" ? "conflict" : "blocked";
     const accepted = { ...s, accepted: plan, receipt: op.receipt, frame: plan.request.passport.frame };
     if (op.invalidateArithmetic) {
-      edit(op.inputs, accepted);
+      if (!edit(op.inputs, base.inputs, accepted)) return "protected";
       select(op.inputs.positions.some(p => p.positionId === selected) ? selected : op.inputs.positions[0]?.positionId ?? "");
     } else {
       installPlanning(accepted);
@@ -242,14 +252,20 @@ function App() {
     let id: string;
     do { id = "p" + String(nextId.current++).padStart(2, "0"); }
     while (req.inputs.positions.some(row => row.positionId === id));
-    edit({ ...req.inputs, positions: [...req.inputs.positions, editorPosition(id)] });
-    select(id);
+    if (edit({ ...req.inputs, positions: [...req.inputs.positions, editorPosition(id)] }, req.inputs)) select(id);
   }
-  function remove() {
-    if (!req) return;
-    const rows = req.inputs.positions.filter((p) => p.positionId !== selected);
-    edit({ ...req.inputs, positions: rows });
-    select(rows[0]?.positionId ?? "");
+  function requestRemoval(positionId: string) {
+    const row = active.current?.inputs.positions.find(p => p.positionId === positionId);
+    if (!row) return;
+    if (hasEnteredObservations(row)) setPositionBlock({ positionId, reason: "remove" });
+    else setConfirm({ positionId });
+  }
+  function remove(positionId: string) {
+    const inputs = active.current?.inputs;
+    if (!inputs) return;
+    const rows = inputs.positions.filter(p => p.positionId !== positionId);
+    if (rows.length !== inputs.positions.length && edit({ ...inputs, positions: rows }, inputs))
+      select(rows[0]?.positionId ?? "");
   }
   function check() {
     if (!req) return;
@@ -309,7 +325,8 @@ function App() {
       document.getElementById(diagnosticTarget(f))?.focus();
     });
   }
-  const selectedInput = req?.inputs.positions.find((row) => row.positionId === selected);
+  const removeTarget = confirm && typeof confirm === "object" ? confirm.positionId : null;
+  const removeInput = req?.inputs.positions.find(row => row.positionId === removeTarget);
   const chosen = current?.positions.find((p) => p.positionId === selected) ?? current?.positions[0];
   const src = current?.inputSnapshot.positions.find((p) => p.positionId === chosen?.positionId);
   return (
@@ -380,9 +397,10 @@ function App() {
                     mobile={mobile}
                     selected={selected}
                     select={select}
-                    change={edit}
+                    change={inputs => edit(inputs, req.inputs)}
+                    positionBlock={positionBlock}
                     add={add}
-                    remove={() => setConfirm("remove")}
+                    remove={requestRemoval}
                     issue={issue}
                     focusInput={focusInput}
                     blocked={() => {
@@ -503,10 +521,10 @@ function App() {
         <span>Измерения обрабатываются в этой вкладке</span>
       </footer>
       <dialog ref={dialog} aria-labelledby="dialog-title" aria-describedby="dialog-message" onCancel={() => setConfirm(null)}>
-        <h2 id="dialog-title">{confirm === "remove" ? "Удалить позицию " + selected + "?" : "Заменить текущее испытание?"}</h2>
+        <h2 id="dialog-title">{removeTarget ? "Удалить позицию " + removeTarget + "?" : "Заменить текущее испытание?"}</h2>
         <p id="dialog-message">
-          {confirm === "remove"
-            ? (selectedInput?.targetMm.trim() ? "Координата " + selectedInput.targetMm + " мм. " : "Координата не указана. ") +
+          {removeTarget
+            ? (removeInput?.targetMm.trim() ? "Координата " + removeInput.targetMm + " мм. " : "Координата не указана. ") +
               "Все десять полей измерений этой позиции будут удалены из рабочей копии."
             : "Введённые изменения будут потеряны."}
         </p>
@@ -519,7 +537,8 @@ function App() {
             onClick={() => {
               const action = confirm;
               setConfirm(null);
-              if (action === "remove") remove();
+              if (!action) return;
+              if (typeof action === "object") remove(action.positionId);
               else load(action === "sample");
             }}
           >
