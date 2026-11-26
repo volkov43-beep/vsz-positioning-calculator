@@ -1,22 +1,35 @@
-import { useMemo, useRef, useState, type ComponentProps, type KeyboardEvent } from "react";
+import { Fragment, useMemo, useRef, useState, type ComponentProps, type KeyboardEvent, type ReactNode } from "react";
 import type { AxisInputs } from "../core/axis";
 import type { Address, Direction } from "../core/diagnostics";
 import type { PositionInput } from "../core/contracts";
 import { diagnosticAddress, directionText, directions, fieldId, travelEntry } from "./model";
 
-import { inspectInputs, type Diagnostic, type Field } from "./inputValidation";
+import { hasEnteredObservations } from "../planning/changes";
+import type { PositionEditBlock } from "./planModel";
+import { classify, inspectInputs, type Diagnostic, type Field } from "./inputValidation";
 
 type CellProps = Omit<ComponentProps<"input">, "value" | "onChange" | "onFocus"> & {
   status: Field;
   reveal: boolean;
+  bufferCoordinate?: boolean;
   setEditing: (id?: string) => void;
   value: string;
   onValueChange: (raw: string) => void;
 };
 
-function MeasurementCell({ status, reveal, setEditing, value, onValueChange, onKeyDown, ...props }: CellProps) {
+function MeasurementCell({ status, reveal, setEditing, value, onValueChange, onKeyDown, bufferCoordinate = false, ...props }: CellProps) {
   const before = useRef(value);
-  const { id, state, message } = status;
+  const [buffer, setBuffer] = useState<string | null>(null);
+  const { id } = status;
+  const { state, message } = bufferCoordinate && buffer !== null ? classify(buffer, "mm", true) : status;
+
+  function finishCoordinate() {
+    if (bufferCoordinate && buffer !== null) {
+      if (buffer !== value) onValueChange(buffer);
+      setBuffer(null);
+    }
+    setEditing(undefined);
+  }
   const rejected = state === "numeric-rejected";
   const invalid = state === "invalid-format" || (state === "empty" && reveal);
   const note = invalid || rejected || state === "editing";
@@ -31,21 +44,25 @@ function MeasurementCell({ status, reveal, setEditing, value, onValueChange, onK
         aria-invalid={invalid || rejected}
         data-diagnostic={rejected || undefined}
         aria-describedby={describedBy || undefined}
-        value={value}
+        value={bufferCoordinate ? buffer ?? value : value}
         onFocus={() => { before.current = value; }}
-        onBlur={() => setEditing(undefined)}
+        onBlur={finishCoordinate}
         onChange={(event) => {
-          setEditing(id);
-          onValueChange(event.currentTarget.value);
+          if (bufferCoordinate) setBuffer(event.currentTarget.value);
+          else {
+            setEditing(id);
+            onValueChange(event.currentTarget.value);
+          }
         }}
         onKeyDown={(event) => {
           if (event.key === "Escape") {
             event.preventDefault();
             setEditing(undefined);
-            if (before.current !== value) onValueChange(before.current);
+            if (bufferCoordinate) setBuffer(null);
+            else if (before.current !== value) onValueChange(before.current);
           } else {
             if (event.key === "Enter") {
-              setEditing(undefined);
+              finishCoordinate();
               before.current = value;
             }
             onKeyDown?.(event);
@@ -61,16 +78,29 @@ function MeasurementCell({ status, reveal, setEditing, value, onValueChange, onK
   );
 }
 
+function ProtectionNotice({ block }: { block: PositionEditBlock }) {
+  return <div className="field-note protection-notice">
+    <p role="alert" id="position-block-message"><strong>{block.positionId}.</strong>{" "}
+      {block.reason === "remove"
+        ? "Позиция содержит введённые измерения. Удаление заблокировано, поскольку восстановление исходной версии пока не поддерживается."
+        : "Исходная координата сохранена. При введённых измерениях можно изменить только написание того же значения в мм. Проверьте изменение цели в планировщике."}
+    </p>
+    <button onClick={() => document.getElementById("plan-propose")?.focus()}>К планировщику позиций</button>
+  </div>;
+}
+
 const coordinateLabel = { empty: "нет", editing: "ввод", "valid-numeric": "есть", "invalid-format": "ошибка", "numeric-rejected": "отказ" };
 
 interface Props {
+  planner?: ReactNode;
   inputs: AxisInputs;
   mobile: boolean;
   selected: string;
   select: (id: string) => void;
   change: (inputs: AxisInputs) => void;
   add: () => void;
-  remove: () => void;
+  remove: (positionId: string) => void;
+  positionBlock?: PositionEditBlock | null;
   issue?: Diagnostic | null;
   focusInput: (address: Address) => void;
   blocked: () => void;
@@ -80,6 +110,7 @@ interface Props {
   busy: boolean;
 }
 export function Editor({
+  planner,
   inputs,
   mobile,
   selected,
@@ -87,6 +118,7 @@ export function Editor({
   change,
   add,
   remove,
+  positionBlock,
   issue,
   focusInput,
   blocked,
@@ -130,14 +162,20 @@ export function Editor({
   function edit(id: string, transform: (old: PositionInput) => PositionInput) {
     change({ ...inputs, positions: rows.map((row) => (row.positionId === id ? transform(row) : row)) });
   }
+  function coordinateNotice(row: PositionInput) {
+    return positionBlock?.reason === "target" && positionBlock.positionId === row.positionId;
+  }
   function coordinate(row: PositionInput) {
     const id = fieldId(row.positionId, "targetMm");
+    const measured = hasEnteredObservations(row);
     return (
       <MeasurementCell
         inputMode={mobile && decimalKeys ? "decimal" : "text"}
         status={fields.get(id)!}
         reveal={reviewed}
         setEditing={setEditing}
+        bufferCoordinate={measured}
+        aria-describedby={coordinateNotice(row) ? "position-block-message coordinate-protection" : measured ? "coordinate-protection" : undefined}
         aria-label={row.positionId + " координата, мм"}
         value={row.targetMm}
         placeholder="мм"
@@ -239,6 +277,7 @@ export function Editor({
           </p>
         )}
       </section>
+      {planner}
       <section className="panel">
         <div className="section-title">
           <h2 id="positions" tabIndex={-1}>Измеренные отклонения</h2>
@@ -253,6 +292,7 @@ export function Editor({
         <p className="entry-guide">Укажите координату каждой позиции в мм и по пять измеренных отклонений для каждого направления в мкм.
           Допускаются положительные и отрицательные значения, запятая или точка. Ноль является измерением, пустая ячейка — пропуском.</p>
         <p className="hint">Допустима научная запись, например <code>1e-12</code> (10<sup>−12</sup>).</p>
+        <p className="hint" id="coordinate-protection">Сначала укажите координату. Если в позиции есть измерения, можно исправить только написание той же координаты. Enter или выход из поля завершает правку, Escape отменяет её. Удаление такой позиции заблокировано.</p>
         <ul className="field-key" aria-label="Обозначения полей">
           <li><b className="key-required" aria-hidden="true">*</b> Обязательно для расчёта</li>
           <li><b className="key-service" aria-hidden="true">ID</b> Служебные данные</li>
@@ -279,10 +319,13 @@ export function Editor({
             </select>
           </label>}
           <button onClick={add}>Добавить позицию</button>
-          <button disabled={!p} onClick={remove}>
+          <button disabled={!p} onClick={() => p && remove(p.positionId)}
+            aria-describedby={positionBlock?.reason === "remove" && positionBlock.positionId === p?.positionId
+              ? "position-block-message" : p && hasEnteredObservations(p) ? "coordinate-protection" : undefined}>
             Удалить {p?.positionId ?? "позицию"}
           </button>
         </div>
+        {positionBlock?.reason === "remove" && <ProtectionNotice block={positionBlock} />}
         {problems.length > 0 && <div className="validation-tools">
           <button onClick={nextProblem}>К следующему незаполненному или ошибочному полю</button>
           {reviewed && <details>
@@ -308,6 +351,7 @@ export function Editor({
                 <span><span className="position-id">{p.positionId}</span> Координата, мм <b className="required-mark" aria-hidden="true">*</b></span>
                 {coordinate(p)}
               </label>
+              {positionBlock && coordinateNotice(p) && <ProtectionNotice block={positionBlock} />}
               {directions.map((d) => (
                 <fieldset key={d}>
                   <legend>{directionText[d]} · отклонения, мкм <b className="required-mark" aria-hidden="true">*</b></legend>
@@ -347,17 +391,20 @@ export function Editor({
               </thead>
               <tbody>
                 {rows.map((row) => (
-                  <tr key={row.positionId} data-selected={row.positionId === selected}
-                    onFocusCapture={() => select(row.positionId)}>
-                    <th scope="row">
-                      <span className="position-id">{row.positionId}</span>
-                      <small className="row-count" aria-label="Корректные измерения">{review.positions.get(row.positionId)!.valid}/10</small>
-                    </th>
-                    <td>{coordinate(row)}</td>
-                    {directions.flatMap((d) =>
-                      row.observations[d].map((o) => <td key={d + o.repeat}>{cell(row, d, o.repeat)}</td>),
-                    )}
-                  </tr>
+                  <Fragment key={row.positionId}>
+                    <tr data-selected={row.positionId === selected}
+                      onFocusCapture={() => select(row.positionId)}>
+                      <th scope="row">
+                        <span className="position-id">{row.positionId}</span>
+                        <small className="row-count" aria-label="Корректные измерения">{review.positions.get(row.positionId)!.valid}/10</small>
+                      </th>
+                      <td>{coordinate(row)}</td>
+                      {directions.flatMap((d) =>
+                        row.observations[d].map((o) => <td key={d + o.repeat}>{cell(row, d, o.repeat)}</td>),
+                      )}
+                    </tr>
+                    {positionBlock && coordinateNotice(row) && <tr><td colSpan={12}><ProtectionNotice block={positionBlock} /></td></tr>}
+                  </Fragment>
                 ))}
               </tbody>
             </table>

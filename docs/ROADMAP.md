@@ -29,8 +29,8 @@
 | DEMO-08В | Work Astra | Проверенные сборки, локальный запуск, [сценарий и чек-лист](demo-readiness/release-checklist.md) в объединённом PR №10 | Завершён |
 | DEMO-09 | Work Astra | [Публикация демонстрационной версии на GitHub Pages](demo-readiness/github-pages-deployment.md) | Опубликована из main через PR №11 |
 | DEMO-10 | Work Astra | [Отдельная демонстрационная UX-итерация](iterations/demo-10-input-ux.md). А — назначение полей, Б — проверка ввода, В — итоговая браузерная проверка | Завершён. А, Б и В вошли в main через PR №12 |
-| MEETING-01 | Work Astra | [Нормативная ревизия, независимая проверка А.1 и контракт планирования](iterations/meeting-01.md) | Ожидает проверки. А и Б завершены в Draft PR №13 |
-| MEETING-02 | Work Astra | [Демонстрационный планировщик позиций одной линейной оси](meeting-01/meeting-02-handoff.md) | Запланирован. Контракт Proposed |
+| MEETING-01 | Work Astra | [Нормативная ревизия, независимая проверка А.1 и контракт планирования](iterations/meeting-01.md) | Завершён. Обе части вошли в main через [PR №13](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/13) |
+| MEETING-02 | Work Astra | [Планировщик целевых позиций](iterations/meeting-02.md). Модель, генерация, проверка и подготовка применения, затем интерфейс | Части А–В готовы к решению владельца в [Draft PR №14](https://github.com/volkov43-beep/vsz-positioning-calculator/pull/14). [Приёмка интерфейса, 14 сценариев планирования, 8 сценариев защиты и чек-лист публикации](meeting-02/browser-qa.md) |
 | 08 | Work Astra | Итоговые показатели оси | Запланирован |
 | 09А | PRO | Независимый аудит расчётного ядра | Запланирован |
 | 09Б | Work Astra | Утверждённые результаты аудита и выявленные расхождения зафиксированы | Запланирован |

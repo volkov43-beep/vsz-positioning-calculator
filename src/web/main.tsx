@@ -8,10 +8,15 @@ import {
   type AxisRequest,
 } from "../core/axis";
 import type { Address, CoreIssue } from "../core/diagnostics";
+import { prepareApply, type ActiveTrial, type Proposal } from "../planning";
+import { Planner } from "./Planner";
+import { hasEnteredObservations } from "../planning/changes";
+import { blockedPositionEdit, type PositionEditBlock, freshSession, guardCurrent, teachingAxisMismatch, type CommitPlan, type PlanForm, type PlanSession } from "./planModel";
 import { Editor } from "./Editor";
 import { Plot, PositionDetails, Report, Totals, Method } from "./Results";
 import { diagnosticAddress, diagnosticTarget, draft, editorPosition, sampleData, warning, type Success } from "./model";
 import "./style.css";
+import "./planner.css";
 
 type Page = "Начало" | "Испытание" | "Результаты" | "Отчёт";
 type Issue = ReturnType<CoreIssue["diagnostic"]>;
@@ -103,7 +108,7 @@ function Home({ start }: { start: (synthetic: boolean) => void }) {
         <h2>Синтетический пример T06</h2>
         <p>
           В примере пять позиций и 50 измерений. Рассчитайте ось, затем измените в p03 пятый повтор ↑ с 20 на 0 и
-          сравните B и B̄ после пересчёта.
+          сравните B и B̄ после пересчёта. T06 демонстрирует арифметику. Учебный план в разделе «Испытание» демонстрирует выбор координат.
         </p>
       </section>
     </>
@@ -113,6 +118,18 @@ function App() {
   const [page, setPage] = useState<Page>("Начало");
   const [req, setReq] = useState<AxisRequest | null>(null),
     active = useRef<AxisRequest | null>(null);
+  const [planning, setPlanning] = useState<PlanSession>(freshSession);
+  const planningRef = useRef(planning);
+  function installPlanning(next: PlanSession) {
+    planningRef.current = next;
+    setPlanning(next);
+    return next;
+  }
+  function changePlanForm(form: PlanForm) {
+    const s = planningRef.current;
+    return installPlanning({ ...s, form, serial: s.serial + 1,
+      manualForm: form.example ? (s.form.example ? s.manualForm : s.form) : undefined });
+  }
   const [selected, select] = useState("p01"),
     nextId = useRef(6);
   const [current, setCurrent] = useState<Success | null>(null),
@@ -124,7 +141,8 @@ function App() {
     [issue, setIssue] = useState<Issue | null>(null),
     [problem, setProblem] = useState("");
   const [mobile, setMobile] = useState(() => matchMedia("(max-width: 62em)").matches);
-  const [confirm, setConfirm] = useState<"sample" | "new" | "remove" | null>(null);
+  const [confirm, setConfirm] = useState<"sample" | "new" | { positionId: string } | null>(null);
+  const [positionBlock, setPositionBlock] = useState<PositionEditBlock | null>(null);
   const dialog = useRef<HTMLDialogElement>(null),
     heading = useRef<HTMLHeadingElement>(null);
   useEffect(() => {
@@ -159,6 +177,8 @@ function App() {
     try {
       const r = draft(synthetic);
       install(r);
+      installPlanning(freshSession());
+      setPositionBlock(null);
       select(r.inputs.positions[0].positionId);
       nextId.current = 6;
       setDirty(false);
@@ -177,9 +197,25 @@ function App() {
     if (dirty) setConfirm(synthetic ? "sample" : "new");
     else load(synthetic);
   }
-  function edit(inputs: AxisInputs) {
+  function edit(inputs: AxisInputs, expected: AxisInputs, acceptedPlan?: PlanSession) {
     const prev = active.current;
-    if (!prev) return;
+    if (!prev || prev.inputs !== expected) return false;
+    const denied = blockedPositionEdit(prev.inputs, inputs);
+    if (denied) {
+      setPositionBlock(denied);
+      return false;
+    }
+    setPositionBlock(null);
+    const s = planningRef.current;
+    const axisChanged = prev.inputs.axis.name !== inputs.axis.name;
+    const travelChanged = prev.inputs.axis.fullTravelMm !== inputs.axis.fullTravelMm;
+    const geometryChanged = prev.inputs.positions.length !== inputs.positions.length || inputs.positions.some((p, i) =>
+      p.positionId !== prev.inputs.positions[i].positionId || p.targetMm !== prev.inputs.positions[i].targetMm);
+    if (acceptedPlan) installPlanning(acceptedPlan);
+    else if (axisChanged || travelChanged || geometryChanged) installPlanning({
+      ...s, accepted: undefined, receipt: undefined, frame: axisChanged ? null : s.frame,
+      serial: s.serial + 1, form: axisChanged || travelChanged ? { ...(s.form.example ? s.manualForm ?? freshSession().form : s.form), example: false, confirmed: false } : s.form,
+    });
     install({ ...prev, inputs, inputRevision: prev.inputRevision + 1, runId: "draft" });
     setDirty(true);
     setBusy(false);
@@ -188,18 +224,48 @@ function App() {
     setIssue(null);
     setProblem("");
     setInputState("Ожидает проверки");
+    return true;
   }
+  const commitPlan: CommitPlan = async (base: ActiveTrial, plan: Proposal, wanted) => {
+    const op = await prepareApply(base, plan, plan.version);
+    const live = active.current, s = planningRef.current;
+    // prepareApply hashed base.inputs. Every editor write replaces this immutable object.
+    // No await between this identity/version check and committing the entire candidate.
+    if (!wanted() || !guardCurrent(live, s, base, op.guard)) return "conflict";
+    if (teachingAxisMismatch(base.inputs.axis, plan, s.form.example)) return "blocked";
+    if (op.state === "requires-preservation") return "protected";
+    if (op.state === "already-applied") return "already";
+    if (op.state !== "ready" && op.state !== "unchanged-inputs") return op.state === "conflict" ? "conflict" : "blocked";
+    const accepted = { ...s, accepted: plan, receipt: op.receipt, frame: plan.request.passport.frame };
+    if (op.invalidateArithmetic) {
+      if (!edit(op.inputs, base.inputs, accepted)) return "protected";
+      select(op.inputs.positions.some(p => p.positionId === selected) ? selected : op.inputs.positions[0]?.positionId ?? "");
+    } else {
+      installPlanning(accepted);
+      if (current) setWhen(new Date());
+      setDirty(true);
+    }
+    return op.invalidateArithmetic ? "applied" : "conditions";
+  };
   function add() {
     if (!req) return;
-    const id = "p" + String(nextId.current++).padStart(2, "0");
-    edit({ ...req.inputs, positions: [...req.inputs.positions, editorPosition(id)] });
-    select(id);
+    let id: string;
+    do { id = "p" + String(nextId.current++).padStart(2, "0"); }
+    while (req.inputs.positions.some(row => row.positionId === id));
+    if (edit({ ...req.inputs, positions: [...req.inputs.positions, editorPosition(id)] }, req.inputs)) select(id);
   }
-  function remove() {
-    if (!req) return;
-    const rows = req.inputs.positions.filter((p) => p.positionId !== selected);
-    edit({ ...req.inputs, positions: rows });
-    select(rows[0]?.positionId ?? "");
+  function requestRemoval(positionId: string) {
+    const row = active.current?.inputs.positions.find(p => p.positionId === positionId);
+    if (!row) return;
+    if (hasEnteredObservations(row)) setPositionBlock({ positionId, reason: "remove" });
+    else setConfirm({ positionId });
+  }
+  function remove(positionId: string) {
+    const inputs = active.current?.inputs;
+    if (!inputs) return;
+    const rows = inputs.positions.filter(p => p.positionId !== positionId);
+    if (rows.length !== inputs.positions.length && edit({ ...inputs, positions: rows }, inputs))
+      select(rows[0]?.positionId ?? "");
   }
   function check() {
     if (!req) return;
@@ -259,7 +325,8 @@ function App() {
       document.getElementById(diagnosticTarget(f))?.focus();
     });
   }
-  const selectedInput = req?.inputs.positions.find((row) => row.positionId === selected);
+  const removeTarget = confirm && typeof confirm === "object" ? confirm.positionId : null;
+  const removeInput = req?.inputs.positions.find(row => row.positionId === removeTarget);
   const chosen = current?.positions.find((p) => p.positionId === selected) ?? current?.positions[0];
   const src = current?.inputSnapshot.positions.find((p) => p.positionId === chosen?.positionId);
   return (
@@ -325,13 +392,15 @@ function App() {
                 <>
                   <Editor
                     key={req.trialId}
+                    planner={<Planner req={req} session={planning} change={changePlanForm} commit={commitPlan}/>}
                     inputs={req.inputs}
                     mobile={mobile}
                     selected={selected}
                     select={select}
-                    change={edit}
+                    change={inputs => edit(inputs, req.inputs)}
+                    positionBlock={positionBlock}
                     add={add}
-                    remove={() => setConfirm("remove")}
+                    remove={requestRemoval}
                     issue={issue}
                     focusInput={focusInput}
                     blocked={() => {
@@ -430,7 +499,14 @@ function App() {
                   <Method result={current} />
                 </>
               )}
-              {page === "Отчёт" && current && <Report req={req} result={current} generated={when} />}
+              {page === "Отчёт" && current && <>
+                <Report req={req} result={current} generated={when} />
+                {planning.accepted && <section className="panel plan-report"><h2>Принятый план позиций</h2>
+                  <p>{planning.accepted.request.passport.travelSource} · {planning.accepted.count} позиций · участок {planning.accepted.sectionLengthMm} мм.</p>
+                  <p>Условия версии {planning.accepted.request.base.conditionsVersion}. {planning.accepted.engineering.message}</p>
+                  <p>Реверс слева: {planning.accepted.reversal.left.message} Справа: {planning.accepted.reversal.right.message}</p>
+                </section>}
+              </>}
             </>
           )
         )}
@@ -445,10 +521,10 @@ function App() {
         <span>Измерения обрабатываются в этой вкладке</span>
       </footer>
       <dialog ref={dialog} aria-labelledby="dialog-title" aria-describedby="dialog-message" onCancel={() => setConfirm(null)}>
-        <h2 id="dialog-title">{confirm === "remove" ? "Удалить позицию " + selected + "?" : "Заменить текущее испытание?"}</h2>
+        <h2 id="dialog-title">{removeTarget ? "Удалить позицию " + removeTarget + "?" : "Заменить текущее испытание?"}</h2>
         <p id="dialog-message">
-          {confirm === "remove"
-            ? (selectedInput?.targetMm.trim() ? "Координата " + selectedInput.targetMm + " мм. " : "Координата не указана. ") +
+          {removeTarget
+            ? (removeInput?.targetMm.trim() ? "Координата " + removeInput.targetMm + " мм. " : "Координата не указана. ") +
               "Все десять полей измерений этой позиции будут удалены из рабочей копии."
             : "Введённые изменения будут потеряны."}
         </p>
@@ -461,7 +537,8 @@ function App() {
             onClick={() => {
               const action = confirm;
               setConfirm(null);
-              if (action === "remove") remove();
+              if (!action) return;
+              if (typeof action === "object") remove(action.positionId);
               else load(action === "sample");
             }}
           >
