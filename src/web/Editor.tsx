@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState, type ComponentProps, type KeyboardEvent } from "react";
+import { useMemo, useRef, useState, type ComponentProps, type KeyboardEvent, type ReactNode } from "react";
 import type { AxisInputs } from "../core/axis";
 import type { Address, Direction } from "../core/diagnostics";
 import type { PositionInput } from "../core/contracts";
@@ -64,6 +64,7 @@ function MeasurementCell({ status, reveal, setEditing, value, onValueChange, onK
 const coordinateLabel = { empty: "нет", editing: "ввод", "valid-numeric": "есть", "invalid-format": "ошибка", "numeric-rejected": "отказ" };
 
 interface Props {
+  planner?: ReactNode;
   inputs: AxisInputs;
   mobile: boolean;
   selected: string;
@@ -80,6 +81,7 @@ interface Props {
   busy: boolean;
 }
 export function Editor({
+  planner,
   inputs,
   mobile,
   selected,
@@ -239,6 +241,7 @@ export function Editor({
           </p>
         )}
       </section>
+      {planner}
       <section className="panel">
         <div className="section-title">
           <h2 id="positions" tabIndex={-1}>Измеренные отклонения</h2>
